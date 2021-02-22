@@ -68,7 +68,7 @@ public:
 
 This is able to load component images, is able to pass around a struct
 of the required fields for power calculations, 
-and will be able to easily be called in a LinkedList, as there is 
+and will be able to easily be called in a Linked-list, as there is 
 the next and head nodes.
 
 There is a space for the image to be loaded from a file (or program resource)
@@ -78,10 +78,10 @@ icons, toolbars, etc.
 ---
 
 
-## 18/01/2021
+## 22/01/2021
 
-Attemped an alternative layout engine, QtQuick, as it is newer, more supported,
-and allows buttons inside of the titlebar.
+Attempted an alternative layout engine, QtQuick, as it is newer, more supported,
+and allows buttons inside of the title bar.
 
 I quickly realised
 that it would be unsuitable, as it does not work with
@@ -123,9 +123,9 @@ Window {
 
 ---
 
-## 22/01/2021
+## 25/01/2021
 
-I began an attempt to put buttons in normal QT headerbars, and
+I began an attempt to put buttons in normal QT header bars, and
 was easily able to do it with only a couple of classes.
 
 ```
@@ -206,7 +206,7 @@ signals:
 
 ---
 
-## 25/01/2021
+## 29/01/2021
 
 Completed the CSD headerbar, as shown below:
 
@@ -218,7 +218,7 @@ was required for the draggable widgets anyway.
 
 ---
 
-## 29/01/2021
+## 01/02/2021
 
 Setup main [git repository](https://github.com/radams15/CircuitTester/tree/bd95c868b0d5e83740a9e34a16039be8c44860b2)
 , along with the build environment and 
@@ -229,7 +229,7 @@ any errors that I might create.
 
 ---
 
-## 01/02/2021
+## 08/02/2021
 
 Made a simple GUI design in QT Creator.
 
@@ -238,17 +238,9 @@ it serves as a simple design tool.
 
 I simple python script was used to run my design.
 
+layout:
+
 ```
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'layoutJbelSx.ui'
-##
-## Created by: Qt User Interface Compiler version 5.15.2
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
@@ -365,6 +357,8 @@ class Ui_Form(object):
 
 ```
 
+Main:
+
 
 ```
 from layout import Ui_Form
@@ -384,18 +378,19 @@ window.show() # Show window
 app.exec_() # Execute the App
 ```
 
+Result:
+
 ![Design](images/design1.png)
 
----
-
-## 05/02/2021
-
----
-
-## 08/02/2021
 
 ---
 
 ## 12/02/2021
+
+Considering the software requirements, probably requires:
+
+- Windows 7 or later (x64).
+- Mac OSX 10.9 or later.
+- Any linux distribution made after 2012.
 
 ---
