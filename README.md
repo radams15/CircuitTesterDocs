@@ -1,3 +1,3 @@
 # Docs for CircuitTester
 
-Code Repository [Here](https://github.com/radams15/CircuitTester)
+Code Repository located at https://github.com/radams15/CircuitTester
