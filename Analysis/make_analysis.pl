@@ -3,7 +3,7 @@ use warnings;
 
 use constant ORDER => ("stating the problem.md", "analysis.md");
 
-use constant OUT_FILE => "analysis.pdf";
+use constant OUT_FILE => "analysis.html";
 
 sub main{
 	my $md_files = join(" ", ORDER);
