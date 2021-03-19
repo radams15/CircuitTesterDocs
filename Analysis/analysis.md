@@ -79,14 +79,22 @@
 # Research Questions
 
 
+## For the physics teachers:
 
+ 1. Are you currently satisfied with the electronics
+	equipment in school?
+
+ 2. Would you feel comfortable teaching students electronics
+	with a computer program.
+
+## For the physics students:
 
 
 ---
 
 
 
-# Requirements
+# Hardware Requirements
 
 ## Mac OSX:
 
