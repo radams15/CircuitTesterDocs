@@ -3,7 +3,7 @@ use strict;
 use warnings;
 
 my @ORDER = ("styling/pagebreak.tex", "chap-3/stating the problem.md", "chap-4/analysis.md");
-my $OUT_FILE = "analysis.pdf";
+my $OUT_FILE = "Analysis.pdf";
 
 my $CSS_FILE = "styling/style.css";
 
