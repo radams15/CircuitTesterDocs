@@ -1,14 +1,16 @@
 use strict;
 use warnings;
 
-use constant ORDER => ("stating the problem.md", "analysis.md");
+my @ORDER = ("stating the problem.md", "analysis.md");
 
-use constant OUT_FILE => "analysis.html";
+my $OUT_FILE = "analysis.html";
 
 sub main{
-	my $md_files = join(" ", ORDER);
+	@ORDER = map { "'$_'" } @ORDER;
 
-	my $command = "pandoc $md_files > ${\OUT_FILE}";
+	my $md_files = join(" ", @ORDER);
+
+	my $command = "pandoc $md_files > '${OUT_FILE}'";
 
 	print "$command\n";
 	`$command`;
