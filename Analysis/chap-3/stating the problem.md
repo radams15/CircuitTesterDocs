@@ -54,9 +54,44 @@ I will have two stakeholders, who will guide my progress throughout the project:
 
 <br>
 
-|   | Persona,Name,Requirements,Availability                                                                                                                                                                                                                |
-|---|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|   | Physics Teachers,To be decided,<ul><li>Input circuits from textbook</li><li>Display on large whiteboard</li><li>Save circuits to send students to experiment with/fix at home</li><li>Show the current/voltage at each point of the circuit</li></ul> |
-|   | Physics Students,<li>My Sister (GCSE)</li><li>My school peers (A-Level)</li>,<ul><li>Load Circuits emailed by teacher</li><li>Save circuits for revision purposes</li><li>Diagnose problems with circuits</li></ul>                                   |
+<table>
+	<tr>
+		<th>Persona</th>
+		<th>Name(s)</th>
+		<th>Requirements</th>
+		<th>Availability</th>
+	</tr>
+
+
+	<tr>
+		<td>Physics Teachers</td>
+		<td style="color:red"><i>To Be Decided <br> (Will ask in person next week)</i></td>
+		<td>
+			<ul>
+				<li>Input circuits from textbook</li>
+				<li>Display on large whiteboard</li>
+				<li>Save circuits to send students to experiment with/fix at home</li>
+				<li>Show the current/voltage at each point of the circuit</li>
+			</ul>
+		</td>
+		<td>Weekly</td>
+		</tr>
+
+	<tr>
+		<td>Physics Students</td>
+		<td>
+			<li>My Sister (GCSE)</li>
+			<li>My school peers (A-Level)</li>
+		</td>
+		<td>
+			<ul>
+				<li>Load Circuits emailed by teacher</li>
+				<li>Save circuits for revision purposes</li>
+				<li>Diagnose problems with circuits</li>
+			</ul>
+		</td>
+		<td>Daily</td>
+	</tr>
+</table>
 
 ---
