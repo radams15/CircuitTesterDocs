@@ -13,7 +13,7 @@ my $CONTENTS_PAGE = 1;
 my $CODE_STYLE = "tango";
 
 
-sub main{
+sub main{	
 	@ORDER = map { "'$_'" } @ORDER;
 
 	my $md_files = join(" 'styling/border.md' ", @ORDER);
@@ -24,7 +24,6 @@ sub main{
 	    $command .= " --toc --toc-depth=1";
 	}
 
-	#print "$command\n";
 	`$command`;
 }
 
