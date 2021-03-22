@@ -35,6 +35,7 @@ QUCS is a nice GUI program that can simulate circuits, although
 it is very difficult to use for a student, as there are many more
 components than any student could ever want.
 
+\newpage
 
 
 ## [Partsim](https://www.partsim.com/simulator)
@@ -67,12 +68,13 @@ Webapps generally use a lot more processing power than desktop apps,
 so this makes the program less accessible to students who may have
 fewer computing resources.
 
+\newpage
 
 
 ## [CircuitLab](https://www.circuitlab.com/editor/)
 
 
-![circuitlab](images/circuitlab.png)
+![CircuitLab](images/circuitlab.png){ width=250px }
 
 ### What I Like:
 
@@ -96,7 +98,7 @@ fewer computing resources.
  - Simulation button is very confusing, has way too many options.
 
 
-
+\newpage
 
 ## [Micro-Cap](http://www.spectrum-soft.com/download/download.shtm)
 
@@ -123,9 +125,10 @@ not as widely used.
 
 
 
+\newpage
 
 
-## [Physical Circuits]
+## Physical Circuits
 
 ![physical](images/physical.jpg)
 
@@ -157,6 +160,8 @@ and the setup could take half an hour. Many teachers will just not
 want to setup these experiments as it is just too much work for
 such a little reward.
 
+
+\newpage
 
 
 ## Paper-based
@@ -194,6 +199,7 @@ physical idea.
 ---
 
 
+\newpage
 
 # Research Questions
 
@@ -230,6 +236,7 @@ physical idea.
 
 ---
 
+\newpage
 
 # Hardware Requirements
 
