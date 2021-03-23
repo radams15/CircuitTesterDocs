@@ -1,7 +1,7 @@
 # Analysis
 
 
-# Existing Solutions To My Problem
+# Existing Solutions To The Problem
 
 
 ## [Qucs](https://sourceforge.net/projects/qucs)
