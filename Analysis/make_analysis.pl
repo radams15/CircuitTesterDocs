@@ -17,11 +17,13 @@ sub main{
 
 	my $md_files = join(" 'styling/border.md' ", @ORDER);
 
-	my $command = "pandoc $md_files -V fontsize=$FONT_SIZE -s --quiet -f markdown -t pdf --highlight-style=$CODE_STYLE -B before.tex -o '${OUT_FILE}'";
+	my $command = "pandoc $md_files -V fontsize=$FONT_SIZE -s --quiet -f markdown --highlight-style=$CODE_STYLE -B before.tex";
 	
 	if($CONTENTS_PAGE){
 	    $command .= " --toc --toc-depth=1 ";
 	}
+	
+	$command .= " -o '${OUT_FILE}' -t latex";
 	
 	print "$command\n";
 
