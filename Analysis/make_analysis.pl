@@ -7,7 +7,7 @@ my @ORDER = ("styling/style.md", "styling/pagebreak.tex", "chap-3/stating the pr
 my $OUT_FILE = "Analysis.pdf";
 
 
-my @EXTS = ();
+my @EXTS = ("grid_tables");
 
 my $FONT_SIZE = "12pt";
 
