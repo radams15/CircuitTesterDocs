@@ -37,6 +37,7 @@
 
 - Circuit simulation ability.
 
+### Comments:
 
 QUCS is a nice GUI program that can simulate circuits, although
 it is very difficult to use for a student, as there are many more
@@ -78,6 +79,7 @@ components than any student could ever want.
 
 - Circuit simulation ability.
 
+### Comments:
 
 Partsim is a webapp which is meant to design and simulate circuits
 for businesses, so it obviously not meant for students to use, 
@@ -153,6 +155,7 @@ fewer computing resources.
 
 - GUI program
 
+### Comments:
 
 This is a very old circuit simulator than until recently cost
 money to purchase on a CD. Now thought, it is free to use without
@@ -186,6 +189,7 @@ not as widely used.
 	teachers will generally use the paper method instead
 	as textbooks will show diagrams of circuits.
 
+### Comments:
 
 Of course physical circuits are the only true way to show the
 effect of the real world on circuits, better than any calculations
@@ -227,6 +231,7 @@ such a little reward.
 
 - Uses most of the same physics calculations as the ones in the course.
 
+### Comments:
 
 Paper based calculations are an excellent way to learn,
 but students at GCSE level only need to learn a few equations,
