@@ -7,25 +7,35 @@
 
 ### What I Like:
 
- - GUI program, not CLI.
+- GUI program, not CLI.
 
- - Drag & drop of components onto a canvas.
+- Drag & drop of components onto a canvas.
 
- - Can import/export circuits.
+- Can import/export circuits.
 
- - Can simulate circuits.
+- Can simulate circuits.
 
- - Uses SPICE circuit format.
+- Uses SPICE circuit format.
 
-## What I Dislike:
+### What I Dislike:
 
- - Massively complicated - menus inside menus with
+- Massively complicated - menus inside menus with
 	buried functionality.
 
- - Unsuitable for students - many components
+- Unsuitable for students - many components
 	irrelevant to the GCSE.
 
- - Dated, rarely updated (last updated 2017), uses old tools (QT4)
+- Dated, rarely updated (last updated 2017), uses old tools (QT4)
+
+### What I Will Take Forward:
+
+- GUI program.
+
+- Drag & drop components.
+
+- Circuit import/export.
+
+- Circuit simulation ability.
 
 
 QUCS is a nice GUI program that can simulate circuits, although
@@ -45,20 +55,28 @@ components than any student could ever want.
 
 ### What I Like:
 
- - Has less menus than QUCS, is easier to navigate.
+- Has less menus than QUCS, is easier to navigate.
 
- - Can import/export circuits.
+- Can import/export circuits.
 
- - Can simulate circuits.
+- Can simulate circuits.
 
 ### What I Dislike:
 
- - It is a web app, so is not native and uses up a lot of
+- It is a web app, so is not native and uses up a lot of
 	computing power.
 
- - It is made for companies, not students.
+- It is made for companies, not students.
 
- - Too many components irrelevant to the GCSE.
+- Too many components irrelevant to the GCSE.
+
+### What I Will Take Forward:
+
+- Fewer menu options.
+
+- Circuit import/export.
+
+- Circuit simulation ability.
 
 
 Partsim is a webapp which is meant to design and simulate circuits
@@ -82,29 +100,35 @@ fewer computing resources.
 
 ### What I Like:
 
- - Has less menus than QUCS, but more than Partsim
+- Has less menus than QUCS, but more than Partsim.
 
- - Nice layout (scrollable sidebar)
+- Nice layout (scrollable sidebar).
 
 ### What I Dislike:
 
- - It is a web app like Partsim, so is not native and uses up a lot of
+- It is a web app like Partsim, so is not native and uses up a lot of
 	computing power.
 
- - It is made for companies, not students.
+- It is made for companies, not students.
 
- - Too many components irrelevant to the GCSE.
+- Too many components irrelevant to the GCSE.
 
- - Limited version, the full version is £24/person/year
+- Limited version, the full version is £24/person/year.
 
- - Definitely more of a commercial product.
+- Definitely more of a commercial product.
 
- - Simulation button is very confusing, has way too many options.
+- Simulation button is very confusing, has way too many options.
 
 
+### What I Will Take Forward:
+
+- Free software.
+
+- Scrollable sidebar of components.
 
 
 \newpage
+
 
 
 
@@ -115,15 +139,19 @@ fewer computing resources.
 
 ### What I Like:
 
- - Desktop GUI, not a webapp.
+- Desktop GUI, not a webapp.
 
- - Uses SPICE circuit format.
+- Uses SPICE circuit format.
 
 ### What I Dislike:
 
- - Very old, boasts compatability with windows 98
+- Very old, boasts compatability with windows 98
 
- - Very difficult to use, arguably more difficult than QUCS
+- Very difficult to use, arguably more difficult than QUCS
+
+### What I Will Take Forward:
+
+- GUI program
 
 
 This is a very old circuit simulator than until recently cost
@@ -144,17 +172,17 @@ not as widely used.
 
 ### What I Like:
 
- - The only true way to see the effects of circuits.
+- The only true way to see the effects of circuits.
 
- - Everything is physically correct.
+- Everything is physically correct.
 
 ### What I Dislike:
 
- - Takes a long time to set up
+- Takes a long time to set up
 
- - Experiment short
+- Experiment short
 
- - May not be worth the time to demonstrate a simple circuit,
+- May not be worth the time to demonstrate a simple circuit,
 	teachers will generally use the paper method instead
 	as textbooks will show diagrams of circuits.
 
@@ -181,19 +209,23 @@ such a little reward.
 
 ### What I Like:
 
- - Much better for teaching students
+- Much better for teaching students
 
- - Shows all the calculations.
+- Shows all the calculations.
 
 ### What I Dislike:
 
- - Some required calculations are not needed for the
+- Some required calculations are not needed for the
 	GCSE, so the students would need to learn lots
 	of irrelevant equations.
 
- - Takes a long time to work out larger circuits.
+- Takes a long time to work out larger circuits.
 
- - Can have errors that will be taken forward.
+- Can have errors that will be taken forward.
+
+### What I Will Take Forward:
+
+- Uses most of the same physics calculations as the ones in the course.
 
 
 Paper based calculations are an excellent way to learn,
@@ -241,6 +273,7 @@ physical idea.
 	to see added?
 
  7. Have you got anything else to add?
+
 
 ## For physics students:
 
@@ -294,6 +327,8 @@ Use reStructuredText syntax
 | Work without noticeable lag on low-end hardware | Students and teachers may not have high-end hardware, so this program will        |
 |                                                 | need to run reasonably well on older and slower computers.                        |
 +-------------------------------------------------+-----------------------------------------------------------------------------------+
+
+
 
 \newpage
 
