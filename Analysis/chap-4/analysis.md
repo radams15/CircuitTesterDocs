@@ -3,7 +3,7 @@
 
 ## [Qucs](https://sourceforge.net/projects/qucs)
 
-![qucs](images/qucs.png)
+![Qucs](images/qucs.png)
 
 ### What I Like:
 
@@ -37,7 +37,7 @@ components than any student could ever want.
 
 ## [Partsim](https://www.partsim.com/simulator)
 
-![partsim](images/partsim.png)
+![PartSim](images/partsim.png)
 
 ### What I Like:
 
@@ -100,7 +100,7 @@ fewer computing resources.
 ## [Micro-Cap](http://www.spectrum-soft.com/download/download.shtm)
 
 
-![microcap](images/microcap.png)
+![Micro-Cap](images/microcap.png)
 
 ### What I Like:
 
@@ -127,7 +127,7 @@ not as widely used.
 
 ## Physical Circuits
 
-![physical](images/physical.jpg)
+![Physical Method](images/physical.jpg)
 
 
 ### What I Like:
@@ -163,7 +163,7 @@ such a little reward.
 
 ## Paper-based
 
-![paper](images/paper.jpg)
+![Paper Method](images/paper.jpg)
 
 ### What I Like:
 
@@ -240,15 +240,23 @@ physical idea.
 
 # Feature Requirements
 
-+---------------+---------------+--------------------+---------------+-+
-| Requirement   | Solves        | Evidence           | Justification   |
-+===============+===============+====================+=================+
-|               |               |                    |                 |
-|               |               |                    |                 |
-+---------------+---------------+--------------------+-----------------+
-|               |               |                    |                 |
-|               |               |                    |                 |
-+---------------+---------------+--------------------+-----------------+
+<!---
+https://www.tablesgenerator.com/text_tables
+
+Use reStructuredText syntax
+-->
+
++-----------------------------------------+-----------------------------------------------------------------------------------+
+| Requirements                            | Explanation                                                                       |
++=========================================+===================================================================================+
+| Input circuits from textbook            | The teacher will be able to show examples of circuits endorsed by the exam board. |
++-----------------------------------------+-----------------------------------------------------------------------------------+
+| Be able to be visible on a large screen | The teacher will probably use a projector to display the program,                 |
+|                                         | so the program should scale well on a computer.                                   |
++-----------------------------------------+-----------------------------------------------------------------------------------+
+| Show information about the circuit      | To show where current is diverted inside circuits, over distances, etc.           |
+| at any point.                           |                                                                                   |
++-----------------------------------------+-----------------------------------------------------------------------------------+
 
 \newpage
 
@@ -256,18 +264,15 @@ physical idea.
 
 ## Mac OSX:
 
- - Mac OSX 10.10 or greater.
- - 64 bit.
+ - Mac OSX 10.10 or greater (x64).
  - 4 GB RAM
 
 ## Windows:
 
- - Windows 7 or greater.
- - 64 bit.
+ - Windows 7 or greater (x64).
  - 4 GB RAM
 
 ## Linux:
 
- - RHEL 7 or equivalent.
- - 64 bit.
+ - RHEL 7 or equivalent (x64).
  - 4 GB RAM

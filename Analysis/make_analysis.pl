@@ -22,7 +22,7 @@ sub main{
 
 	my $exts =  join "", (map { "+$_" } @EXTS);
 
-	my $command = "pandoc $md_files -V fontsize=$FONT_SIZE -V geometry:margin=1in -s --quiet -f markdown$exts --highlight-style=$CODE_STYLE -B styling/before.tex  --toc --toc-depth=1 -o '${OUT_FILE}' -t latex";
+	my $command = "pandoc $md_files -V fontsize=$FONT_SIZE -V geometry:margin=1in -s --quiet -f markdown$exts --highlight-style=$CODE_STYLE -B before.tex  --toc --toc-depth=1 -o '${OUT_FILE}' -t latex";
 	
 	print "$command\n";
 
