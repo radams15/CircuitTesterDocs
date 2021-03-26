@@ -32,7 +32,11 @@ QUCS is a nice GUI program that can simulate circuits, although
 it is very difficult to use for a student, as there are many more
 components than any student could ever want.
 
+
+
 \newpage
+
+
 
 
 ## [Partsim](https://www.partsim.com/simulator)
@@ -65,7 +69,10 @@ Webapps generally use a lot more processing power than desktop apps,
 so this makes the program less accessible to students who may have
 fewer computing resources.
 
+
+
 \newpage
+
 
 
 ## [CircuitLab](https://www.circuitlab.com/editor/)
@@ -95,7 +102,11 @@ fewer computing resources.
  - Simulation button is very confusing, has way too many options.
 
 
+
+
 \newpage
+
+
 
 ## [Micro-Cap](http://www.spectrum-soft.com/download/download.shtm)
 
@@ -123,6 +134,7 @@ not as widely used.
 
 
 \newpage
+
 
 
 ## Physical Circuits
@@ -158,7 +170,9 @@ want to setup these experiments as it is just too much work for
 such a little reward.
 
 
+
 \newpage
+
 
 
 ## Paper-based
@@ -196,7 +210,10 @@ physical idea.
 ---
 
 
+
 \newpage
+
+
 
 # Research Questions
 
@@ -204,7 +221,7 @@ physical idea.
 ## For physics teachers:
 
  1. Are you currently satisfied with the electronics
-	equipment in school?
+	equipment in school? Why?
 
  2. Would you feel comfortable teaching students electronics
 	with a computer program?
@@ -219,10 +236,16 @@ physical idea.
  5. Do you feel that a program that can be used on personal devices
 	would be a helpful aid for home learning?
 
+ 6. Have you ever used any kind of circuit planning tools before?
+	If so, what was your opinion on it, and what would you like
+	to see added?
+
+ 7. Have you got anything else to add?
+
 ## For physics students:
 
  1. Are you currently satisfied with the electronics
-	equipment in school?
+	equipment in school? Why?
 
  2. Do you think that being able to experiment
 	with cicuits at home would aid in your learning?
@@ -230,8 +253,17 @@ physical idea.
  3. Would you say that you understand theories better
 	if they were given an example of the theories working?
 
+ 4. What are the qualities of real circuits that you would
+	like to be reflected in a piece of software?
+
+ 5. Have you ever used any kind of circuit planning tools before?
+	If so, what was your opinion on it, and what would you like
+	to see added?
+
+ 6. Have you got anything else to add?
 
 ---
+
 
 
 \newpage
@@ -246,33 +278,56 @@ https://www.tablesgenerator.com/text_tables
 Use reStructuredText syntax
 -->
 
-+-----------------------------------------+-----------------------------------------------------------------------------------+
-| Requirements                            | Explanation                                                                       |
-+=========================================+===================================================================================+
-| Input circuits from textbook            | The teacher will be able to show examples of circuits endorsed by the exam board. |
-+-----------------------------------------+-----------------------------------------------------------------------------------+
-| Be able to be visible on a large screen | The teacher will probably use a projector to display the program,                 |
-|                                         | so the program should scale well on a computer.                                   |
-+-----------------------------------------+-----------------------------------------------------------------------------------+
-| Show information about the circuit      | To show where current is diverted inside circuits, over distances, etc.           |
-| at any point.                           |                                                                                   |
-+-----------------------------------------+-----------------------------------------------------------------------------------+
++-------------------------------------------------+-----------------------------------------------------------------------------------+
+| Requirements                                    | Explanation                                                                       |
++=================================================+===================================================================================+
+| Input circuits from textbook                    | The teacher will be able to show examples of circuits endorsed by the exam board. |
++-------------------------------------------------+-----------------------------------------------------------------------------------+
+| Be able to be visible on a large screen         | The teacher will probably use a projector to display the program,                 |
+|                                                 | so the program should scale well on a computer.                                   |
++-------------------------------------------------+-----------------------------------------------------------------------------------+
+| Show information about the circuit              | To show where current is diverted inside circuits, over distances, etc.           |
+| at any point.                                   |                                                                                   |
++-------------------------------------------------+-----------------------------------------------------------------------------------+
+| Change component settings during operation.     | To show how different variables affect circuit operation, to aid in learning.     |
++-------------------------------------------------+-----------------------------------------------------------------------------------+
+| Work without noticeable lag on low-end hardware | Students and teachers may not have high-end hardware, so this program will        |
+|                                                 | need to run reasonably well on older and slower computers.                        |
++-------------------------------------------------+-----------------------------------------------------------------------------------+
 
 \newpage
 
+
+
 # Hardware Requirements
+
+## General requirements:
+
+- A screen - user needs to be able to see the program
+
+- A keyboard & mouse - user needs these to navigate the program.
+	A touchscreen is inadequate as the menu bar will be fairly small.
+
+- Operating systems listed below with approximately 4GB RAM.
+ - This is because these systems are fairly up to date, and will be able
+	to run compiled versions of my program.
+ - The RAM requirement is a common quantity of RAM. The program will
+	probably run on less, but 4GB is a safe amount.
+
+- No additional software dependencies are required as my output will
+	be a self-contained executable.
 
 ## Mac OSX:
 
- - Mac OSX 10.10 or greater (x64).
- - 4 GB RAM
+- Mac OSX 10.10 or greater (x64).
+- 4 GB RAM
 
 ## Windows:
 
- - Windows 7 or greater (x64).
- - 4 GB RAM
+- Windows 7 or greater (x64).
+- 4 GB RAM
 
 ## Linux:
 
- - RHEL 7 or equivalent (x64).
- - 4 GB RAM
+- RHEL 7 or equivalent (x64).
+- 4 GB RAM
