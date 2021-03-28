@@ -45,6 +45,8 @@ sub main{
 	print "$command\n";
 
 	`$command`;
+	
+	`mv $OUT_FILE ../build`;
 }
 
 
