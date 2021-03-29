@@ -8,6 +8,8 @@ use Cwd qw(getcwd);
 my @FOLDERS = (
 	"Analysis",
 	"Journal",
+	"Targets",
+	#"Design",
 );
 
 
