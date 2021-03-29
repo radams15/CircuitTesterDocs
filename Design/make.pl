@@ -14,7 +14,7 @@ my @DIA_ORDER = (
 	"diagrams/decomposition.dia"
 );
 
-my $OUT_FILE = "Analysis.pdf";
+my $OUT_FILE = "Design.pdf";
 
 my @EXTS = ("raw_tex", "grid_tables");
 
