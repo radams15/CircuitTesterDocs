@@ -1,3 +1,3 @@
 # Decomposition:
 
-![Decomposition](images/decomposition.jpg)
+![Decomposition](images/decomposition.png)
