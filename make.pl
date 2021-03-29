@@ -9,7 +9,7 @@ my @FOLDERS = (
 	"Analysis",
 	"Journal",
 	"Targets",
-	#"Design",
+	"Design",
 );
 
 
