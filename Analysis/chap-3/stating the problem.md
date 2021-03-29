@@ -44,31 +44,31 @@ level physics, so would be difficult to be shown manually by a teacher who does 
 know or explain the equations. Showing the values of current and voltage at any point is
 sufficient at GCSE level.
 
-There will be a high level of abstraction, inheritance and polymorphism, as this
-is needed for a hierarchy of components, with one base component extending off into a dozen
-other components.
+I will use the following techniques:
 
----
+### Abstraction
 
-\newpage
+The user will not be aware of any of the processes happening behind the scenes,
+as the calculations are beyond the needs of the stakeholders. The user will simply
+be able to view and place components on the canvas, and a button will be able to be pressed
+to run the circuit.
 
-## Stakeholders
 
-I will have two stakeholders, who will guide my progress throughout the project:
+### Polymorphism
 
-<br>
+The main element of polymorphism is the component class. This will branch off
+into various other components, with each having different calculations they need
+to perform. Components will be able to all be stored in lists of components,
+but when individually used they will be instances of individual components with
+the same public methods.
 
-+------------------+-----------------------------+-----------------------------------------------------------------+--------------+
-| Persona          | Name(s)                     | Requirements                                                    | Availability |
-+==================+=============================+=================================================================+==============+
-| Physics Teachers | *To Be Decided *            | - Input circuits from textbook                                  | Weekly       |
-|                  |                             | - Display on large whiteboard                                   |              |
-|                  |                             | - Save circuits to send students to experiment with/fix at home |              |
-|                  |                             | - Show the current/voltage at each point of the circuit         |              |
-+------------------+-----------------------------+-----------------------------------------------------------------+--------------+
-| Physics Students | - My Sister (GCSE)          | - Load Circuits emailed by teachers                             | Daily        |
-|                  | - My school peers (A-Level) | - Diagnose problems with circuits                               |              |
-+------------------+-----------------------------+-----------------------------------------------------------------+--------------+
+### Decomposition
+
+I will decompose the project into much smaller sections, making them easier
+to program individually. I will write several small programs to solve the
+decomposed sub-programs, and then will be able to use this existing code in
+my main project.
+
 
 
 ---
