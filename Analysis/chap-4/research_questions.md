@@ -4,10 +4,10 @@
 ## For physics teachers:
 
  1. Are you currently satisfied with the electronics
-	equipment in school? Why?
+	equipment in school? Why/why not?
 
- 2. Would you feel comfortable teaching students electronics
-	with a computer program?
+ 2. Do you feel comfortable teaching students electronics
+	with a computer program? If not why?
 
  3. Do you feel it would be beneficial to be able to send
 	students assignments to make circuits at home on this program?
@@ -19,20 +19,20 @@
  5. Do you feel that a program that can be used on personal devices
 	would be a helpful aid for home learning?
 
- 6. Have you ever used any kind of circuit planning tools before?
+ 6. Have you ever used any kind of circuit planning/testing tools before?
 	If so, what was your opinion on it, and what would you like
 	to see added?
 
- 7. Have you got anything else to add?
+ 7. Please add anything else you would like to say here.
 
 
 ## For physics students:
 
  1. Are you currently satisfied with the electronics
-	equipment in school? Why?
+	equipment in school? Why/why not?
 
  2. Do you think that being able to experiment
-	with cicuits at home would aid in your learning?
+	with circuits at home would aid in your learning?
 
  3. Would you say that you understand theories better
 	if they were given an example of the theories working?
@@ -45,3 +45,88 @@
 	to see added?
 
  6. Have you got anything else to add?
+
+
+# Research Question Responses
+
+
+## Mr Collins (physics teacher)
+
+ 1. **Are you currently satisfied with the electronics
+	equipment in school? Why/why not?**
+
+ 2. **Do you feel comfortable teaching students electronics
+	with a computer program? If not why?**
+
+ 3. **Do you feel it would be beneficial to be able to send
+	students assignments to make circuits at home on this program?**
+
+ 4. **Would you agree that students would understand theories better
+	if they were given an example of the theories working? E.g.
+	seeing the current splitting between a parallel circuit.**
+
+ 5. **Do you feel that a program that can be used on personal devices
+	would be a helpful aid for home learning?**
+
+ 6. **Have you ever used any kind of circuit planning/testing tools before?
+	If so, what was your opinion on it, and what would you like
+	to see added?**
+
+ 7. **Please add anything else you would like to say here.**
+
+
+## My Sister (GCSE physics student)
+
+ 1. **Are you currently satisfied with the electronics
+	equipment in school? Why/why not?**
+
+ 2. **Do you think that being able to experiment
+	with circuits at home would aid in your learning?**
+
+ 3. **Would you say that you understand theories better
+	if you were given an example of the theories working?**
+
+ 4. **What are the qualities of real circuits that you would
+	like to be reflected in a piece of software?**
+
+ 5. **Have you ever used any kind of circuit planning tools before?
+	If so, what was your opinion on it, and what would you like
+	to see added?**
+
+ 6. **Have you got anything else to add?**
+
+
+## My Peers (A-Level physics student)
+
+ 1. **Are you currently satisfied with the electronics
+	equipment in school? Why/why not?**
+
+	*Not especially. We very rarely get to use any electrical equipment. Often we
+are just shown demonstrations, or if not, a textbook image.*
+
+ 2. **Do you think that being able to experiment
+	with circuits at home would aid in your learning?**
+
+	*Yes I think it would. It would be helpful to have some sort of
+revision bank of circuits.*
+
+ 3. **Would you say that you understand theories better
+	if you were given an example of the theories working?**
+
+	*Definitely, it would help me to see them in action, and understand the equations more fully.*
+
+ 4. **What are the qualities of real circuits that you would
+	like to be reflected in a piece of software?**
+
+	*I would like to see fuses that can blow, showing their maximum current and the thickness
+of the wire inside them.*
+
+ 5. **Have you ever used any kind of circuit planning tools before?
+	If so, what was your opinion on it, and what would you like
+	to see added?**
+
+	*No, never*
+
+ 6. **Have you got anything else to add?**
+
+	*No*
