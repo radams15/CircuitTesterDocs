@@ -85,8 +85,8 @@ disinterested and bored and fail to learn.*
 	If so, what was your opinion on it, and what would you like
 	to see added?**
 
-	*I am a fan of "phet." https://phet.colorado.edu This works quite well -
-it would be good to add more A level Physics simulations to it. *
+	*I am a fan of "phet." [https://phet.colorado.edu](https://phet.colorado.edu) This works quite well -
+it would be good to add more A level Physics simulations to it.*
 
  7. **Please add anything else you would like to say here.**
 
@@ -126,3 +126,20 @@ of the wire inside them.*
  6. **Have you got anything else to add?**
 
 	*No*
+
+
+## Analysis:
+
+None of the stakeholders were very happy with the current equipment at school, and they all
+thought that it is beneficial for students to be able to see the theories in action rather than
+just seeing textbook images.
+
+They all decided that it would be helpful to learn at home using my program, as Mr Collins thought
+that it is helpful for our devices to be used in an educational sense, and my school peers thought that
+it would be nice to have a bank of revision materials, including circuits for my program that they can
+load up and look at.
+
+Mr Collins suggested that I look at PHET circuit construction kit
+[https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_en.html](https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_en.html),
+and so I have added to my existing solutions page. He suggests that it would be improved by adding A-Level
+components and examples.

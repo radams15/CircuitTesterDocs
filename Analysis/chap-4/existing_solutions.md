@@ -244,6 +244,49 @@ physical idea.
 
 
 
+
+\newpage
+
+
+## [PHET Circuit Construction Kit](https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_en.html)
+
+![PHET](images/PHET.png)
+
+### What I Like:
+
+- Very easy and suited to GCSE and lower level students.
+
+- Has fewer components, so easier for teachers and students to understand.
+
+
+### What I Dislike:
+
+- No save/load facility.
+
+- Has irrelevant components such as "dog", "hand", "dollar bill" that have
+	no function in learning.
+
+- Fairly slow to load as it is a web app.
+
+### What I Will Take Forward:
+
+- Easy interface that scales well.
+
+- Simple drag and drop interface.
+
+- Animated components, e.g. bulb lights up when on.
+
+- Can change the settings of components by clicking on them
+	e.g can change battery voltage with a slider.
+
+
+### Comments:
+
+This was suggested by Mr Collins in the research questions section.
+
+It is a very easy to understand system, which is obviously designed for students, but
+possibly younger students than I am targeting.
+
 ---
 
 
