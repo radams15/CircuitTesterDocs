@@ -9,7 +9,6 @@ is expensive, limited in the school, is easily broken, and home learning
 is not possible as equipment cannot be taken outside of school. Most students
 simply learn about these circuits from an image in a textbook.
 
----
 
 ## The solution
 
@@ -32,7 +31,6 @@ This program would allow students to experiment with circuits at home as well,
 as usually students cannot take equipment home because there is a limited amount,
 and they are also quite delicate.
 
----
 
 ## Justification for computational solution
 
