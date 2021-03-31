@@ -92,6 +92,19 @@ it would be good to add more A level Physics simulations to it.*
 
 	*Thank you for involving me.*
 
+
+## Analysis of Mr Collins:
+
+Mr Collins thought that the program would be very beneficial, especially
+on personal devices. He believes that demonstrating theories is extremely
+helpful for learning, and therefore I think that my program will
+help education.
+
+He suggested that I look at PHET circuit construction kit
+[https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_en.html](https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_en.html),
+and so I have added to my existing solutions page. He suggests that it would be improved by adding A-Level
+components and examples.
+
 ## My Peers (A-Level physics student)
 
  1. **Are you currently satisfied with the electronics
@@ -128,18 +141,14 @@ of the wire inside them.*
 	*No*
 
 
-## Analysis:
+## Analysis of my peers:
 
-None of the stakeholders were very happy with the current equipment at school, and they all
-thought that it is beneficial for students to be able to see the theories in action rather than
-just seeing textbook images.
+My peers thought that the school equipment is lacking in some areas, and believed that the
+textbooks are not as helpful as a demonstration would be, even with a program.
 
-They all decided that it would be helpful to learn at home using my program, as Mr Collins thought
-that it is helpful for our devices to be used in an educational sense, and my school peers thought that
+They had not ever used a circuit planning program, but thought that it would be
+beneficial to their learning.
+
+They decided that it would be helpful to learn at home using my program, and thought that
 it would be nice to have a bank of revision materials, including circuits for my program that they can
 load up and look at.
-
-Mr Collins suggested that I look at PHET circuit construction kit
-[https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_en.html](https://phet.colorado.edu/sims/html/circuit-construction-kit-dc/latest/circuit-construction-kit-dc_en.html),
-and so I have added to my existing solutions page. He suggests that it would be improved by adding A-Level
-components and examples.

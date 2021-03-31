@@ -8,6 +8,7 @@ my @ORDER = (
 	"styling/pagebreak.tex",
 	
 	"chap-3/stating the problem.md",
+	"styling/pagebreak.tex",
 	"chap-3/stakeholders.md",
 
 	"chap-4/limitations.md",

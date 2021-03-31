@@ -48,10 +48,10 @@ sub main{
 		my $num_words = `$command`;
 		chomp $num_words;
 		
-		$wordcount_data .= "# $file\n\t$num_words\n\n";
+		$wordcount_data .= "<h2>$file</h2><br><p>$num_words<p><br><br>";
 	}
 	
-	file_write("$BUILD_FOLDER/wordcounts.md", $wordcount_data);
+	file_write("$BUILD_FOLDER/wordcounts.html", $wordcount_data);
 }
 
 &main;
