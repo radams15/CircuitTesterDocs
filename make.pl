@@ -35,6 +35,8 @@ sub main{
 	foreach my $folder (@FOLDERS){
 		chdir $folder;
 
+		print "$folder\n";
+
 		my $command = "perl make.pl";
 		`$command`;
 

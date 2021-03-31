@@ -93,7 +93,7 @@ it would be good to add more A level Physics simulations to it.*
 	*Thank you for involving me.*
 
 
-## Analysis of Mr Collins:
+## Analysis of Mr Collins' responses:
 
 Mr Collins thought that the program would be very beneficial, especially
 on personal devices. He believes that demonstrating theories is extremely
@@ -141,7 +141,7 @@ of the wire inside them.*
 	*No*
 
 
-## Analysis of my peers:
+## Analysis of my peers' responses:
 
 My peers thought that the school equipment is lacking in some areas, and believed that the
 textbooks are not as helpful as a demonstration would be, even with a program.

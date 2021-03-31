@@ -10,6 +10,7 @@ is not possible as equipment cannot be taken outside of school. Most students
 simply learn about these circuits from an image in a textbook.
 
 ---
+
 ## The solution
 
 A circuit simulator program that demonstrates
@@ -69,6 +70,3 @@ to program individually. I will write several small programs to solve the
 decomposed sub-programs, and then will be able to use this existing code in
 my main project.
 
-
-
----
