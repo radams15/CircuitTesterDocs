@@ -296,6 +296,10 @@ This was suggested by Mr Collins in the research questions section.
 It is a very easy to understand system, which is obviously designed for students, but
 possibly younger students than I am targeting.
 
+It seems to be focused more on simplicity than on learning though, so I will remove the
+unnecessary components like dogs and money, although an insulator could be an interesting
+addition to my simulator at some point.
+
 ---
 
 
