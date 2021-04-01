@@ -10,9 +10,6 @@ my $OUT_FILE = "Targets.pdf";
 
 my @EXTS = ("raw_tex", "grid_tables");
 
-my $FONT_SIZE = "12pt";
-
-my $CONTENTS_PAGE = 1;
 
 my $CODE_STYLE = "tango";
 
@@ -24,7 +21,7 @@ sub main{
 
 	my $exts =  join "", (map { "+$_" } @EXTS);
 
-	my $command = "pandoc $md_files -s -V fontsize=$FONT_SIZE -V geometry:margin=1in -s --quiet -f markdown$exts --highlight-style=$CODE_STYLE -o '${OUT_FILE}' -t latex";
+	my $command = "pandoc $md_files meta.yaml -s --quiet -f markdown$exts --highlight-style=$CODE_STYLE -o '${OUT_FILE}' -t latex";
 	
 	print "$command\n";
 

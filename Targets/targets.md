@@ -48,3 +48,4 @@
 - [ ] December:
 
 	Complete evaluation and final checks of the project.
+
