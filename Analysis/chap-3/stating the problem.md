@@ -43,7 +43,7 @@ level physics, so would be difficult to be shown manually by a teacher who does 
 know or explain the equations. Showing the values of current and voltage at any point is
 sufficient at GCSE level.
 
-I will use the following techniques:
+I will use the following computational methods:
 
 ### Abstraction
 
@@ -68,3 +68,19 @@ to program individually. I will write several small programs to solve the
 decomposed sub-programs, and then will be able to use this existing code in
 my main project.
 
+### Concurrence
+
+My project will need to run the GUI and the simulation aspects at the same time,
+so that the user interface does not freeze when the circuit is computed.
+
+### Iteration
+
+My software needs to follow the circuit, using many algorithms, which require loops
+and complex calculations.
+
+### Modelling
+
+My program will model the real-life functions of various circuits, with the goal of
+helping students to learn their physics lessons with ease. This will make the difficult
+job of manually computing and explaining circuits far easier, for the teacher and
+the students.

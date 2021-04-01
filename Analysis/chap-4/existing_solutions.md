@@ -128,6 +128,15 @@ fewer computing resources.
 
 - Scrollable sidebar of components.
 
+### Comments:
+
+This is another web based circuit designer, which is a lot easier to use than Partsim.
+Once again though, it has far too many components for the average GCSE level student, which
+will only confuse them.
+
+Again this is designed for companies, and even limits the use of the free version,
+selling a premium version for a yearly subscription.
+
 
 \newpage
 
