@@ -42,6 +42,8 @@ sub main{
 
 		chdir $before;
 	}
+
+	print "Word Counts\n";
 	
 	my $wordcount_data = "";
 	foreach my $file (<$BUILD_FOLDER/*.pdf>){		

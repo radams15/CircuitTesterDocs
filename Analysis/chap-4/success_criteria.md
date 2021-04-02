@@ -19,3 +19,8 @@ criteria.
 	with 1 core and 2GB of RAM, running Windows 7. If the program can
 	load within 5 seconds, and does not noticably stutter, then I will
 	have succeeded.
+
+- [ ] Should be able to import/export circuits. This will be
+	successful if a circuit can be saved on one machine,
+	sent to another machine via email, then imported on
+	the second machine successfully.

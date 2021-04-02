@@ -27,7 +27,7 @@ sub make_diagrams{
 	foreach my $file (@DIA_ORDER){
 		my $basename = $file;
 		$basename =~ s{^.*/|\.[^.]+$}{}g;
-		my $command = "dia '$file' -e 'images/$basename.png'";
+		my $command = "dia '$file' -e 'images/$basename.png' -n";
 		print "$command\n";
 		`$command`;
 	}

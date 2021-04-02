@@ -11,7 +11,7 @@ my @ORDER = (
 	
 	"chap-3/stakeholders.md",
 	"styling/pagebreak.tex",
-
+	
 	"chap-4/limitations.md",
 	"styling/pagebreak.tex",
 	
@@ -21,10 +21,10 @@ my @ORDER = (
 	"chap-4/research_questions.md",
 	"styling/pagebreak.tex",
 	
-	"chap-4/success_criteria.md",
+	"chap-4/feature_requirements.md",
 	"styling/pagebreak.tex",
 	
-	"chap-4/feature_requirements.md",
+	"chap-4/success_criteria.md",
 	"styling/pagebreak.tex",
 	
 	#"chap-4/approaches.md",
