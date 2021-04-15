@@ -10,7 +10,7 @@ my @ORDER = (
 
 my $OUT_FILE = "Journal.pdf";
 
-my @EXTS = ("raw_tex", "grid_tables");
+my @EXTS = ("raw_tex", "grid_tables", "fenced_code_blocks", "backtick_code_blocks");
 
 my $FONT_SIZE = "12pt";
 

@@ -1,3 +1,79 @@
-# Decomposition:
+# Design
 
-![Decomposition](images/decomposition.png)
+## Main Window (Settings Open)
+
+![Main Window Wireframe](images/main_window_wireframe.png)
+
+
+- A:
+	The toolbox. Contains the components that can be
+	dragged onto the canvas.
+
+- B:
+	Components. These represent the QSceneItems that can be placed onto
+	the canvas. These are buttons that use a smaller version of the image
+	of the component.
+
+- C:
+	Expandable settings menu. This is expanded when the user double clicks
+	on a component that is placed on the canvas. It will contain the different
+	settings that each component will have.
+
+- D:
+	The canvas. This is the main QGraphicsScene that will allow the components to
+	be dragged onto and moved about. It also handles the signals when a line is
+	drawn between two components.
+
+- E:
+	Drag tool. This button is pressed when the user wishes to drag components around
+	the canvas. This is the default action.
+
+- F:
+	Wire tool. This button is pressed when the user wishes to connect components together
+	with a wire.
+
+## Main Window (Settings Open)
+
+![Main Window Wireframe With Settings Open](images/main_window_settings_wireframe.png)
+
+- G:
+	Settings menu. This is the expanded version of C (which is now facing the opposite
+	direction). This contains the settings that vary for each component.
+
+- H:
+	Title. The name of the currently selected component.
+
+- I:
+	Setting slider. An example of the type of setting that can be set in the menu.
+	A slider could be for battery voltage, or for resistivity of wires.
+
+- J:
+	Settings checkbox. An example of the type of setting that can be set in the menu.
+	A checkbox could be to enable or disable a switch or battery.
+
+\newpage
+
+# Mockups
+
+## Main Window
+
+![Main Window Mockup](images/mockup_main.png)
+
+This is what the user will see as they open up the program.
+
+There is a simple yet fully featured scrollable bar at the side,
+which is designed to hold the components.
+
+The buttons at the top are to toggle the mouse action, with the
+cursor for letting the user drag the components, and the line to
+allow the user to connect components together.
+
+
+\newpage
+
+
+## Main Window In Use
+
+![Main Window Mockup With Diagram](images/mockup_diagram.png)
+
+

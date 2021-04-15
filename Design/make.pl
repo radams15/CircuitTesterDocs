@@ -7,12 +7,14 @@ my @MD_ORDER = (
 	
 	"styling/pagebreak.tex",
 	
-	"docs/design.md"
+	"docs/decomposition.md",
+	
+	"styling/pagebreak.tex",
+	
+	"docs/design.md",
 );
 
-my @DIA_ORDER = (
-	"diagrams/decomposition.dia"
-);
+my @DIA_ORDER = <diagrams/*.dia>;
 
 my $OUT_FILE = "Design.pdf";
 

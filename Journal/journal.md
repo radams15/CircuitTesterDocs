@@ -24,7 +24,7 @@ functionality that is not required, e.g:
 Made a base component class that will be the parent
 of all the components in my project:
 
-```
+``` cpp
 #ifndef SPICE_COMPONENT_H
 #define SPICE_COMPONENT_H
 
@@ -87,7 +87,7 @@ I quickly realised
 that it would be unsuitable, as it does not work with
 QGraphicsScene.
 
-```
+``` qml
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import WidgetItem 1.0
@@ -128,7 +128,7 @@ Window {
 I began an attempt to put buttons in normal QT header bars, and
 was easily able to do it with only a couple of classes.
 
-```
+``` cpp
 #ifndef CSD_CUSTOMTITLEBAR_H
 #define CSD_CUSTOMTITLEBAR_H
 
@@ -240,7 +240,7 @@ I simple python script was used to run my design.
 
 layout:
 
-```
+``` python
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
@@ -360,7 +360,7 @@ class Ui_Form(object):
 Main:
 
 
-```
+``` python
 from layout import Ui_Form
 from PySide2.QtWidgets import *
 
@@ -385,6 +385,7 @@ Result:
 
 ---
 
+
 ## 12/02/2021
 
 Considering the software requirements, probably requires:
@@ -393,4 +394,57 @@ Considering the software requirements, probably requires:
 - Mac OSX 10.9 or later.
 - Any linux distribution made after 2012.
 
+
 ---
+
+
+## 10/04/2021
+
+After the initial analysis was completed over April, I have started the first part of the GUI.
+
+I have researched and learnt how to program the QGraphicsScene, so I can load images from files
+and drag them around.
+
+There is a Scene class which is the QGraphicsScene where the objects are placed, there is a
+SceneItem which is a QGraphicsPixmapItem which is an image on the Scene. The Component class
+is the subclass of SceneItem, which will implement some physics logic, and the Resistor class
+is a subclass of Component.
+
+
+---
+
+
+## 12/04/2021
+
+I have finished the initial subprogram of the main scene.
+
+Now I can draw connections between the components, and each component has a std::vector of lines
+that are connected to it, which allow the components to work out what they are connected to.
+
+I experienced a few bugs with the lines, as I was struggling to find a way to determine the connection
+points for a QPixmap, as for every example I could find, a QPolygon was used, which is a list of points,
+not a real image.
+
+Finally I just made the connector begin at the center of the image, as the only other way I could find was
+having the connector come from the top left, where the coordinate of the image is stored by SceneItem.pos() .
+
+I made my own function SceneItem.centerpoint() for calculating the central point of my image:
+
+``` cpp
+QPointF SceneItem::centerpoint() {
+    double w = pixmap.width();
+    double h = pixmap.height();
+
+    QPointF p = pos();
+
+    double x = p.x();
+    double y = p.y();
+
+    double xc = x + (w/2);
+    double yc = y + (h/2);
+
+    return {xc, yc};
+}
+```
+
+
