@@ -12,6 +12,10 @@ my @MD_ORDER = (
 	"styling/pagebreak.tex",
 	
 	"docs/design.md",
+	
+	"styling/pagebreak.tex",
+	
+	"docs/algorithms.md",
 );
 
 my @DIA_ORDER = <diagrams/*.dia>;
