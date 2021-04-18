@@ -1,4 +1,4 @@
-# Design
+# UI Design
 
 ## Main Window (Settings Open)
 
@@ -69,11 +69,22 @@ cursor for letting the user drag the components, and the line to
 allow the user to connect components together.
 
 
-\newpage
-
-
 ## Main Window In Use
 
 ![Main Window Mockup With Diagram](images/mockup_diagram.png)
 
+This is the same as above but with a circuit diagram layed out.
+
+The images on the canvas are just larger versions of the images on the buttons,
+so are easily recognisable.
+
+# Usability Features
+
+My program is designed to be very easy to understand.
+
+The toolbox is designed to show the components as large, colourful
+pictures, which means that they are very easy to see.
+
+The toolbox buttons are left-clicked once, then the user moves the cursor to the place they wish
+to put the component. This is where the component is placed.
 

@@ -48,7 +48,7 @@ sub main{
 
 	my $exts =  join "", (map { "+$_" } @EXTS);
 
-	my $command = "awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files meta.yaml| ../preprop.pl | pandoc -s --quiet -f markdown$exts --highlight-style=$CODE_STYLE -B before.tex  --toc --toc-depth=1 -o '${OUT_FILE}' -t latex";
+	my $command = "awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files meta.yaml| perl ../preprop.pl | pandoc -s --quiet -f markdown$exts --highlight-style=$CODE_STYLE -B before.tex  --toc --toc-depth=1 -o '${OUT_FILE}' -t latex";
 	
 	print "$command\n";
 
