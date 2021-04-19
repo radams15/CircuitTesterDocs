@@ -1,0 +1,21 @@
+FUNCTION create_matrices(components: List<Component>, node_count: int):
+
+	voltage_srcs = 0
+
+	for each component in components:
+		if component.type == voltage_source:
+			voltage_srcs += 1
+
+	matrix_size = node_count + voltage_srcs
+' calculates the size of the matrix by adding the number of nodes
+' to the number of voltage sources
+
+
+	A = new Matrix::Zeroes(matrix_size, matrix_size)
+' A is square
+
+	z = new Matrix::Zeroes(matrix_size, 1)
+' A must be the same height to divide A, but must be only 1 wide 
+	
+	return A, z
+END FUNCTION
