@@ -10,24 +10,14 @@ voltages at different nodes and vertices of the circuit.
 ## Convert circuits into matrices
 
 
-`images/algorithms.png`{.include}
+![Algorithm Decomposition](images/algorithms.png)
 
 
 ### Create matrix A and z
 
-
-``` VB.NET
-
-`pseudocode/make_matrices.txt`{.include}
-
-```
+%include_pc(pseudocode/make_matrices.txt)
 
 
 ### Solve the matrices
 
-
-``` VB.NET
-
-`pseudocode/solve_matrices.txt`{.include}
-
-```
+%include_pc(pseudocode/solve_matrices.txt)

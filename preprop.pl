@@ -3,15 +3,33 @@
 use warnings;
 use strict;
 
-while(<>) {
-    if (/`([^`]+)`\{.include}/) {
-        if (-e $1 && open my $fh, '<', $1) {
+my $PS_CODE_TEMPLATE = "fortran";
+
+sub read_file{
+	my $out = undef;
+	
+	my ($name) = @_;
+	
+	if (-e $1 && open(my $fh, '<', $1)) {
             local $/;
-            print <$fh>;
+            $out = <$fh>;
             close $fh;
         } else {
             print STDERR "failed to include file $1\n";
         }
+        
+        return $out;
+}
+
+while(<>) {
+    if (/%\s*include\s*\((.+)\)/) { # include text
+	if(my $data = read_file($1)){
+		print $data;
+	}
+    } elsif (/%\s*include_pc\s*\((.+)\)/) { # include pseudocode
+    	if(my $data = read_file($1)){
+		print "\n``` $PS_CODE_TEMPLATE\n\n$data\n```\n";
+	}
     } else {
         print $_;
     }
