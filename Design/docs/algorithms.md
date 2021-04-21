@@ -9,15 +9,14 @@ voltages at different nodes and vertices of the circuit.
 
 ## Convert circuits into matrices
 
-
 ![Algorithm Decomposition](images/algorithms.png)
 
 
-### Create matrix A and z
 
-%include_pc(pseudocode/make_matrices.txt)
+## Circuit
 
+![Circuit Class](images/Class_Circuit.png)
 
-### Solve the matrices
+### Solve the circuit
 
-%include_pc(pseudocode/solve_matrices.txt)
+%include_pc(pseudocode/solve_circuit.txt)
