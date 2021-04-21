@@ -1,0 +1,227 @@
+{-
+Gets the number of unknown currents
+Current sources are not calculated as they are known
+currents.
+-}
+FUNCTION get_current_count()
+	zero_resistors = 0
+	
+	{-
+	Sum the amount of resistors that have zero resistance.
+	these resistors have an unknown current.
+	-}
+	FOR r IN resistors DO
+		IF r.value == 0 THEN
+			zero_resistors += 1
+		END
+	END
+	
+	-- Add together the resistors and the number of batteries.
+	RETURN zero_resistors + batteries.length()
+END FUNCTION
+
+
+{-
+Used to find out the number of both current and
+voltage variables.
+-}
+FUNCTION get_num_vars()
+	RETURN node_count + get_current_count()
+END
+
+
+{-
+Finds the total current leaving a node
+-}
+FUNCTION get_current_source_total(node)
+	total = 0
+	
+	FOR c IN current_sources DO
+		IF c.n0 == node THEN
+			{-
+			Positive current leaves, but conventional current
+			states that outgoing current must be positive.
+			-}
+			total += c.value
+		ELSEIF c.n1 == node THEN
+			{-
+			Positive current enters, but conventional current
+			states that incoming current must be negative.
+			-}
+			total -= c.value 
+		END
+	END
+	
+	RETURN total
+END
+
+
+{-
+Gets the terms that enter and leave a node.
+Incoming is negative, outgoing is positive
+-}
+FUNCTION get_current_terms(node, side, sign)
+	terms = []
+	
+	FOR b IN batteries DO
+		n = (side == 0? b.n0 : b.n1) -- Convert int into node.
+		
+		-- If node specified in parameter.
+		IF n == node THEN
+			-- Batteries have an unknown current
+			terms.append(NEW Term(sign, NEW UnknownCurrent(b)))
+		END
+	END
+	
+	
+	FOR r IN resistors DO
+		n = side == 0? r.n0 : r.n1 -- Convert int into node.
+		
+		-- If correct node and resistor has no resistance.
+		IF n == node AND r.value == 0 THEN
+			-- If resistance is 0, the resistor has an unknown current.
+			terms.append(NEW Term(sign, NEW UnknownCurrent(b)))
+		END
+		
+		IF n == node AND r.value != 0 THEN
+			-- If the resistance is not 0, the resistor has
+			-- an unknown voltage.
+			terms.append(
+				NEW Term(-sign/r.value, NEW UnknownVoltage(r.n1))
+			)
+			
+			terms.append(
+				NEW Term(sign/r.value, NEW UnknownVoltage(r.n0))
+			)
+		END
+	END
+	
+	RETURN terms
+END
+
+
+
+{-
+Selects the components that have the reference voltage.
+This is the voltage that other components are compared
+to.
+-}
+FUNCTION get_ref_node_ids()
+	to_visit = node_set.values()
+	
+	ref_node_ids = []
+	
+	WHILE NOT to_visit.empty()
+		-- Get the first element in the nodesto be visited.
+		ref_node_id = to_visit[0]
+		
+		ref_node_ids.append(ref_node_id)
+		
+		connected = get_connected_node_ids(ref_node_id)
+		
+		-- All nodes connected to this node have had their reference
+		-- set to this node, so don't check them.
+		FOR c IN connected DO
+			-- Delete them from the list
+			to_visit.remove(c)
+		END
+	END
+	
+	RETURN ref_node_ids
+END
+
+
+
+{-
+Finds the nodes that are connected to the passed node
+-}
+FUNCTION get_connected_node_ids(node)
+	visited = []
+	to_visit = [node]
+	
+	WHILE NOT to_visit.empty()
+		-- Pop the first value off of to_visit.
+		node_to_visit = to_visit.pop(0)
+		
+		visited.append(node_to_visit)
+		
+		FOR e IN elements DO
+			IF e.contains_node_id(node_to_visit) THEN
+				-- Get the opposite node, check that too
+				opposite = e.get_opposite_node(node_to_visit)
+				
+				-- Don't check if has already been checked
+				IF NOT visited.contains(opposite) THEN
+					to_visit.append(opposite)
+				END
+			END
+		END
+	END
+	
+	-- Remove duplicate values from visited.
+	visited = unique(visited)
+	
+	RETURN visited
+END
+
+
+
+{-
+Returns a list of equations that must be solved
+to solve the overall circuit.
+-}
+FUNCTION get_equations()
+	equations = []
+	
+	ref_node_ids = get_ref_node_ids()
+	
+	FOR r IN ref_node_ids DO
+		-- Reference nodes have a voltage of zero as the voltage
+		-- is relative to this.
+		equations.append(NEW Equation(0, [
+			NEW Term(1, NEW UnknownVoltage(r))
+		]))
+	END
+	
+	FOR n IN nodes DO
+	
+		{-
+		 One node must be selected to not have its charge conserved.
+		 This is because having full charge conservation breaks
+		 the matrix solver.
+	 	-}
+		IF NOT ref_node_ids.contains(n) THEN
+			incoming = get_current_terms(n, 1, -1)
+			outgoing = get_current_terms(n, 0, +1)
+			
+			terms = incoming + outgoing
+			
+			equations.append(NEW Equation(
+				get_current_source_total(n), terms
+			))
+		END
+	END
+	
+	FOR b IN batteries DO
+		-- Make an equation for every battery
+		equations.append(NEW Equation(b.value, [
+			-- N0 is negative as voltage is lost.
+			-- N1 is the positive as voltage is gained.
+			NEW Term(-1, NEW UnknownVoltage(b.n0)),
+			NEW Term(1, NEW UnknownVoltage(b.n1))
+		]))
+	END
+	
+	FOR r IN resistors DO
+		IF r.value == 0 THEN
+			-- If resistance is 0, n0 and n1 are the same, as there
+			-- may as well not be a component there
+			equations.append(NEW Equation(r.value, [
+				NEW Term(1, NEW UnknownVoltage(r.n0)),
+				NEW Term(-1, NEW UnknownVoltage(r.n1))
+			]))
+		END
+	END
+	
+	RETURN equations
+END

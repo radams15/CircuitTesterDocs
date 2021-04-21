@@ -3,7 +3,7 @@
 use warnings;
 use strict;
 
-my $PS_CODE_TEMPLATE = "fortran";
+my $PS_CODE_TEMPLATE = "haskell";
 
 sub read_file{
 	my $out = undef;
