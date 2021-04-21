@@ -19,20 +19,24 @@ voltages at different nodes and vertices of the circuit.
 
 ![Circuit Class](images/Class_Circuit.png)
 
+
 ### Initialiser
 
 %include_pc(pseudocode/circuit_init.txt)
+
 
 ### Solver
 
 %include_pc(pseudocode/circuit_solve.txt)
 
-### Small miscelaneous functions
+
+### Miscellaneous functions
 
 %include_pc(pseudocode/circuit_misc.txt)
 
 
 \newpage
+
 
 ## Element
 
@@ -43,13 +47,11 @@ voltages at different nodes and vertices of the circuit.
 
 ## Equation
 
-
 ![Equation Class](images/Class_Equation.png)
 
 \newpage
 
 ## Solution
-
 
 ![Solution Class](images/Class_Solution.png)
 
@@ -57,13 +59,11 @@ voltages at different nodes and vertices of the circuit.
 
 ## Term
 
-
 ![Term Class](images/Class_Term.png)
 
 \newpage
 
 ## Unknown
-
 
 ![Element Class](images/Class_Unknown.png)
 

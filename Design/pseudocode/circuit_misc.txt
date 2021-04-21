@@ -225,3 +225,28 @@ FUNCTION get_equations()
 	
 	RETURN equations
 END
+
+
+
+{-
+Returns all unknown currents in the
+circuit
+-}
+FUNCTION get_unknown_currents()
+	unknowns = []
+	
+	FOR b IN batteries DO
+		-- Batteries have an unknown current before they
+		-- are placed into a circuit.
+		unknowns.append(NEW UnknownCurrent(b))
+	END
+	
+	FOR r IN resistors DO
+		-- Zero-resistance resistors have an unknown current.
+		IF r.value == 0 THEN
+			unknowns.append(NEW UnknownCurrent(r))
+		END
+	END
+	
+	RETURN unknowns
+END
