@@ -78,6 +78,8 @@ This is the same as above but with a circuit diagram layed out.
 The images on the canvas are just larger versions of the images on the buttons,
 so are easily recognisable.
 
+\newpage
+
 # Usability Features
 
 My program is designed to be very easy to understand.

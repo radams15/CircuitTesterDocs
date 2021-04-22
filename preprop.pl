@@ -30,7 +30,9 @@ while(<>) {
     	if(my $data = read_file($1)){
 		print "\n``` $PS_CODE_TEMPLATE\n\n$data\n```\n";
 	}
-    } else {
+    } elsif (/\s*%\s*exec\s*\((.*)\)\s*/){
+	print `$1`;
+    }else {
         print $_;
     }
 }

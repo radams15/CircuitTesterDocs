@@ -19,14 +19,6 @@ voltages at different nodes and vertices of the circuit.
 
 ![Circuit Class](images/Class_Circuit.png)
 
-This class is used to hold a circuit as an object. It is designed
-so that it takes in a list of [Element](#element) classes, and splits
-them up into the class attributes batteries, resistors and current_sources, which
-are then used throughout the program.
-
-This class has only 2 public methods including the initialiser,
-and the other majority are private attributes and methods.
-
 
 ### Initialiser
 
@@ -50,19 +42,6 @@ and the other majority are private attributes and methods.
 
 ![Element Class](images/Class_Element.png)
 
-This is the parent class for all elements.
-
-This has values for the nodes, the value (which is a resistance, a current,
-a voltage, etc depending on the child class), and a type which is set
-by any child class. It is essentially an interface class.
-
-The children are a resistor, a battery and a current source, of which each acts
-differently inside the [Circuit](#circuit) class.
-
-A switch is the child of resistor, as I can say that when the switch is open,
-the resistance is infinitely large, and when the switch is closed, the resistance is
-almost zero.
-
 ### Pseudocode for class
 
 %include_pc(pseudocode/element.txt)
@@ -72,11 +51,6 @@ almost zero.
 ## Equation
 
 ![Equation Class](images/Class_Equation.png)
-
-This stores an equation of x = y + z.
-
-Value is the known x value, and terms is a list of [Terms](#term),
-that equal value.
 
 ### Pseudocode for class
 
@@ -98,12 +72,10 @@ that equal value.
 
 ![Term Class](images/Class_Term.png)
 
-This stores a term with a sign, and a variable of type [Unknown](#unknown)
-
 This has no pseudocode as it it purely a structure.
 
-In programming languages with a `struct` type, this is a `struct`.
-Otherwise it is a `class` with no methods.
+In programming languages with a struct type, this is a struct.
+Otherwise it is a class with no methods.
 
 \newpage
 
