@@ -55,6 +55,10 @@ voltages at different nodes and vertices of the circuit.
 
 ![Solution Class](images/Class_Solution.png)
 
+### Pseudocode for class
+
+%include_pc(pseudocode/solution.txt)
+
 \newpage
 
 ## Term
