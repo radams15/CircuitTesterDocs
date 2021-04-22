@@ -1,0 +1,13 @@
+{-
+Stamps the parts of this component
+onto the passed matrice to form the overall
+equation.
+-}
+FUNCTION stamp(row, a, z, get_index)
+	z[row, 0] = value
+	
+	FOR t IN terms DO
+		index = get_index(t.variable)
+		a[row, index] = t.coefficient + a[row, index]
+	END
+END
