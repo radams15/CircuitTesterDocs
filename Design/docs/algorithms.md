@@ -42,12 +42,19 @@ voltages at different nodes and vertices of the circuit.
 
 ![Element Class](images/Class_Element.png)
 
+### Pseudocode for class
+
+%include_pc(pseudocode/element.txt)
 
 \newpage
 
 ## Equation
 
 ![Equation Class](images/Class_Equation.png)
+
+### Pseudocode for class
+
+%include_pc(pseudocode/equation.txt)
 
 \newpage
 
@@ -65,6 +72,11 @@ voltages at different nodes and vertices of the circuit.
 
 ![Term Class](images/Class_Term.png)
 
+This has no pseudocode as it it purely a structure.
+
+In programming languages with a struct type, this is a struct.
+Otherwise it is a class with no methods.
+
 \newpage
 
 ## Unknown
@@ -77,5 +89,13 @@ Both UnknownVoltage and UnknownCurrent are under the Unknown class, so that they
 stored in the same arrays as pointers.
 
 The Type attribute allows functions to know if they are an UnknownVoltage or an UnknownCurrent.
+
+### Unknown Voltage
+
+%include_pc(pseudocode/unknown_voltage.txt)
+
+### Unknown Current
+
+%include_pc(pseudocode/unknown_current.txt)
 
 \newpage
