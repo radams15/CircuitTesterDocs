@@ -78,7 +78,7 @@ This stores an equation of x = y + z.
 Value is the known x value, and terms is a list of [Terms](#term),
 that equal value.
 
-### Pseudocode for class
+### Pseudocode for class methods
 
 %include_pc(pseudocode/equation.txt)
 
@@ -88,7 +88,7 @@ that equal value.
 
 ![Solution Class](images/Class_Solution.png)
 
-### Pseudocode for class
+### Pseudocode for class methods
 
 %include_pc(pseudocode/solution.txt)
 

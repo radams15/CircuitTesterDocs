@@ -1,6 +1,7 @@
 {-
 Determines if two floats are
-approximately equal.
+approximately equal by checking
+if the difference is less than 10^-6.
 -}
 FUNCTION num_approx_equals(a, b)
 	RETURN abs(a-b) < 1E-6

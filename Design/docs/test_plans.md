@@ -3,20 +3,20 @@
 ## [Circuit](#circuit)
 
 - `init` empty list:
-	- Type: boundary.
-	- Data: [].
-	- Expected: no error, as this is just no circuit.
+	- Type: boundary
+	- Data: [ ]
+	- Expected: no error, as this is just no circuit
 
 - `init` null:
-	- Type: erroneous.
-	- Data: NULL.
+	- Type: erroneous
+	- Data: `NULL`
 	- Expected: should return the function before any actual
-		data is used.
+		data is used
 
 - `get_current_source_total` negative:
 	- Type: invalid
 	- Data: -1
-	- Expected: returns a total of 0 as the node does not exist.
+	- Expected: returns a total of 0 as the node does not exist
 
 - `get_current_source_total` large number:
 	- Type: invalid
@@ -25,13 +25,13 @@
 
 - `get_current_terms` invalid sign:
 	- Type: invalid
-	- Data: sign=-2
-	- Expected: error thrown
+	- Data: sign = -2
+	- Expected: controlled error thrown
 
 - `get_current_terms` invalid sign:
 	- Type: invalid
-	- Data: sign=NULL
-	- Expected: error thrown
+	- Data: sign = `NULL`
+	- Expected: controlled error thrown
 
 - `get_connected_node_ids` invalid node:
 	- Type: invalid
@@ -40,8 +40,37 @@
 
 ## [Element](#element)
 
+- `contains_node` non-existant node:
+	- Type: normal
+	- Data: 100
+	- Expected: returns `False`
+
+- `get_opposite_node` non-existant node:
+	- Type: invalid
+	- Data: 100 (if there are less than 100 nodes
+		attached to this node - which is unlikely)
+	- Expected: controlled error thrown
+
 ## [Equation](#equation)
 
+- `stamp` a or z are null:
+	- Type: erroneous
+	- Data: a = `NULL` or z = `NULL`
+	- Expected: error thrown
+
+- `stamp` get_index function is null:
+	- Type: erroneous
+	- Data: a = `NULL` or z = `NULL`
+	- Expected: controlled error thrown
+
+- `stamp` row non-existant node:
+	- Type: invalid
+	- Data: row = 100 (if there are less than 100 nodes
+		attached to this node - which is unlikely)
+	- Expected: controlled error thrown
+
 ## [Solution](#solution)
+
+
 
 ## [Unknown](#unknown)
