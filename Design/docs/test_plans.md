@@ -100,13 +100,6 @@
 	- Expected: controlled error thrown
 
 
-- `numers_approx_equals` :
-	- Type: invalid
-	- Data: New element that is not in any solution list
-	- Expected: controlled error thrown
-
-
-
 ## [Unknown](#unknown)
 
 - `equals` other is null:
