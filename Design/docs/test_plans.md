@@ -90,7 +90,7 @@
 - `equals` other is of other type:
 	- Type: boundary
 	- Data: this = `UnknownCurrent` other = `UnknownVoltage`
-	- Expected: return `false`
+	- Expected: returns `False`
 
 
 
