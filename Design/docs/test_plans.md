@@ -78,6 +78,33 @@
 
 ## [Solution](#solution)
 
+- `approx_equals` null solution:
+	- Type: invalid
+	- Data: `NULL`
+	- Expected: returns `False`
+
+- `approx_equals` non-equal solution:
+	- Type: valid
+	- Data: `NULL`
+	- Expected: returns `False`
+
+- `approx_equals` equal solution:
+	- Type: valid
+	- Data: `NULL`
+	- Expected: returns `True`
+
+
+- `get_voltage` unknown variable:
+	- Type: invalid
+	- Data: New element that is not in any solution list
+	- Expected: controlled error thrown
+
+
+- `numers_approx_equals` :
+	- Type: invalid
+	- Data: New element that is not in any solution list
+	- Expected: controlled error thrown
+
 
 
 ## [Unknown](#unknown)
