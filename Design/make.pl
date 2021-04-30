@@ -6,19 +6,18 @@ my @MD_ORDER = (
 	"styling/style.md",
 	
 	"styling/pagebreak.tex",
-	
 	"docs/decomposition.md",
 	
 	"styling/pagebreak.tex",
-	
 	"docs/design.md",
+
+	"styling/pagebreak.tex",
+	"docs/libraries.md",
 	
 	"styling/pagebreak.tex",
-	
 	"docs/algorithms.md",
 
 	"styling/pagebreak.tex",
-
 	"docs/test_plans.md",
 );
 
@@ -27,8 +26,6 @@ my @DIA_ORDER = <diagrams/*.dia>;
 my $OUT_FILE = "Design.pdf";
 
 my @EXTS = ("raw_tex", "grid_tables", "fenced_code_blocks", "backtick_code_blocks");
-
-my $CONTENTS_PAGE = 1;
 
 my $CODE_STYLE = "tango";
 

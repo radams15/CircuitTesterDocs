@@ -1,4 +1,5 @@
-# Test Plans
+# Test Plans - White Box
+
 
 ## [Circuit](#circuit)
 
@@ -13,6 +14,8 @@
 	- Expected: should return the function before any actual
 		data is used
 
+
+
 - `get_current_source_total` negative:
 	- Type: invalid
 	- Data: -1
@@ -23,6 +26,8 @@
 	- Data: 100 (if there are less than 100 componenets)
 	- Expected: returns a total of 0 as node does not exist
 
+
+
 - `get_current_terms` invalid sign:
 	- Type: invalid
 	- Data: sign = -2
@@ -32,6 +37,8 @@
 	- Type: invalid
 	- Data: sign = `NULL`
 	- Expected: controlled error thrown
+
+
 
 - `get_connected_node_ids` invalid node:
 	- Type: invalid
@@ -74,3 +81,19 @@
 
 
 ## [Unknown](#unknown)
+
+- `equals` other is null:
+	- Type: erroneous
+	- Data: other = `NULL`
+	- Expected: return `false`
+
+- `equals` other is of other type:
+	- Type: boundary
+	- Data: this = `UnknownCurrent` other = `UnknownVoltage`
+	- Expected: return `false`
+
+
+
+# Test Plans - Black Box
+
+
