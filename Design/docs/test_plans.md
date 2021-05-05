@@ -121,7 +121,7 @@
 ![The circuit to be tested](images/blackbox_1.png)
 
 This tests to see if current split between two parallel resistors
-(20.0 $\ohm$ and 10.0 $\ohm$) occurs, and if the current split has
+(20.0 $\Omega$ and 10.0 $\Omega$) occurs, and if the current split has
 the correct values of 0.45A at the first resistor, and 1.35A when
 they join back together. The battery has an arbitrary voltage of 9.0V.
 
@@ -137,7 +137,7 @@ when placed in series.
 ![The circuit to be tested](images/blackbox_3.png)
 
 This tests to see is two 9.0V batteries have a total voltage of 9.0V,
-and a resistor of resistance 10.0 $\ohm$ causes a current of 0.9A.
+and a resistor of resistance 10.0 $\Omega$ causes a current of 0.9A.
 
 The two parallel batteries should have the same characteristics as just one
 9.0V battery.
