@@ -27,7 +27,7 @@ my $OUT_FILE = "Design.pdf";
 
 my @EXTS = ("raw_tex", "grid_tables", "fenced_code_blocks", "backtick_code_blocks");
 
-my $CODE_STYLE = "tango";
+my $CODE_STYLE = "tango.theme";
 
 
 sub make_diagrams{

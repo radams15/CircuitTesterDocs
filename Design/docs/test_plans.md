@@ -47,9 +47,14 @@
 
 ## [Element](#element)
 
+- `contains_node`:
+	- Type: normal
+	- Data: Element(Resistor, 2, 3, 5).contains(2)
+	- Expected: returns `True`
+
 - `contains_node` non-existant node:
 	- Type: normal
-	- Data: 100
+	- Data: 100 (where there is no node 100)
 	- Expected: returns `False`
 
 - `get_opposite_node` non-existant node:
@@ -113,6 +118,8 @@
 	- Expected: returns `False`
 
 
+\newpage
+
 
 # Test Plans - Black Box
 
@@ -125,12 +132,16 @@ This tests to see if current split between two parallel resistors
 the correct values of 0.45A at the first resistor, and 1.35A when
 they join back together. The battery has an arbitrary voltage of 9.0V.
 
+\newpage
+
 ## Test 2 - Batteries in series:
 
 ![The circuit to be tested](images/blackbox_2.png)
 
 This tests to see if two 9.0V batteries have a total voltage of 18.0V
 when placed in series.
+
+\newpage
 
 ## Test 2 - Batteries in parallel:
 
@@ -141,3 +152,7 @@ and a resistor of resistance 10.0 $\Omega$ causes a current of 0.9A.
 
 The two parallel batteries should have the same characteristics as just one
 9.0V battery.
+
+\newpage
+
+

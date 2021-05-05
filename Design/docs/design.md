@@ -85,8 +85,11 @@ so are easily recognisable.
 My program is designed to be very easy to understand.
 
 The toolbox is designed to show the components as large, colourful
-pictures, which means that they are very easy to see.
+pictures, which means that they are very easy to see. The toolbox buttons also
+will generate a tooltip whenever they are hovered over with a mouse, which will
+help users to make sure that the component they are clicking on is the correct one
+for their usage.
 
 The toolbox buttons are left-clicked once, then the user moves the cursor to the place they wish
-to put the component. This is where the component is placed.
-
+to put the component. This is where the component is placed. This is a very simple
+way to build up circuits, and to show the user exactly what they have created.
