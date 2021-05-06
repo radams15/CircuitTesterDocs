@@ -14,6 +14,32 @@ voltages at different nodes and vertices of the circuit.
 
 \newpage
 
+## Main_Window
+
+
+![Main Window Class](images/Class_MainWindow.png)
+
+This is the class that acts as the main GUI for my program.
+
+It holds references to a [Scene](#scene) object that has been initialised to hold
+the components for the current circuit.
+
+The functions `create_toolbox`, `create_menus`, and `create_toolbar` are simply functions that
+create their respective classes and add them to the main window, without any complex algorithms.
+
+
+### Find Shortest Path
+
+Graph is an alias to `Map<Component, List<Component>>`.
+Path is an alias to `List<Component>`.
+
+%include_pc(pseudocode/find_shortest_path.txt)
+
+
+## Scene
+
+
+
 
 ## Circuit
 

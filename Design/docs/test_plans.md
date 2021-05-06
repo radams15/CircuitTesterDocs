@@ -123,7 +123,7 @@
 
 # Test Plans - Black Box
 
-## Test 1 - Resistors in parallel:
+## Test 1 - Resistors in parallel
 
 ![The circuit to be tested](images/blackbox_1.png)
 
@@ -134,7 +134,7 @@ they join back together. The battery has an arbitrary voltage of 9.0V.
 
 \newpage
 
-## Test 2 - Batteries in series:
+## Test 2 - Batteries in series
 
 ![The circuit to be tested](images/blackbox_2.png)
 
@@ -143,7 +143,7 @@ when placed in series.
 
 \newpage
 
-## Test 2 - Batteries in parallel:
+## Test 2 - Batteries in parallel
 
 ![The circuit to be tested](images/blackbox_3.png)
 
@@ -155,4 +155,15 @@ The two parallel batteries should have the same characteristics as just one
 
 \newpage
 
+## Test 3 - Place down an item
+
+This simply tests if a component can be placed onto the canvas.
+
+## Test 4 - Move an item
+
+Can an item be moved around the canvas.
+
+## Test 5 - Delete an item
+
+Can an item be deleted from the canvas.
 

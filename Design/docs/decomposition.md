@@ -1,9 +1,9 @@
-# Decomposition:
+# Decomposition
 
 ![Decomposition](images/decomposition.png)
 
 
-## Justifications:
+## Justifications
 
 
 ### Circuit runner
@@ -31,6 +31,8 @@ help menus with a general menu for the application, as seen below:
 ![MacOS Menubar](images/titlebar_mac.png)
 
 ![Windows Menubar](images/titlebar_win.png)
+
+![Linux Menubar](images/titlebar_lin.png)
 
 ### Drag and drop canvas
 
