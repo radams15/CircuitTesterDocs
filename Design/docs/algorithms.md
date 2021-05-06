@@ -30,16 +30,21 @@ create their respective classes and add them to the main window, without any com
 
 ### Find Shortest Path
 
-Graph is an alias to `Map<Component, List<Component>>`.
-Path is an alias to `List<Component>`.
+This function finds the shortest path between two components by interpreting the
+circuit as a mathematical graph.
+
+This means that the paths can be used to set the node numbers of the components.
 
 %include_pc(pseudocode/find_shortest_path.txt)
 
+### Run Simulation
 
-## Scene
+This function will set the n0 and n1 value for each component, allowing the program to
+then work out the voltages and currents at each point of the circuit.
 
+%include_pc(pseudocode/run_simulation.txt)
 
-
+\newpage
 
 ## Circuit
 

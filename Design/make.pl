@@ -41,7 +41,9 @@ sub make_diagrams{
 }
 
 sub main{
-	&make_diagrams;
+	if(!($ARGV[0] eq "nod")){
+		&make_diagrams;
+	}
 
 	@MD_ORDER = map { "'$_'" } @MD_ORDER;
 

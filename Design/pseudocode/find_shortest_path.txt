@@ -1,3 +1,7 @@
+-- Define types for convenience
+TYPEDEF Map<Component, List<Component>> = Graph;
+TYPEDEF List<Component> = Path;
+
 {-
 Function to find the shortest path between two components
 on a graph.
