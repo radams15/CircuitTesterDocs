@@ -93,3 +93,9 @@ for their usage.
 The toolbox buttons are left-clicked once, then the user moves the cursor to the place they wish
 to put the component. This is where the component is placed. This is a very simple
 way to build up circuits, and to show the user exactly what they have created.
+
+The canvas will be able to be zoomed in and out, allowing circuits to be examined
+more closely, and to help those who have poor eyesight. This also means that the
+circuits will be easier to view for everybody.
+
+The layout is very simple, which links to the ease of usability section on the requirements.

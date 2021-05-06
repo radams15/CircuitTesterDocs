@@ -34,6 +34,8 @@ help menus with a general menu for the application, as seen below:
 
 ![Linux Menubar](images/titlebar_lin.png)
 
+<br><br>
+
 ### Drag and drop canvas
 
 This is the main canvas, so all aspects of the actual circuit go here such as placing

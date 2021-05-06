@@ -1,6 +1,6 @@
 -- Define types for convenience
-TYPEDEF Map<Component, List<Component>> = Graph;
-TYPEDEF List<Component> = Path;
+TYPEDEF Map<Component, List<Component>> = Graph
+TYPEDEF List<Component> = Path
 
 {-
 This assigns nodes to each component on the canvas
