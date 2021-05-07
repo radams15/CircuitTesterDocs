@@ -29,6 +29,9 @@ while(<>) {
     } elsif (/%\s*include_pc\s*\((.+)\)/) { # include pseudocode
     	if(my $data = read_file($1)){
 		print "\n``` $PS_CODE_TEMPLATE\n\n$data\n```\n";
+	} elsif (/%\s*include_cpp\s*\((.+)\)/) { # include pseudocode
+    	if(my $data = read_file($1)){
+		print "\n``` cpp\n\n$data\n```\n";
 	}
     } elsif (/\s*%\s*exec\s*\((.*)\)\s*/){
 	print `$1`;
