@@ -43,3 +43,14 @@ The documentation contains many explanations of how their code, and therefore
 MNA works.
 
 - [https://spicesharp.github.io/SpiceSharp/articles/custom_components/modified_nodal_analysis.html](https://spicesharp.github.io/SpiceSharp/articles/custom_components/modified_nodal_analysis.html)
+
+
+### QUCS
+
+This is the documentation from QUCS, which I looked into during the analysis stage.
+
+It contains helpful information about how the matrices are laid out, and why they are
+put that way.
+
+This helped me to create the a, Z and x functions matrices, and to figure out what parts
+of the solved x matrix show the current solutions.
