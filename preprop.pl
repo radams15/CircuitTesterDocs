@@ -23,15 +23,17 @@ sub read_file{
 
 while(<>) {
     if (/%\s*include\s*\((.+)\)/) { # include text
-	if(my $data = read_file($1)){
-		print $data;
-	}
+        if(my $data = read_file($1)){
+            print $data;
+        }
     } elsif (/%\s*include_pc\s*\((.+)\)/) { # include pseudocode
     	if(my $data = read_file($1)){
-		print "\n``` $PS_CODE_TEMPLATE\n\n$data\n```\n";
+            print "\n``` $PS_CODE_TEMPLATE\n\n$data\n```\n";
+        }
 	} elsif (/%\s*include_cpp\s*\((.+)\)/) { # include pseudocode
     	if(my $data = read_file($1)){
-		print "\n``` cpp\n\n$data\n```\n";
+            print "\n``` cpp\n\n$data\n```\n";
+		}
 	}elsif (/\s*%\s*exec\s*\((.*)\)\s*/){
         print `$1`;
     }else {
