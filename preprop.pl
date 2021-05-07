@@ -32,9 +32,8 @@ while(<>) {
 	} elsif (/%\s*include_cpp\s*\((.+)\)/) { # include pseudocode
     	if(my $data = read_file($1)){
 		print "\n``` cpp\n\n$data\n```\n";
-	}
-    } elsif (/\s*%\s*exec\s*\((.*)\)\s*/){
-	print `$1`;
+	}elsif (/\s*%\s*exec\s*\((.*)\)\s*/){
+        print `$1`;
     }else {
         print $_;
     }
