@@ -35,7 +35,7 @@ This was a detailed run-through of the process of modified nodal analysis.
 - [https://www.swarthmore.edu/NatSci/echeeve1/Ref/mna/MNA3.html](https://www.swarthmore.edu/NatSci/echeeve1/Ref/mna/MNA3.html)
 
 
-### Spice#
+### Spice\#
 
 This is the documentation from a SPICE clone, written in C#.
 
