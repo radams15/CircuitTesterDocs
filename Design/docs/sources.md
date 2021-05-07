@@ -54,3 +54,5 @@ put that way.
 
 This helped me to create the a, Z and x functions matrices, and to figure out what parts
 of the solved x matrix show the current solutions.
+
+- [http://qucs.sourceforge.net/tech/node14.html](http://qucs.sourceforge.net/tech/node14.html)
