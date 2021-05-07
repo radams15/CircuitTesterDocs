@@ -15,7 +15,7 @@ FUNCTION init(circuit_elements)
 	-- resistors or current sources
 	elements = batteries + resistors + current_sources.
 	
-	-- Populate the node_set map
+	-- Populate the node_set map - the name versus the node number.
 	FOR e IN elements DO
 		node_map[e.n0] = e.n0
 		node_map[e.n1] = e.n1

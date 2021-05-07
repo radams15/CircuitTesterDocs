@@ -19,6 +19,9 @@ my @MD_ORDER = (
 
 	"styling/pagebreak.tex",
 	"docs/test_plans.md",
+	
+	"styling/pagebreak.tex",
+	"docs/sources.md",
 );
 
 my @DIA_ORDER = <diagrams/*.dia>;
