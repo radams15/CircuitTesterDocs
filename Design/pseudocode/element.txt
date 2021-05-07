@@ -1,8 +1,8 @@
 {-
 Returns whether this element is connected
-to passed node.
+to the passed node.
 -}
-FUNCTION contains_node_id(node)
+FUNCTION contains(node)
 	RETURN n0 == node OR n1 == node
 END
 
@@ -11,7 +11,7 @@ END
 {-
 Returns the opposite node to node.
 -}
-FUNCTION get_opposite_node(node)
+FUNCTION opposite(node)
 	-- If passed n0, return n1,
 	-- and vice versa.
 	RETURN node == n0? n1 : n0

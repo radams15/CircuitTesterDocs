@@ -8,12 +8,12 @@ FUNCTION num_approx_equals(a, b)
 END
 
 {-
-Determines if two solutions are
-close enough to be equal, as floating
-point error can cause two identical
-solutions to be slightly off.
+Determines if two solutions are equal,
+as floating point error can cause
+two identical solutions to be slightly off,
+even though they are supposed to be equal.
 -}
-FUNCTION approx_equals(solution)
+FUNCTION equals(solution)
 	keys = node_voltages.keys()
 	other_keys = solution.node_voltages().keys()
 
@@ -34,12 +34,12 @@ FUNCTION approx_equals(solution)
 	END
 
 	-- Check if all the currents in this are in solution.
-	IF NOT has_all_currents(solution) THEN
+	IF NOT has_all_elements(solution) THEN
 		RETURN False
 	END
 
 	-- Check if all the currents in solution are in this.
-	IF NOT solution.has_all_currents(this) THEN
+	IF NOT solution.has_all_elements(this) THEN
 		RETURN False
 	END
 
@@ -50,12 +50,12 @@ END
 
 
 {-
-Finds if all the currents in solution
-has an identical current in this.
+Finds if all the elements in solution
+haev identical elements in this solution.
 -}
-FUNCTION has_all_currents(solution)
+FUNCTION has_all_elements(solution)
 	FOR e IN elements DO
-		IF NOT has_matching_element(e) THEN
+		IF NOT contains_element(e) THEN
 			RETURN False
 		END
 	END
@@ -68,7 +68,7 @@ END
 Determines if this contains passed
 element.
 -}
-FUNCTION has_matching_element(element)
+FUNCTION contains_element(element)
 	FOR e IN elements DO
 		IF e.n0 == element.n0 AND
 			e.n1 == element.n1 AND
@@ -89,8 +89,19 @@ END
 {-
 Returns the current of the passed resistor.
 -}
-FUNCTION get_current_for_resistor(resistor)
+FUNCTION get_current(resistor)
+	-- Returns the current by doing V=IR, which is equal
+	-- to I=V/R.
 	RETURN -get_voltage(resistor)/resistor.value;
+END
+
+{-
+Returns the voltage of the passed element.
+-}
+FUNCTION get_voltage(element)
+	-- Gets the difference between the voltages of two components
+	-- as voltage is the potential difference between two components.
+	RETURN node_voltages[element.n1] - node_voltages[element.n0]
 END
 
 
@@ -99,13 +110,4 @@ Returns the voltage of the passed node.
 -}
 FUNCTION get_node_voltage(node)
 	RETURN node_voltages[node]
-END
-
-
-
-{-
-Returns the voltage of the passed element.
--}
-FUNCTION get_voltage(element)
-	RETURN node_voltages[element.n1] - node_voltages[element.n0]
 END

@@ -3,7 +3,7 @@ Gets the number of unknown currents
 Current sources are not calculated as they are known
 currents.
 -}
-FUNCTION get_current_count()
+FUNCTION get_num_unknown_currents()
 	zero_resistors = 0
 	
 	{-
@@ -26,14 +26,14 @@ Used to find out the number of both current and
 voltage variables.
 -}
 FUNCTION get_num_vars()
-	RETURN node_count + get_current_count()
+	RETURN node_count + get_num_unknown_currents()
 END
 
 
 {-
 Finds the total current leaving a node
 -}
-FUNCTION get_current_source_total(node)
+FUNCTION get_current_total(node)
 	total = 0
 	
 	FOR c IN current_sources DO
@@ -60,7 +60,8 @@ END
 Gets the terms that enter and leave a node.
 Incoming is negative, outgoing is positive
 -}
-FUNCTION get_current_terms(node, side, sign)
+FUNCTION get_currents(node, side, sign)
+	-- The current terms to return
 	terms = []
 	
 	FOR b IN batteries DO
@@ -106,18 +107,18 @@ Selects the components that have the reference voltage.
 This is the voltage that other components are compared
 to.
 -}
-FUNCTION get_ref_node_ids()
-	to_visit = node_set.values()
+FUNCTION get_ref_nodes()
+	to_visit = node_map.values()
 	
-	ref_node_ids = []
+	ref_nodes = []
 	
 	WHILE NOT to_visit.empty()
 		-- Get the first element in the nodesto be visited.
-		ref_node_id = to_visit[0]
+		ref_node = to_visit[0]
 		
-		ref_node_ids.append(ref_node_id)
+		ref_nodes.append(ref_node)
 		
-		connected = get_connected_node_ids(ref_node_id)
+		connected = get_connected_nodes(ref_node)
 		
 		-- All nodes connected to this node have had their reference
 		-- set to this node, so don't check them.
@@ -127,7 +128,7 @@ FUNCTION get_ref_node_ids()
 		END
 	END
 	
-	RETURN ref_node_ids
+	RETURN ref_nodes
 END
 
 
@@ -135,7 +136,7 @@ END
 {-
 Finds the nodes that are connected to the passed node
 -}
-FUNCTION get_connected_node_ids(node)
+FUNCTION get_connected_nodes(node)
 	visited = []
 	to_visit = [node]
 	
@@ -146,9 +147,9 @@ FUNCTION get_connected_node_ids(node)
 		visited.append(node_to_visit)
 		
 		FOR e IN elements DO
-			IF e.contains_node_id(node_to_visit) THEN
+			IF e.contains(node_to_visit) THEN
 				-- Get the opposite node, check that too
-				opposite = e.get_opposite_node(node_to_visit)
+				opposite = e.opposite(node_to_visit)
 				
 				-- Don't check if has already been checked
 				IF NOT visited.contains(opposite) THEN
@@ -173,7 +174,7 @@ to solve the overall circuit.
 FUNCTION get_equations()
 	equations = []
 	
-	ref_node_ids = get_ref_node_ids()
+	ref_node_ids = ref_nodes()
 	
 	FOR r IN ref_node_ids DO
 		-- Reference nodes have a voltage of zero as the voltage
@@ -185,17 +186,23 @@ FUNCTION get_equations()
 	
 	FOR n IN nodes DO
 	
-		{-
-		 One node must be selected to not have its charge conserved.
-		 This is because having full charge conservation breaks
-		 the matrix solver.
-	 	-}
+		-- Create an equation containing the total current
+		-- source multiplied by each of the outgoing and incoming
+		-- current nodes from the node,
 		IF NOT ref_node_ids.contains(n) THEN
-			incoming = get_current_terms(n, 1, -1)
-			outgoing = get_current_terms(n, 0, +1)
+			-- All current nodes entering node n at n1
+			incoming = get_currents(n, 1, -1)
+			-- All current nodes leaving node n at n0
+			outgoing = get_currents(n, 0, +1)
 			
+			-- Currents leave at n0 and enter at n1 because conventional
+			-- currents are opposite to actual charge flow.
+			
+			
+			-- Add together the two lists of terms
 			terms = incoming + outgoing
 			
+			-- Create an equation of total current equals the sum of all the terms.
 			equations.append(NEW Equation(
 				get_current_source_total(n), terms
 			))
@@ -249,4 +256,25 @@ FUNCTION get_unknown_currents()
 	END
 	
 	RETURN unknowns
+END
+
+
+
+{-
+Returns the index of the element in the array,
+if it does not exist, return -1.
+-}
+FUNCTION get_element_index(array, element)
+
+	-- Iterate over every index in the array
+	FOR i IN 0..array.length() DO
+		-- If the array element equals the passed element,
+		-- return the index.
+		IF array[i].equals(element) THEN
+			RETURN i
+		END
+	END
+	
+	-- Not found, return -1.
+	REURN -1
 END

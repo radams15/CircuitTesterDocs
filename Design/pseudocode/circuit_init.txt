@@ -10,16 +10,19 @@ FUNCTION init(circuit_elements)
 		
 	END
 	
-	{- adds together all 3 arrays. Not using the function parameter
-	as this could contain values that are not batteries,
-	resistors or current sources -}
-	elements = batteries + resistors + current_sources  
+	-- Adds together all 3 arrays. Not using the function parameter
+	-- as this could contain values that are not batteries,
+	-- resistors or current sources
+	elements = batteries + resistors + current_sources.
 	
-	FOR e IN elements DO -- populate the node_set map
-		node_set[e.n0] = e.n0
-		node_set[e.n1] = e.n1
+	-- Populate the node_set map
+	FOR e IN elements DO
+		node_map[e.n0] = e.n0
+		node_map[e.n1] = e.n1
 	END
 	
-	node_count = node_set.length() -- count the number of nodes
-	nodes = node_set.values() -- set nodes to just the real node ids
+	-- Count the number of nodes
+	node_count = node_set.length()
+	-- Set nodes to just the real node ids
+	nodes = node_set.values()
 END

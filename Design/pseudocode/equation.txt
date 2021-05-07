@@ -3,11 +3,15 @@ Stamps the parts of this component
 onto the passed matrice to form the overall
 equation.
 -}
-FUNCTION stamp(row, a, z, get_index)
+FUNCTION apply(row, a, z, get_index)
+	-- Set the value (resistance or voltage) onto the matrix z.
 	z[row, 0] = value
 	
 	FOR t IN terms DO
+		-- Find the index of the unknown variable of this term.
 		index = get_index(t.variable)
+		-- Add the known coefficient of this term into the matrix a,
+		-- adding onto the existing value there.
 		a[row, index] = t.coefficient + a[row, index]
 	END
 END
