@@ -1,0 +1,72 @@
+-- Define types for convenience
+TYPEDEF Map<Component, List<Component>> = Graph
+TYPEDEF List<Component> = Path
+
+{-
+This assigns nodes to each component on the canvas
+by finding the shortest distance between that component and
+the root component.
+-}
+FUNCTION run_simulation()
+	components = scene.getItems().filter({x => TYPE(x) == Component})
+	
+	IF components.length() == 0 THEN
+		RETURN
+	END
+	
+	graph = NEW Graph;
+	
+	FOR c IN components DO
+		connections = NEW List<Component>
+		
+		FOR a IN c.arrows DO
+			IF c == a.end_item DO
+				CONTINUE
+			EBD
+			
+			connections.append(a->end_item)
+		END
+		
+		graph[c] = connections;
+	END
+	
+	-- Select start node (algorithm could be introduced
+	-- here to select a battery)
+	start_node = components[0]
+	
+	-- Iterate over the graph to set the node numbers
+	-- for each component there.
+	FOR (comp, connected) IN graph DO
+		path = find_shortest_path(graph, start_node, comp)
+		
+		-- Set the start node to the length from the origin -1
+		-- as the path always includes the origin.
+		comp.n0 = path.length()-1;
+		
+		-- Placeholder value that will be updated later.
+		comp.n1 = 0;
+	END
+	
+	-- Iterate again over the graph to set the destination nodes (n1)
+	-- for each component.
+	FOR (comp, connected) IN graph DO
+		-- Clear the current component connections in case
+		-- the function has been run already before.
+		comp.connections.clear()
+		
+		-- This needs to be replaced with another function
+		-- that will create new objects for each connection.
+		FOR c IN graph[comp] DO
+			comp->n1 = c->n0;
+		END
+	END
+	
+	-- Create a circuit object out of the components
+	circuit = NEW Circuit(components)
+	
+	-- Get the circuit solutions.
+	sol = circuit.solve()
+	
+	-- Add labels for each component to show voltage and
+	-- current, etc.
+END

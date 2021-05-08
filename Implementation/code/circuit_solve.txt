@@ -1,0 +1,47 @@
+{-
+Function that solves the circuit using
+linear algebra and matrices.
+-}
+FUNCTION solve()
+	equations = get_equations()
+	unknown_currents = get_unknown_currents()
+	-- Create an UnknownVoltage for each node as we don't know any voltage
+	-- for any node.
+	unknown_voltages = MAP({x => NEW UnknownVoltage(x)}, nodes)
+	
+	unknowns = unknown_currents + unknown_voltages
+	
+	-- Make two matrices, one which is the width of the number of equations by the number
+	-- of variables, and the other has a width of the number of equations but is only 1 wide.
+	a = Matrix.Zeroes(Float, equations.length(), get_num_vars())
+	z = Matrix.Zeroes(Float, equations.length(), 1)
+	
+	FOR i IN (0 .. equations.length()) DO
+		-- Apply the correct numbers of every equation onto the matrices,
+		-- passing in a lambda to find the index of each
+		-- term of the equation in class attribute unknowns.
+		equations[i].apply(i, a, z, {x => get_element_index(unknowns, x})
+	END
+	
+	-- Solve the matrix equation a = z
+	x = a.solve(z)
+	
+	-- A map of which nodes have which voltages on the circuit.
+	voltage_map = {}
+	
+	FOR v IN unknown_voltages DO
+		-- Get the right side of the equation for the voltage at
+		-- point voltage node.
+		equation_right = x[get_element_index(unknowns, v), 0]
+		voltage_map[v.node] = equation_right
+	END
+	
+	FOR c IN unknown_currents DO
+		-- Set the new current for each element.
+		c.element.current_solution = x[get_element_index(unknowns, c), 0]
+	END
+	
+	-- Return a new solution class, also removing the UnknownCurrent wrapper of each element
+	-- by just using the UnknownCurrent.element value.
+	RETURN NEW Solution(voltage_map, map({x => x.element}, unknown_currents}))
+END

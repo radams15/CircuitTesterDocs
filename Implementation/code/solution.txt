@@ -1,0 +1,113 @@
+{-
+Determines if two floats are
+approximately equal by checking
+if the difference is less than 10^-6.
+-}
+FUNCTION num_approx_equals(a, b)
+	RETURN abs(a-b) < 1E-6
+END
+
+{-
+Determines if two solutions are equal,
+as floating point error can cause
+two identical solutions to be slightly off,
+even though they are supposed to be equal.
+-}
+FUNCTION equals(solution)
+	keys = node_voltages.keys()
+	other_keys = solution.node_voltages().keys()
+
+	-- Key difference is all the keys in "keys",
+	-- without the keys in "other_keys".
+	-- This is zero unless there is a big problem.
+	key_difference = keys.without(other_keys)
+
+	FOR k IN keys DO
+		-- Check if every key in this equals
+		-- the same key in the solution
+		IF NOT num_approx_equals(
+			solution.get_node_voltage(k),
+			get_node_voltage(k)
+		) THEN
+			RETURN False
+		END
+	END
+
+	-- Check if all the currents in this are in solution.
+	IF NOT has_all_elements(solution) THEN
+		RETURN False
+	END
+
+	-- Check if all the currents in solution are in this.
+	IF NOT solution.has_all_elements(this) THEN
+		RETURN False
+	END
+
+	-- All checks passed, must be equal
+	RETURN True
+END
+
+
+
+{-
+Finds if all the elements in solution
+haev identical elements in this solution.
+-}
+FUNCTION has_all_elements(solution)
+	FOR e IN elements DO
+		IF NOT contains_element(e) THEN
+			RETURN False
+		END
+	END
+
+	RETURN True
+END
+
+
+{-
+Determines if this contains passed
+element.
+-}
+FUNCTION contains_element(element)
+	FOR e IN elements DO
+		IF e.n0 == element.n0 AND
+			e.n1 == element.n1 AND
+			num_approx_equals(
+				e.current_solution,
+				element.current_solution
+			)
+		THEN
+			RETURN True
+		END
+	END
+
+	RETURN False
+END
+
+
+
+{-
+Returns the current of the passed resistor.
+-}
+FUNCTION get_current(resistor)
+	-- Returns the current by doing V=IR, which is equal
+	-- to I=V/R.
+	RETURN -get_voltage(resistor)/resistor.value;
+END
+
+{-
+Returns the voltage of the passed element.
+-}
+FUNCTION get_voltage(element)
+	-- Gets the difference between the voltages of two components
+	-- as voltage is the potential difference between two components.
+	RETURN node_voltages[element.n1] - node_voltages[element.n0]
+END
+
+
+{-
+Returns the voltage of the passed node.
+-}
+FUNCTION get_node_voltage(node)
+	RETURN node_voltages[node]
+END
