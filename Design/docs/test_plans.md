@@ -16,48 +16,48 @@
 
 
 
-- `get_current_source_total` negative:
+- `get_current_total` negative:
 	- Type: invalid
 	- Data: -1
 	- Expected: returns a total of 0 as the node does not exist
 
-- `get_current_source_total` large number:
+- `get_current_total` large number:
 	- Type: invalid
 	- Data: 100 (if there are less than 100 componenets)
 	- Expected: returns a total of 0 as node does not exist
 
 
 
-- `get_current_terms` invalid sign:
+- `get_currents` invalid sign:
 	- Type: invalid
 	- Data: sign = -2
 	- Expected: controlled error thrown
 
-- `get_current_terms` invalid sign:
+- `get_currents` invalid sign:
 	- Type: invalid
 	- Data: sign = `NULL`
 	- Expected: controlled error thrown
 
 
 
-- `get_connected_node_ids` invalid node:
+- `get_connected_nodes` invalid node:
 	- Type: invalid
 	- Data: 100 (if there are less than 100 componenets)
 	- Expected: returns empty list
 
 ## [Element](#element)
 
-- `contains_node`:
+- `contains`:
 	- Type: normal
 	- Data: Element(Resistor, 2, 3, 5).contains(2)
 	- Expected: returns `True`
 
-- `contains_node` non-existant node:
+- `contains` non-existant node:
 	- Type: normal
 	- Data: 100 (where there is no node 100)
 	- Expected: returns `False`
 
-- `get_opposite_node` non-existant node:
+- `opposite` non-existant node:
 	- Type: invalid
 	- Data: 100 (if there are less than 100 nodes
 		attached to this node - which is unlikely)
@@ -65,17 +65,17 @@
 
 ## [Equation](#equation)
 
-- `stamp` a or z are null:
+- `apply` a or z are null:
 	- Type: erroneous
 	- Data: a = `NULL` or z = `NULL`
 	- Expected: error thrown
 
-- `stamp` get_index function is null:
+- `apply` get_index function is null:
 	- Type: erroneous
 	- Data: a = `NULL` or z = `NULL`
 	- Expected: controlled error thrown
 
-- `stamp` row non-existant node:
+- `apply` row non-existant node:
 	- Type: invalid
 	- Data: row = 100 (if there are less than 100 nodes
 		attached to this node - which is unlikely)
@@ -83,17 +83,17 @@
 
 ## [Solution](#solution)
 
-- `approx_equals` null solution:
+- `equals` null solution:
 	- Type: invalid
 	- Data: `NULL`
 	- Expected: returns `False`
 
-- `approx_equals` non-equal solution:
+- `equals` non-equal solution:
 	- Type: valid
 	- Data: `NULL`
 	- Expected: returns `False`
 
-- `approx_equals` equal solution:
+- `equals` equal solution:
 	- Type: valid
 	- Data: `NULL`
 	- Expected: returns `True`
