@@ -108,7 +108,7 @@ This is the voltage that other components are compared
 to.
 -}
 FUNCTION get_ref_nodes()
-	to_visit = node_map.values()
+	to_visit = node_map.copy()
 	
 	ref_nodes = []
 	

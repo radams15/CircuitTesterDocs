@@ -15,14 +15,14 @@ FUNCTION init(circuit_elements)
 	-- resistors or current sources
 	elements = batteries + resistors + current_sources.
 	
-	-- Populate the node_set map - the name versus the node number.
+	nodes = []
+	
+	-- Populate the nodes list.
 	FOR e IN elements DO
-		node_map[e.n0] = e.n0
-		node_map[e.n1] = e.n1
+		nodes.append(e.n0)
+		nodes.append(e.n1)
 	END
 	
 	-- Count the number of nodes
-	node_count = node_set.length()
-	-- Set nodes to just the real node ids
-	nodes = node_set.values()
+	node_count = nodes.length()
 END
