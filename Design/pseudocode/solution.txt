@@ -92,7 +92,12 @@ Returns the current of the passed resistor.
 FUNCTION get_current(resistor)
 	-- Returns the current by doing V=IR, which is equal
 	-- to I=V/R.
-	RETURN -get_voltage(resistor)/resistor.value;
+	v = -get_voltage(resistor)
+	r = resistor.value
+	
+	i = v / r
+	
+	RETURN i;
 END
 
 {-
