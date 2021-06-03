@@ -36,7 +36,7 @@ while(<>) {
 		}
 	}elsif (/\s*%\s*exec\s*\((.*)\)\s*/){
         print `$1`;
-    }else {
+    }else { # else print the input text
         print $_;
     }
 }
