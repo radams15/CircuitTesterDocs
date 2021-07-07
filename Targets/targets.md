@@ -6,23 +6,23 @@
 
 	Set up development environment with build and software requirements.
 
-- [ ] March:
+- [x] March:
 
 	Begin to write a software decomposition, to aid in writing of the software.
 
-- [ ] April:
+- [x] April:
 
 	Finish the decomposition.
 
-- [ ] May:
+- [x] May:
 
 	A simple GUI prototype => allows dragging of objects on a canvas.
 
-- [ ] June:
+- [x] June:
 	
 	Write the project analysis.
 
-- [ ] July:
+- [x] July:
 
 	Write a prototype for the circuit executor, e.g. a hard-coded circuit,
 	and test if it runs correctly.
