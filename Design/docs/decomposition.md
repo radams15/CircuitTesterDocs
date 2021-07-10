@@ -8,7 +8,7 @@
 
 ### Circuit runner
 because the back end logic is totally separate to the front end display, so
-these need to be separated.
+these need to be separated into seperate sections of the program.
 
 This is also where the linear algebra is done, so I would like to keep the library
 imports in one class only.
