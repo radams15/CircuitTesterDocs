@@ -137,21 +137,21 @@ Next, the empty matrices $A$ and $z$ are created. $A$ is the number of equations
 
 For our example this is what is created:
 
-A: $ \begin{bmatrix}
+A: $$ \begin{bmatrix}
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 
-\end{bmatrix}  $
+\end{bmatrix}  $$
 
-Z: $ \begin{bmatrix}
+Z: $$ \begin{bmatrix}
 0 \\
 0 \\
 0 \\
 0 \\
 0 
-\end{bmatrix}  $
+\end{bmatrix}  $$
 
 Next, each equation is individually added to the matrix, starting with the equation for node 0, adding the equation
 for each node until all the equations are added, and since the equations were made in order of nodes, the equation list
@@ -169,20 +169,20 @@ Row 0 has only our reference nodes, with an equation of $V_0 = 0$:
 
 - $0$ is placed at $z[0, 0]$
 - $1$ is placed at $A[1, 0]$
-- A: $ \begin{bmatrix}
-0 & 1 & 0 & 0 & 0 \\
+- A: $$ \begin{bmatrix}
+0 & \color{red}1 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 
-\end{bmatrix}  $
-- Z: $ \begin{bmatrix}
+\end{bmatrix}  $$
+- Z: $$ \begin{bmatrix}
 0 \\
 0 \\
 0 \\
 0 \\
 0 
-\end{bmatrix}  $
+\end{bmatrix}  $$
 
 Row 1 has the equation ${{V_2}\over{4}} + -{{V_1}\over{4}} + -{{V_3}\over{3}} + {{V_2}\over{3}} + -{{V_3}\over{6}} + {{V_2}\over{6}} = 0$:
 
@@ -190,20 +190,20 @@ Row 1 has the equation ${{V_2}\over{4}} + -{{V_1}\over{4}} + -{{V_3}\over{3}} + 
 - $-1$ is added to $A[0, 1]$
 - ${-{1}\over{4}}$ is added to $A[3, 1]$
 - ${{1}\over{4}}$ is added to $A[2, 1]$
-- A: $ \begin{bmatrix}
+- A: $$ \begin{bmatrix}
 0 & 1 & 0 & 0 & 0 \\
--1 & 0 & {{1}\over{4}} & -{{1}\over{4}} & 0 \\
+\color{red}-1 & 0 & \color{red}{{1}\over{4}} & \color{red}{-{{1}\over{4}}} & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 
-\end{bmatrix}  $
-- Z: $ \begin{bmatrix}
+\end{bmatrix}  $$
+- Z: $$ \begin{bmatrix}
 0 \\
 0 \\
 0 \\
 0 \\
 0 
-\end{bmatrix}  $
+\end{bmatrix}  $$
 
 Row 2 has the equation ${{V_2}\over{4}} + -{{V_1}\over{4}} + -{{V_3}\over{3}} + {{V_2}\over{3}} + -{{V_3}\over{6}} + {{V_2}\over{6}} = 0$:
 
@@ -214,20 +214,20 @@ Row 2 has the equation ${{V_2}\over{4}} + -{{V_1}\over{4}} + -{{V_3}\over{3}} + 
 - ${{1}\over{3}}$ is added to $A[3, 2]$
 - $-{{1}\over{6}}$ is added to $A[4, 2]$
 - ${{1}\over{6}}$ is added to $A[3, 2]$
-- A: $ \begin{bmatrix}
+- A: $$ \begin{bmatrix}
 0 & 1 & 0 & 0 & 0 \\
 -1 & 0 & {{1}\over{4}} & -{{1}\over{4}} & 0 \\
-0 & 0 & -{{1}\over{4}} & {{1}\over{4}} + {{1}\over{3}} + {{1}\over{6}} & -{{1}\over{3}} -{{1}\over{6}} \\
+0 & 0 & \color{red}{-{{1}\over{4}}} & \color{red}{{{1}\over{4}} + {{1}\over{3}} + {{1}\over{6}}} & \color{red}{-{{1}\over{3}} -{{1}\over{6}}} \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 
-\end{bmatrix}  $
-- Z: $ \begin{bmatrix}
+\end{bmatrix}  $$
+- Z: $$ \begin{bmatrix}
 0 \\
 0 \\
 0 \\
 0 \\
 0 
-\end{bmatrix}  $
+\end{bmatrix}  $$
 
 Row 3 has the equation ${{V_3}\over{3}} + -{{V_2}\over{3}} + {{V_3}\over{6}} + -{{V_2}\over{6}} + -{{V_0}\over{10}} + {{V_3}\over{10}} 0 0$:
 
@@ -238,40 +238,54 @@ Row 3 has the equation ${{V_3}\over{3}} + -{{V_2}\over{3}} + {{V_3}\over{6}} + -
 - $-{{1}\over{6}}$ is added to $A[3, 3]$
 - $-{{1}\over{10}}$ is added to $A[1, 3]$
 - ${{1}\over{10}}$ is added to $A[4, 3]$
-- A: $ \begin{bmatrix}
+- A: $$ \begin{bmatrix}
 0 & 1 & 0 & 0 & 0 \\
 -1 & 0 & {{1}\over{4}} & -{{1}\over{4}} & 0 \\
 0 & 0 & -{{1}\over{4}} & {{1}\over{4}} + {{1}\over{3}} + {{1}\over{6}} & -{{1}\over{3}} -{{1}\over{6}} \\
-0 & -{{1}\over{10}} & 0 & -{{1}\over{3}} -{{1}\over{6}} & {{1}\over{3}} + {{1}\over{6}} + {{1}\over{10}} \\
+0 & \color{red}{-{{1}\over{10}}} & 0 & \color{red}{-{{1}\over{3}} -{{1}\over{6}}} & \color{red}{{{1}\over{3}} + {{1}\over{6}} + {{1}\over{10}}} \\
 0 & 0 & 0 & 0 & 0 
-\end{bmatrix}  $
-- Z: $ \begin{bmatrix}
+\end{bmatrix}  $$
+- Z: $$ \begin{bmatrix}
 0 \\
 0 \\
 0 \\
 0 \\
 0 
-\end{bmatrix}  $
+\end{bmatrix}  $$
 
 Row 4 has only the battery equation of $-V_0 + V_1 = 6$:
 
 - $6$ is placed at $z[0, 4]$
 - $-1$ is added to $A[1, 4]$
 - $1$ is added to $A[2, 4]$
-- A: $ \begin{bmatrix}
+- A: $$ \begin{bmatrix}
 0 & 1 & 0 & 0 & 0 \\
 -1 & 0 & {{1}\over{4}} & -{{1}\over{4}} & 0 \\
 0 & 0 & -{{1}\over{4}} & {{1}\over{4}} + {{1}\over{3}} + {{1}\over{6}} & -{{1}\over{3}} -{{1}\over{6}} \\
 0 & -{{1}\over{10}} & 0 & -{{1}\over{3}} -{{1}\over{6}} & {{1}\over{3}} + {{1}\over{6}} + {{1}\over{10}} \\
-0 & -1 & 1 & 0 & 0 
-\end{bmatrix}  $
-- Z: $ \begin{bmatrix}
+0 & \color{red}{-1} & \color{red}{1} & 0 & 0 
+\end{bmatrix}  $$
+- Z: $$ \begin{bmatrix}
 0 \\
 0 \\
 0 \\
 0 \\
-6 
-\end{bmatrix}  $
+\color{red}{6} 
+\end{bmatrix}  $$
+
+
+When we solve $Ax = z$, the matrix $x$ is returned: $$ \begin{bmatrix}
+0.375 \\
+0 \\
+6 \\
+4.5 \\
+3.75 
+\end{bmatrix}  $$
+
+Next, we must extract the results from our matrix. We create a dictionary of node:voltage for
+our circuit by reading the index of each unknown voltage from the unknowns list from $x$.
+E.g. the index in the unknowns list of node 3 ($V_3$) is 4, and $x[0, 4] = 3.75V$, so node 3 has a voltage of $3.75V$
+
 
 %include_pc(pseudocode/circuit_solve.txt)
 
