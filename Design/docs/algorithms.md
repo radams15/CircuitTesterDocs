@@ -85,13 +85,13 @@ This simply follows the following rules:
 
 - The second is a term of ${-{{S}\over{R}}} V$ where $S$ is the sign, $R$ is the resistance of the resistor, and $V$ is the unknown voltage.
 
-%include_pc(pseudocode/find_terms.txt)
-
 This results in the following terns:
 
 - Node 1 => $-I_{0\rightarrow1}, -{{V_1}\over{4}}, {{V_2}\over{4}}$
 - Node 2 => ${{V_2}\over{4}}, -{{V_1}\over{4}}, -{{V_3}\over{3}}, {{V_2}\over{3}}, -{{V_3}\over{6}},{{V_2}\over{6}}$
 - Node 3 => ${{V_3}\over{3}}, -{{V_2}\over{3}}, {{V_3}\over{6}}, -{{V_2}\over{6}}, -{{V_0}\over{10}}, {{V_3}\over{10}}$
+
+%include_pc(pseudocode/find_terms.txt)
 
 ### Making equations
 
@@ -285,6 +285,11 @@ When we solve $Ax = z$, the matrix $x$ is returned: $$ \begin{bmatrix}
 Next, we must extract the results from our matrix. We create a dictionary of node:voltage for
 our circuit by reading the index of each unknown voltage from the unknowns list from $x$.
 E.g. the index in the unknowns list of node 3 ($V_3$) is 4, and $x[0, 4] = 3.75V$, so node 3 has a voltage of $3.75V$
+This results in the following voltage map: $[0:0, 1:6, 2:4.5, 3:3.75]$
+
+We also extract currents from the matrix by finding the index of the unknown current as above with the unknown voltage.
+E.g. the index in the unknowns list of the battery ($I_{0\rightarrow1}$) is 0, and $x[0, 0] = 0.375A$, so the battery has
+a current of $0.375A$.
 
 
 %include_pc(pseudocode/circuit_solve.txt)
