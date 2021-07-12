@@ -1,0 +1,54 @@
+{-
+Returns a list of equations that must be solved
+to solve the overall circuit.
+-}
+FUNCTION get_equations()
+	equations = []
+	
+	ref_node_ids = ref_nodes()
+	
+	FOR r IN ref_node_ids DO
+		-- Reference nodes have a voltage of zero as the voltage
+		-- is relative to this.
+		equations.append(NEW Equation(0, [
+			NEW Term(1, NEW UnknownVoltage(r))
+		]))
+	END
+	
+	FOR n IN nodes DO
+	
+		-- Create an equation containing the total current
+		-- source multiplied by each of the outgoing and incoming
+		-- current nodes from the node,
+		IF NOT ref_node_ids.contains(n) THEN
+			-- All current nodes entering node n at n1
+			incoming = get_currents(n, 1, -1)
+			-- All current nodes leaving node n at n0
+			outgoing = get_currents(n, 0, +1)
+			
+			-- Currents leave at n0 and enter at n1 because conventional
+			-- currents are opposite to actual charge flow.
+			
+			
+			-- Add together the two lists of terms
+			terms = incoming + outgoing
+			
+			-- Create an equation of total current equals the sum of all the terms.
+			equations.append(NEW Equation(
+				0, terms
+			))
+		END
+	END
+	
+	FOR b IN batteries DO
+		-- Make an equation for every battery
+		equations.append(NEW Equation(b.value, [
+			-- N0 is negative as voltage is lost.
+			-- N1 is the positive as voltage is gained.
+			NEW Term(-1, NEW UnknownVoltage(b.n0)),
+			NEW Term(1, NEW UnknownVoltage(b.n1))
+		]))
+	END
+	
+	RETURN equations
+END

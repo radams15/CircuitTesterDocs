@@ -4,20 +4,8 @@ Current sources are not calculated as they are known
 currents.
 -}
 FUNCTION get_num_unknown_currents()
-	zero_resistors = 0
-	
-	{-
-	Sum the amount of resistors that have zero resistance.
-	these resistors have an unknown current.
-	-}
-	FOR r IN resistors DO
-		IF r.value == 0 THEN
-			zero_resistors += 1
-		END
-	END
-	
-	-- Add together the resistors and the number of batteries.
-	RETURN zero_resistors + batteries.length()
+	-- Batteries are the only thing with unknown currents.
+	RETURN batteries.length()
 END FUNCTION
 
 
@@ -56,49 +44,7 @@ FUNCTION get_current_total(node)
 END
 
 
-{-
-Gets the terms that enter and leave a node.
-Incoming is negative, outgoing is positive
--}
-FUNCTION get_currents(node, side, sign)
-	-- The current terms to return
-	terms = []
-	
-	FOR b IN batteries DO
-		n = (side == 0? b.n0 : b.n1) -- Convert int into node.
-		
-		-- If node specified in parameter.
-		IF n == node THEN
-			-- Batteries have an unknown current
-			terms.append(NEW Term(sign, NEW UnknownCurrent(b)))
-		END
-	END
-	
-	
-	FOR r IN resistors DO
-		n = side == 0? r.n0 : r.n1 -- Convert int into node.
-		
-		-- If correct node and resistor has no resistance.
-		IF n == node AND r.value == 0 THEN
-			-- If resistance is 0, the resistor has an unknown current.
-			terms.append(NEW Term(sign, NEW UnknownCurrent(b)))
-		END
-		
-		IF n == node AND r.value != 0 THEN
-			-- If the resistance is not 0, the resistor has
-			-- an unknown voltage.
-			terms.append(
-				NEW Term(-sign/r.value, NEW UnknownVoltage(r.n1))
-			)
-			
-			terms.append(
-				NEW Term(sign/r.value, NEW UnknownVoltage(r.n0))
-			)
-		END
-	END
-	
-	RETURN terms
-END
+
 
 
 
@@ -113,7 +59,7 @@ FUNCTION get_ref_nodes()
 	ref_nodes = []
 	
 	WHILE NOT to_visit.empty()
-		-- Get the first element in the nodesto be visited.
+		-- Get the first element in the nodes to be visited.
 		ref_node = to_visit[0]
 		
 		ref_nodes.append(ref_node)
@@ -160,78 +106,13 @@ FUNCTION get_connected_nodes(node)
 	END
 	
 	-- Remove duplicate values from visited.
-	visited = unique(visited)
+	visited = remove_unique(visited)
 	
 	RETURN visited
 END
 
 
 
-{-
-Returns a list of equations that must be solved
-to solve the overall circuit.
--}
-FUNCTION get_equations()
-	equations = []
-	
-	ref_node_ids = ref_nodes()
-	
-	FOR r IN ref_node_ids DO
-		-- Reference nodes have a voltage of zero as the voltage
-		-- is relative to this.
-		equations.append(NEW Equation(0, [
-			NEW Term(1, NEW UnknownVoltage(r))
-		]))
-	END
-	
-	FOR n IN nodes DO
-	
-		-- Create an equation containing the total current
-		-- source multiplied by each of the outgoing and incoming
-		-- current nodes from the node,
-		IF NOT ref_node_ids.contains(n) THEN
-			-- All current nodes entering node n at n1
-			incoming = get_currents(n, 1, -1)
-			-- All current nodes leaving node n at n0
-			outgoing = get_currents(n, 0, +1)
-			
-			-- Currents leave at n0 and enter at n1 because conventional
-			-- currents are opposite to actual charge flow.
-			
-			
-			-- Add together the two lists of terms
-			terms = incoming + outgoing
-			
-			-- Create an equation of total current equals the sum of all the terms.
-			equations.append(NEW Equation(
-				get_current_source_total(n), terms
-			))
-		END
-	END
-	
-	FOR b IN batteries DO
-		-- Make an equation for every battery
-		equations.append(NEW Equation(b.value, [
-			-- N0 is negative as voltage is lost.
-			-- N1 is the positive as voltage is gained.
-			NEW Term(-1, NEW UnknownVoltage(b.n0)),
-			NEW Term(1, NEW UnknownVoltage(b.n1))
-		]))
-	END
-	
-	FOR r IN resistors DO
-		IF r.value == 0 THEN
-			-- If resistance is 0, n0 and n1 are the same, as there
-			-- may as well not be a component there
-			equations.append(NEW Equation(r.value, [
-				NEW Term(1, NEW UnknownVoltage(r.n0)),
-				NEW Term(-1, NEW UnknownVoltage(r.n1))
-			]))
-		END
-	END
-	
-	RETURN equations
-END
 
 
 
@@ -246,13 +127,6 @@ FUNCTION get_unknown_currents()
 		-- Batteries have an unknown current before they
 		-- are placed into a circuit.
 		unknowns.append(NEW UnknownCurrent(b))
-	END
-	
-	FOR r IN resistors DO
-		-- Zero-resistance resistors have an unknown current.
-		IF r.value == 0 THEN
-			unknowns.append(NEW UnknownCurrent(r))
-		END
 	END
 	
 	RETURN unknowns

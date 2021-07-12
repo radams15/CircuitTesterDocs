@@ -1,0 +1,35 @@
+{-
+Gets the terms that enter and leave a node.
+Incoming is negative, outgoing is positive
+-}
+FUNCTION get_terms(node, sign)
+	-- The current terms to return
+	terms = []
+	
+	FOR b IN batteries DO
+		n = (sign == 0? b.n0 : b.n1) -- Convert int into node.
+		
+		-- If node specified in parameter.
+		IF n == node THEN
+			-- Batteries have an unknown current
+			terms.append(NEW Term(sign, NEW UnknownCurrent(b)))
+		END
+	END
+	
+	
+	FOR r IN resistors DO
+		n = sign == 0? r.n0 : r.n1 -- Convert int into node.
+		
+		IF n == node THEN
+			terms.append(
+				NEW Term(-sign/r.value, NEW UnknownVoltage(r.n1))
+			)
+			
+			terms.append(
+				NEW Term(sign/r.value, NEW UnknownVoltage(r.n0))
+			)
+		END
+	END
+	
+	RETURN terms
+END
