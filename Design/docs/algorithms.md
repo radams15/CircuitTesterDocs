@@ -8,7 +8,7 @@ voltages at different nodes and vertices of the circuit.
 
 Throughout the explanation this circuit will be used as an example.
 
-![Example Circuit](images/example_circuit.png)
+![Example Circuit](images/demonstration_circuit.png)
 
 
 ## Convert circuits into matrices
@@ -85,7 +85,7 @@ This simply follows the following rules:
 
 - The second is a term of ${-{{S}\over{R}}} V$ where $S$ is the sign, $R$ is the resistance of the resistor, and $V$ is the unknown voltage.
 
-This results in the following terns:
+This results in the following terms:
 
 - Node 1 => $-I_{0\rightarrow1}, -{{V_1}\over{4}}, {{V_2}\over{4}}$
 - Node 2 => ${{V_2}\over{4}}, -{{V_1}\over{4}}, -{{V_3}\over{3}}, {{V_2}\over{3}}, -{{V_3}\over{6}},{{V_2}\over{6}}$
@@ -370,12 +370,30 @@ stored in the same arrays as pointers.
 
 The Type attribute allows functions to know if they are an UnknownVoltage or an UnknownCurrent.
 
-### Unknown Voltage
+### Unknown voltage
 
 %include_pc(pseudocode/unknown_voltage.txt)
 
-### Unknown Current
+### Unknown current
 
 %include_pc(pseudocode/unknown_current.txt)
+
+## Save & load circuits
+
+Circuits will be saved to the standard data directories for different OS':
+
+- Windows: C:\\Users\\%USER%\\AppData\\Local\\
+- Linux: /home/\$USER/.local/share/
+- MacOS: /Users/\$USER/Library/
+
+Save files will have the following contents (JSON format):
+```
+{
+	"name": "Example Simulation 1",
+	"parts": [
+		
+	]
+}
+```
 
 \newpage
