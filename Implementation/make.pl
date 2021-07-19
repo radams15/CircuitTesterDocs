@@ -2,11 +2,17 @@
 use strict;
 use warnings;
 
+use File::Find;
+
+
 my @MD_ORDER = (
 	"styling/style.md",
 	
 	"styling/pagebreak.tex",
 	"docs/bugs.md",
+
+	"styling/pagebreak.tex",
+	"docs/final_code.md",
 );
 
 
@@ -16,8 +22,34 @@ my @EXTS = ("raw_tex", "grid_tables", "fenced_code_blocks", "backtick_code_block
 
 my $CODE_STYLE = "tango.theme";
 
+sub get_code{
+	`rm -rf code`;
+	`wget 'https://github.com/radams15/CircuitTester/archive/refs/heads/master.zip'`;
+	`unzip master.zip */src/* -d code`;
+	`rm -rf master.zip`;
+
+	open(FH, ">", "docs/final_code.md");
+
+	print FH "# Final Code\n\n\n";
+	
+	find( { wanted => sub {
+		my $f = $_;
+		if($f =~ /.*\.(cc|h)/g){
+			my $title = $f;
+			$title =~ s/code\/CircuitTester-master\/src\///g;
+
+			my $inc = "\n## $title\n\n\%include_cpp($f)";
+			print FH "$inc\n";
+		}
+	}, no_chdir => 1 }, "code/" );
+
+	close(FH);
+}
+
 
 sub main{
+	get_code();
+
 	@MD_ORDER = map { "'$_'" } @MD_ORDER;
 
 	my $md_files = join " 'styling/border.md' ", @MD_ORDER;
@@ -32,6 +64,5 @@ sub main{
 	
 	`mv $OUT_FILE ../build`;
 }
-
 
 &main;

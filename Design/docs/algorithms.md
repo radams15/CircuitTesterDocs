@@ -382,12 +382,17 @@ The Type attribute allows functions to know if they are an UnknownVoltage or an 
 
 Circuits will be saved to the standard data directories for different OS':
 
-- Windows: C:\\Users\\%USER%\\AppData\\Local\\
-- Linux: /home/\$USER/.local/share/
-- MacOS: /Users/\$USER/Library/
+- Windows: `C:\Users\%USER%\AppData\Local\CircuitTester\`
+- Linux: `/home/$USER/.local/share/CircuitTester/`
+- MacOS: `/Users/$USER/Library/CircuitTester/`
+
+The username will be determined differently depending on the platform:
+
+- Windows uses `GetUserName` from `Windows.h`.
+- MacOS/Linux use `getuid` and `getpwuid` from `unistd.h`.
 
 Save files will have the following contents (JSON format):
-```
+``` json
 {
 	"name": "Example Simulation 1",
 	"parts": [
@@ -395,5 +400,13 @@ Save files will have the following contents (JSON format):
 	]
 }
 ```
+
+If possible, I would also like to place an image of the circuit in the save file by:
+
+- Converting the canvas into an image.
+- Cropping the image to include only the circuit.
+- Shrinking and compressing the image to save space.
+- Encoding the image to base64.
+- Adding to an "image" key in the json file.
 
 \newpage

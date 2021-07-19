@@ -22,6 +22,9 @@ my @MD_ORDER = (
 
 	"styling/pagebreak.tex",
 	"docs/test_plans.md",
+
+	"styling/pagebreak.tex",
+	"docs/future_steps.md",
 	
 	"styling/pagebreak.tex",
 	"docs/sources.md",
