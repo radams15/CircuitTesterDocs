@@ -63,6 +63,7 @@ sub main{
 	`$command`;
 	
 	`mv $OUT_FILE ../build`;
+	`rm -rf code`;
 }
 
 &main;
