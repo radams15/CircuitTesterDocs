@@ -10,6 +10,7 @@ my @FOLDERS = (
 	"Journal",
 	"Targets",
 	"Design",
+	"Implementation",
 );
 
 my $BUILD_FOLDER = "build";

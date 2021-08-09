@@ -74,6 +74,14 @@
 
 %include_cpp(code/CircuitTester-master/src/main/UI/Arrow.h)
 
+## main/UI/SettingsMenu.cc
+
+%include_cpp(code/CircuitTester-master/src/main/UI/SettingsMenu.cc)
+
+## main/UI/SettingsMenu.h
+
+%include_cpp(code/CircuitTester-master/src/main/UI/SettingsMenu.h)
+
 ## main/UI/MainWindow.h
 
 %include_cpp(code/CircuitTester-master/src/main/UI/MainWindow.h)
