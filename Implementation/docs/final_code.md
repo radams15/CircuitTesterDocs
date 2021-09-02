@@ -34,10 +34,6 @@
 
 %include_cpp(code/CircuitTester-master/src/main/UI/SceneText.cc)
 
-## UI/Arrow.cc
-
-%include_cpp(code/CircuitTester-master/src/main/UI/Arrow.cc)
-
 ## UI/SceneText.h
 
 %include_cpp(code/CircuitTester-master/src/main/UI/SceneText.h)
@@ -62,6 +58,10 @@
 
 %include_cpp(code/CircuitTester-master/src/main/UI/UIComponent.cc)
 
+## UI/Line.h
+
+%include_cpp(code/CircuitTester-master/src/main/UI/Line.h)
+
 ## UI/SceneItem.h
 
 %include_cpp(code/CircuitTester-master/src/main/UI/SceneItem.h)
@@ -70,13 +70,13 @@
 
 %include_cpp(code/CircuitTester-master/src/main/UI/AnalysisMapper.cc)
 
-## UI/Arrow.h
-
-%include_cpp(code/CircuitTester-master/src/main/UI/Arrow.h)
-
 ## UI/SettingsMenu.cc
 
 %include_cpp(code/CircuitTester-master/src/main/UI/SettingsMenu.cc)
+
+## UI/Line.cc
+
+%include_cpp(code/CircuitTester-master/src/main/UI/Line.cc)
 
 ## UI/SettingsMenu.h
 

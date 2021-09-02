@@ -71,3 +71,40 @@ void MainWindow::createActions() {
 This resulted in the following:
 
 ![Stage 2](images/stage2.png)
+
+## Bugs
+
+### Line drawing crash
+
+When drawing a line at mouseReleaseEvent, the program would crash every time.
+
+I realised this is because the items() function returns items at the point of the line start, but this includes the line, so I needed
+to remove the line from the list of start items that were at the position.
+
+Before:
+
+```cpp
+// Get all the items at the position of the start of the line.
+QList<QGraphicsItem *> startItems = items(line->line().p1());
+
+// Same as above but with the end point.
+QList<QGraphicsItem *> endItems = items(line->line().p2());
+```
+
+
+After:
+
+```cpp
+// Get all the items at the position of the start of the line.
+QList<QGraphicsItem *> startItems = items(line->line().p1());
+if (startItems.count() != 0 && startItems.first() == line) {
+    // Remove the line as the line starts at the start point of the line obviously.
+    startItems.removeFirst();
+}
+
+// Same as above but with the end point.
+QList<QGraphicsItem *> endItems = items(line->line().p2());
+if (endItems.count() != 0 && endItems.first() == line) {
+    endItems.removeFirst();
+}
+```
