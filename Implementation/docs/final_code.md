@@ -1,4 +1,4 @@
-# Final Code
+# Appendix: Full Source List
 
 
 
@@ -14,9 +14,9 @@
 
 %include_cpp(code/CircuitTester-master/src/main/main.cc)
 
-## Saves/UserUtils.h
+## Saves/FileUtils.h
 
-%include_cpp(code/CircuitTester-master/src/main/Saves/UserUtils.h)
+%include_cpp(code/CircuitTester-master/src/main/Saves/FileUtils.h)
 
 ## Saves/CircuitSaver.h
 

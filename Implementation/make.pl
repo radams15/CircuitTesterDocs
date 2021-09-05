@@ -70,7 +70,7 @@ sub get_code{
 
 	open(FH, ">", "docs/final_code.md");
 
-	print FH "# Final Code\n\n\n";
+	print FH "# Appendix: Full Source List\n\n\n";
 	
 	find( { wanted => sub {
 		my $f = $_;

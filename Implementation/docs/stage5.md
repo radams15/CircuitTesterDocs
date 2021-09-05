@@ -53,3 +53,27 @@ for(auto it : sol){
         }
 }
 ```
+
+### Initial Simulation Run
+
+Running the simulation when there are no components on the QGraphicsScene would cause the program to segfault.
+
+```cpp
+void MainWindow::runSimulation() {
+    AnalysisMapper mapper(scene->items().toStdList());
+}
+```
+
+![Segfault](images/segfault_1.png)
+
+The solution was to check if the scene was empty before running, then aborting if this is the case.
+
+```cpp
+void MainWindow::runSimulation() {
+    if(scene->items().empty()){
+        return;
+    }
+
+    AnalysisMapper mapper(scene->items().toStdList());
+}
+```
