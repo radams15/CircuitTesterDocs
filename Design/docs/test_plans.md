@@ -167,3 +167,18 @@ Can an item be moved around the canvas.
 
 Can an item be deleted from the canvas.
 
+## Test 6 - Save/load
+
+Save a circuit to a file, close the program, then load the file again and check they
+are the same.
+
+## Test 7 - Export/Import
+
+Save a circuit, export it to the desktop, then try to import the circuit on a different
+device by emailing the file, importing it, then loading the file.
+
+## Test 8 - Editing a save file
+
+Save a circuit with a wire component, change the component material to a random string,
+change the coordinates to both be -1. Load the circuit and see whether or not the program
+corrects the problems.
