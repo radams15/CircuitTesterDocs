@@ -2,6 +2,12 @@
 
 This is the scene where all the components are placed.
 
+This was a seperate section because I felt that It was a core part of the program
+that needed independently programming, and that it was possible to seperate this part
+from the rest of the project to test.
+
+This is part of the main window in the design phase.
+
 I first made a prototype where there was a single QGraphicsScene derivitive
 (Scene), and a QGraphicsView which is the GUI representation of the QGraphicsScene.
 
@@ -61,7 +67,7 @@ MainWindow::MainWindow() {
 }
 
 void MainWindow::createActions() {
-    deleteAction = new QAction(QIcon(":/images/delete.png"), tr("&Delete"), this);
+    deleteAction = new QAction(QIcon(tr("&Delete"), this);
     deleteAction->setShortcut(tr("Delete"));
     deleteAction->setStatusTip(tr("Delete item from diagram"));
     connect(deleteAction, &QAction::triggered, this, &MainWindow::deleteItem);
@@ -72,39 +78,26 @@ This resulted in the following:
 
 ![Stage 2](images/stage2.png)
 
+## Validation
+
+In this section there is nothing to validate as there is almost no user input, with the only
+thing a user doing is dragging a mouse or pressing the delete key, neither of which
+can have any erroneous or invalid data.
+
 ## Bugs
 
-### Line drawing crash
-
-When drawing a line at mouseReleaseEvent, the program would crash every time.
-
-I realised this is because the items() function returns items at the point of the line start, but this includes the line, so I needed
-to remove the line from the list of start items that were at the position.
-
-Before:
+As this section was fairly small, I did not encounter any interesting or difficult to solve problems, with my only real problem
+being that I needed to specifically allow SceneItems to be able to move and be selected with the following code:
 
 ```cpp
-// Get all the items at the position of the start of the line.
-QList<QGraphicsItem *> startItems = items(line->line().p1());
-
-// Same as above but with the end point.
-QList<QGraphicsItem *> endItems = items(line->line().p2());
+setFlag(QGraphicsItem::ItemIsMovable, true);
+setFlag(QGraphicsItem::ItemIsSelectable, true);
 ```
 
 
-After:
+## Review
 
-```cpp
-// Get all the items at the position of the start of the line.
-QList<QGraphicsItem *> startItems = items(line->line().p1());
-if (startItems.count() != 0 && startItems.first() == line) {
-    // Remove the line as the line starts at the start point of the line obviously.
-    startItems.removeFirst();
-}
+Compared to my plan, this achieves the small amount of goals I set myself, as I can drag around and delete components.
 
-// Same as above but with the end point.
-QList<QGraphicsItem *> endItems = items(line->line().p2());
-if (endItems.count() != 0 && endItems.first() == line) {
-    endItems.removeFirst();
-}
-```
+This was fairly simple to program, as the documentation and examples of QT are excellent. The hardest part was probably
+the QActions for the delete function that needed to first be defined, then added to the toolbar to work.

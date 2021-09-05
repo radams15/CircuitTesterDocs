@@ -3,6 +3,9 @@
 The expanding settings window was a design decision I made as it is helpful in saving
 space on the window.
 
+This was a seperate stage as it was a distinct part of the main window design, and the animation section
+looked to be fairly difficult to code, so I made a seperate part to write and test.
+
 I had previously used an idea like this in a previous personal project, so I already had a somewhat working prototype
 of a window that expanded and contracted with a button.
 
@@ -177,6 +180,8 @@ void SettingsMenu::setInteriorLayout(QLayout* layout) {
 ### Hiding Old Menus
 
 With the above bug, after fixing, the old menus still showed, but did not work in any way, being the "ghost" of the widget.
+This is because removing the item did not refresh the widget, so the widget was never hidden after deletion.
+
 I fixed this by setting the widget to hidden before removing it, which solved the issue.
 
 New:
@@ -189,3 +194,39 @@ void SettingsMenu::clear() {
     }
 }
 ```
+
+## Validation
+
+Effectively, since the settings window has only one public method with any parameters, setInteriorLayout, there was
+very little Validation to do.
+
+The only validation needed was to ensure that the pointer passed in was not a null pointer, as the static code analysis of
+the IDE would make sure that everything else was valid.
+
+```cpp
+void SettingsMenu::setInteriorLayout(QLayout* layout) {
+    if(layout == nullptr){
+        return;
+    }
+
+    clear();
+
+    auto* newWidget = new QWidget;
+    newWidget->setLayout(layout);
+
+    innerLayout->addWidget(newWidget);
+}
+```
+
+## Review
+
+Overall, this section was more difficult than stage 2, but easier than stage 1. This part had a few methods so was modular,
+but was only 1 class, as this stage did one job that I did not think would benefit from being split up into many classes.
+
+Once again, this was part of the main window element of the design, and I believe that this section went very well.
+
+At the end of the stage, the prototype looked like this:
+
+![Stage 3 Closed](images/stage3_closed.png)
+
+![Stage 3 Open](images/stage3_open.png)
