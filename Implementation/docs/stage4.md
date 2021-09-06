@@ -126,6 +126,106 @@ void Scene::mousePressEvent(QGraphicsSceneMouseEvent* mouseEvent){
 }
 ```
 
+### Adding Components
+
+To add components I just needed to add the toolbar of components. I created a utility method that would
+create QWidget buttons for each component.
+
+There was a button group that would call one function each time any of the tool buttons were pressed, and each
+button had a specific ID which was the ComponentType enum.
+
+This generates the QWidget button:
+
+```cpp
+template<class T>
+QWidget *MainWindow::createCellWidget(const QString &text) {
+    // Initialise the widget to get the pixmap.
+    T item;
+    QIcon icon(item.getPixmap());
+
+    // Make a 50*50 icon button for to select the item.
+    auto* button = new QToolButton;
+    button->setIcon(icon);
+    button->setIconSize(QSize(50, 50));
+    button->setCheckable(true);
+    // Add the button to the buttongroup.
+    buttonGroup->addButton(button, item.getId());
+
+    // Create a grid with the icon and a label of the icon name.
+    auto *layout = new QGridLayout;
+    layout->addWidget(button, 0, 0, Qt::AlignHCenter);
+    layout->addWidget(new QLabel(text), 1, 0, Qt::AlignCenter);
+
+    // Create a widget for the layout.
+    auto* widget = new QWidget;
+    widget->setLayout(layout);
+
+    return widget;
+}
+```
+
+This creates the grid of buttons and calls the method when a button is pressed.
+
+```cpp
+void MainWindow::createToolBox() {
+    // Create the button group.
+    buttonGroup = new QButtonGroup(this);
+    buttonGroup->setExclusive(false);
+
+    // When the button group is clicked, call buttonGroupClicked.
+    connect(buttonGroup, static_cast<void(QButtonGroup::*)(QAbstractButton *)>(&QButtonGroup::buttonClicked),
+            this, &MainWindow::buttonGroupClicked); // https://doc.qt.io/archives/qt-5.6/qbuttongroup.html#buttonClicked
+
+    // Create new grid layout, add the widgets for each component type to a 2*n grid.
+    auto* layout = new QGridLayout;
+    layout->addWidget(createCellWidget<Resistor>(tr("Resistor")), 0, 0);
+    layout->addWidget(createCellWidget<Battery>(tr("Battery")), 0, 1);
+    layout->addWidget(createCellWidget<Wire>(tr("Wire")), 1, 0);
+    layout->addWidget(createCellWidget<Switch>(tr("Switch")), 1, 1);
+
+    /* More Code */
+```
+
+
+The buttonGroupClicked method below simply unchecks all the other buttons, and then creates the correct
+component depending on the ID of the button clicked, passing the new component to the scene in order to
+place the item down. It then sets the scene to insert mode.
+
+```cpp
+void MainWindow::buttonGroupClicked(QAbstractButton *button) {
+    const QList<QAbstractButton *> buttons = buttonGroup->buttons();
+
+    for (QAbstractButton* myButton : buttons) {
+        // Uncheck all the buttons that are not the clicked one.
+        if (myButton != button){
+            button->setChecked(false);
+        }
+    }
+    const int id = buttonGroup->id(button);
+
+    // Set the scene item to a new instance of the selected button.
+    switch(id){
+        case UI_RESISTOR:
+            scene->setItem(new Resistor);
+            break;
+        case UI_BATTERY:
+            scene->setItem(new Battery);
+            break;
+        case UI_WIRE:
+            scene->setItem(new Wire);
+            break;
+        case UI_SWITCH:
+            scene->setItem(new Switch);
+            break;
+        default:
+            return;
+    }
+
+    scene->setMode(Scene::INSERT_ITEM);
+}
+
+```
+
 ### Incorporating the settings window
 
 For this part, I first needed to simply add a small line of code to the main window to add the settings window:
@@ -168,6 +268,33 @@ void MainWindow::itemDoubleClicked(UIComponent* item) {
     if(not settingsMenu->toggleButton->isChecked()){
         settingsMenu->toggleButton->click();
     }
+}
+```
+
+Each component has a different set of methods to get the properties back out, e.g. the Wire, Resistor and Switch
+are all children of the ResistiveElement class which has a method `double getResistance()`, which returns the
+resistance of the component, and the Battery has a `double getVoltage()` method which returns the voltage.
+
+Both methods use the child class to extract data from the settings menus, possibly run calculations, then return the result.
+
+E.g. Wire has the following in the `getResistance()` method:
+
+```cpp
+double Wire::getResistance() {
+    // Get the length, convert cm to m by dividing by 100.
+    long double length = lengthSpinner->value()/100L;
+
+    // Get the area, convert mm^2 to m^2 by dividing by 1000^2
+    long double area = areaSpinner->value()/1e6L;
+
+    // Get the material by converting the wire combobox to text and then indexing the resistivities map.
+    std::string material = wireCombo->currentText().toStdString();
+    long double resistivity = resistivities.at(material);
+
+    // Use the resistivity formula p=(RA/l), rearranged to R=(pl)/A
+    long double resistance = (resistivity*length)/area;
+
+    return (double) resistance;
 }
 ```
 
