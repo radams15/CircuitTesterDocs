@@ -11,6 +11,7 @@ my @FOLDERS = (
 	"Targets",
 	"Design",
 	"Implementation",
+	"Evaluation",
 );
 
 my $BUILD_FOLDER = "build";
