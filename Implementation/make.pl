@@ -96,7 +96,7 @@ sub main{
 
 	my $exts =  join "", (map { "+$_" } @EXTS);
 
-	my $command = "awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files meta.yaml| perl ../preprop.pl | pandoc -s --quiet -f markdown-implicit_figures$exts --highlight-style=$CODE_STYLE -B styling/before.tex -H ../global/header.tex --toc --toc-depth=2 -o '${OUT_FILE}' -t latex --pdf-engine=xelatex";
+	my $command = "awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files meta.yaml| perl ../preprop.pl | pandoc -s --quiet -f markdown-implicit_figures$exts --highlight-style=$CODE_STYLE -B styling/before.tex --listings -H ../global/header.tex --toc --toc-depth=2 -o '${OUT_FILE}' -t latex --pdf-engine=xelatex";
 	
 	print "$command\n";
 

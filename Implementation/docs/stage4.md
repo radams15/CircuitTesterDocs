@@ -1,6 +1,7 @@
 # Stage 4 - Main Window (Merge Stages 2&3)
 
-This was my first merge, adding the settings window and the graphics scene together.
+This was my first merge, adding the settings window and the graphics scene together, and so is still part of the
+main window from the design phase.
 
 I added the ability to draw lines between components, the ability to add components, and the ability
 to alter the settings of components.
@@ -469,26 +470,15 @@ Similar questions I asked my peers in A-Level physics:
 
 
 From these responses, I deduced that the program was too hard to understand, so
-I decided to include an instructions page in the program under the help menu with the following content under the
-Help->Tutorial menu:
+I decided to include an instructions page in the program under the help menu with the following:
 
-```markdown
-Welcome to Rhys' circuit simulation program.
+Menu:
 
-Here is a brief tutorial to understand how the program works.
+![Tutorial Menu](images/tutorial_menu.png)
 
-To place down a component, first click on the component button, then click on the location
-on the canvas where you want the component to go.
+Popup:
 
-You can move components by dragging the black parts.
-
-At the top left, you can either select movement mode (the mouse pointer button) to drag components,
-or the connector button (the black line to the left of the mouse pointer) to connect components
-with lines.
-
-Double-clicking any component will open up the settings menu on the right, which allows you to
-change anything about any of the Components, such as voltage, resistance or whether they are on or off.
-```
+![Tutorial Popup](images/tutorial.png)
 
 I then asked the following question after sending off the improved prototype with guidance on
 where the tutorial menu is.
