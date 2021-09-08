@@ -425,3 +425,83 @@ void Scene::mouseDoubleClickEvent(QGraphicsSceneMouseEvent* mouseEvent) {
 This turned out to be the largest prototype of my whole project due to the large amount of inseperable components.
 
 It was fairly difficult, and there were many bugs that needed lots of time to diagnose, but eventually I solved almost all of them.
+
+
+### Stakeholder Feedback
+
+This was the first prototype that I thought was of enough completion to show my
+stakeholder, and so I decided it was the correct time to have their feedback on the
+project so far.
+
+I asked the following questions to my physics teacher:
+
+1. **On opening the program, did you understand what every section did?**
+    Not really, but I am sure if it was explained to me it would be easier.
+2. **Were you aware of how to place components onto the canvas?**
+    No.
+3. **Did you find the program ran quickly or slowly on your computer?**
+    It started very quickly and seemed fast.
+4. **Is there anything you found especially difficult or unusual?**
+    Again, the app was hard to understand without guidance.
+5. **Is there anything that you found missing?**
+    There is nothing that I missed except more A-Level components.
+6. **Do you see yourself using this to help teach your students?**
+    Maybe when I understand how to use it I can teach my students how to learn with it.
+
+Similar questions I asked my peers in A-Level physics:
+
+1. **On opening the program, did you understand what every section did?**
+    When I opened the app first everything looked OK, but when I tried to do anything
+    it was complicated to understand.
+2. **Were you aware of how to place components onto the canvas?**
+    Eventually I did but it was not clear.
+3. **Did you find the program ran quickly or slowly on your computer?**
+    The program was very fast.
+4. **Is there anything you found especially difficult or unusual?**
+    Placing down circuits was hard, and drawing lines was strange because the
+    lines did not connect to the right ends of the components.
+    Another unusual thing was that I couldn't connect the components with the wire component
+    by placing them together.
+5. **Is there anything that you found missing?**
+    No.
+6. **Do you see this program aiding your learning in the future?**
+    Possibly, if the problems are fixed.
+
+
+From these responses, I deduced that the program was too hard to understand, so
+I decided to include an instructions page in the program under the help menu with the following content under the
+Help->Tutorial menu:
+
+```markdown
+Welcome to Rhys' circuit simulation program.
+
+Here is a brief tutorial to understand how the program works.
+
+To place down a component, first click on the component button, then click on the location
+on the canvas where you want the component to go.
+
+You can move components by dragging the black parts.
+
+At the top left, you can either select movement mode (the mouse pointer button) to drag components,
+or the connector button (the black line to the left of the mouse pointer) to connect components
+with lines.
+
+Double-clicking any component will open up the settings menu on the right, which allows you to
+change anything about any of the Components, such as voltage, resistance or whether they are on or off.
+```
+
+I then asked the following question after sending off the improved prototype with guidance on
+where the tutorial menu is.
+
+To my physics teacher:
+
+**After reading the tutorial menu, did you more easily understand how the program works?**
+
+I now understand what to do to place down the circuits, there is no longer any part of the program that
+I do not understand.
+
+To my peers:
+
+**After reading the tutorial menu, did you more easily understand how the program works?**
+
+Yes. It is easier now.

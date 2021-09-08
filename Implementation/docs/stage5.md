@@ -23,31 +23,11 @@ Next, my program assigns nodes to each component by selecting a start component 
 through each other on the circuit, finding the shortest path from the start to it, basically
 converting distance to nodes.
 
-I used a findShortestPath method for this, which I adapted from the Python examples at [https://www.python.org/doc/essays/graphs/](https://www.python.org/doc/essays/graphs/).
+I used a findShortestPath method for this, which I adapted from the Python examples at [https://pythoninwonderland.wordpress.com/2017/03/18/how-to-implement-breadth-first-search-in-python/](https://pythoninwonderland.wordpress.com/2017/03/18/how-to-implement-breadth-first-search-in-python/).
 
-The original worked under python 2, but did not work in python3, so when I created a python example, I
-fixed the code:
+The original worked perfectly for my needs, but I changed it to fit my needs in my test programs:
 
 ```python
-def find_shortest_path(graph, start, end, path=[]):
-        path = path + [start]
-        if start == end:
-            return path
-        if not graph.has_key(start):
-            return None
-        shortest = None
-        for node in graph[start]:
-            if node not in path:
-                newpath = find_shortest_path(graph, node, end, path)
-                if newpath:
-                    if not shortest or len(newpath) < len(shortest):
-                        shortest = newpath
-        return shortest
-```
-
-Python 3 and with a small graph example:
-
-```python3
 def find_shortest_path(graph, start, goal):
     explored = []
 
@@ -85,7 +65,7 @@ def find_shortest_path(graph, start, goal):
                     return new_path
             explored.append(node)
 
-    return None
+    return []
 ```
 
 I then translated this to C++:
@@ -185,7 +165,7 @@ for(auto it : sol){
 }
 ```
 
-### Initial Simulation Run
+### Initial Simulation Run Segfault.
 
 Running the simulation when there are no components on the QGraphicsScene would cause the program to segfault.
 
