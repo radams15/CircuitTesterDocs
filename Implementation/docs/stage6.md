@@ -70,10 +70,16 @@ UIComponent::UIComponent(int id, std::string resourcePath): ID(id), SceneItem(st
 
 As seen in the example save data above, each component has the field "id", and a list of ids it is connected to in the list "connections".
 
+The first problem though, was how to find the correct directory to save in.
+
 ## Validation
 
+This was the area on my program that needed the most validation, as the files could be corrupted or could be changed by users.
+
+This meant that the code needed to be adapted to validate every file and component that was adapted.
+
 I changed each Component derivative class to have a constructor with optional parameters for
-the component values as seen below.
+the component values as seen below. Each one of them is validated in the constructor and corrected if invalid.
 
 ```cpp
 Battery(double voltage=1.0f, bool on=true);
@@ -214,11 +220,7 @@ bool UserUtils::pathExists(std::string dir){
 
 When I saved a wire then opened it again, the values were all in the wrong place.
 
-The problem was that I had misplaced the method arguments in Wire:
-
-```cpp
-
-```
+The problem was that I had misplaced the method arguments in Wire, causing the values to be reversed:
 
 Before:
 
@@ -231,3 +233,4 @@ After:
 ```cpp
 comp = new Wire(part["component"]["length"].get<double>(), part["component"]["area"].get<double>(), part["component"]["material"].get<std::string>());
 ```
+
