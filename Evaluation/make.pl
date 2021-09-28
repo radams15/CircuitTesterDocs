@@ -10,6 +10,12 @@ my @MD_ORDER = (
 
 	"styling/pagebreak.tex",
 	"docs/intro.md",
+	
+	"styling/pagebreak.tex",
+	"docs/testing.md",
+	
+	"styling/pagebreak.tex",
+	"docs/feedback.md",
 );
 
 
