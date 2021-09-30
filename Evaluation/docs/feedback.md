@@ -42,4 +42,4 @@ The program was slightly hard to understand, but after reading the tutorial it w
 
 - **Do you see yourself using this program to learn about circuits for school**
 
-Maybe, although it is very simplistic for what I need.
+Maybe, although it is very simplistic for what I need
