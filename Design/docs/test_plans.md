@@ -143,41 +143,41 @@ when placed in series.
 
 \newpage
 
-## Test 2 - Batteries in parallel
+## Test 3 - Batteries in parallel
 
 ![The circuit to be tested](images/blackbox_3.png)
 
 This tests to see is two 9.0V batteries have a total voltage of 9.0V,
-and a resistor of resistance 10.0 $\Omega$ causes a current of 0.9A.
+and a resistor of resistance 10.0 $\Omega$ causes a current of 45A.
 
 The two parallel batteries should have the same characteristics as just one
 9.0V battery.
 
 \newpage
 
-## Test 3 - Place down an item
+## Test 4 - Place down an item
 
 This simply tests if a component can be placed onto the canvas.
 
-## Test 4 - Move an item
+## Test 5 - Move an item
 
 Can an item be moved around the canvas.
 
-## Test 5 - Delete an item
+## Test 6 - Delete an item
 
 Can an item be deleted from the canvas.
 
-## Test 6 - Save/load
+## Test 7 - Save/load
 
 Save a circuit to a file, close the program, then load the file again and check they
 are the same.
 
-## Test 7 - Export/Import
+## Test 8 - Export/Import
 
 Save a circuit, export it to the desktop, then try to import the circuit on a different
 device by emailing the file, importing it, then loading the file.
 
-## Test 8 - Editing a save file
+## Test 9 - Editing a save file
 
 Save a circuit with a wire component, change the component material to a random string,
 change the coordinates to both be -1. Load the circuit and see whether or not the program
