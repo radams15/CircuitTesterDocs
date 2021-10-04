@@ -33,3 +33,9 @@ The program can also import and export circuits to any folder on the computer us
 And here the circuit is saved in the folder, showing the export functionality.
 
 ![The Exported .cir File](images/export2.png)
+
+### Accessibility
+
+The program is accessible, as the underlying QT framework is compatable with general OS narration and magnifier programs, meaning that the OS handles text-to-speech functionality for any visually-impaired users.
+
+There is however no way for these users to be able to see what component is what without being able to see the image, which may limit the usage of the program for these users.

@@ -30,13 +30,15 @@ This shows that the result of test 3 is correct and matches the required values 
 
 ## Test 9 - Editing a save file.
 
-I created this circuit, and saved it as test9.
+This test is to make sure that any corrupted files are fixed by the program without any crashes that could render save files unuseable.
+
+I created this circuit, and saved it as test9:
 
 ![Test file](images/wb9a.png)
 
 This resulted in the following save file content:
 
-```json
+```javascript
 {
     "name": "test9",
     "parts": [
@@ -77,7 +79,7 @@ This resulted in the following save file content:
 
 I edited the file to the following content:
 
-```json
+```javascript
 {
     "name": "test9",
     "parts": [
@@ -120,4 +122,6 @@ I then loaded the file:
 
 ![Changed test file](images/wb9b.png)
 
-This resulted in the \[-1, -1\] coordinates changing into \[0, 0\], and the material changing from "gdgssjdgsnjgsd" to Carbon. This means the test has passed.
+This resulted in the \[-1, -1\] coordinates changing into \[0, 0\], and the material changing from "gdgssjdgsnjgsd" to Carbon. This causes the program to load the wire to the top left of the screen as this is where the origin of the canvas is. The corrupted values were reset to their default values by the program because the validation section in the UIComponent classes worked as expected.
+
+This means the test has passed as there were no crashes, only a silent correction of the corrupted data.

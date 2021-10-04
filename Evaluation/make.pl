@@ -7,9 +7,6 @@ use File::Find;
 
 my @MD_ORDER = (
 	"styling/style.md",
-
-	"styling/pagebreak.tex",
-	"docs/intro.md",
 	
 	"styling/pagebreak.tex",
 	"docs/testing.md",
