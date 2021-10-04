@@ -8,9 +8,6 @@
 |                                                 | Some of these will be manually input by me to be program default examples, others       |
 |                                                 | will need to be manually added by the user.                                             |
 +-------------------------------------------------+-----------------------------------------------------------------------------------------+
-| Be able to be visible on a large screen         | The teacher will probably use a projector to display the program,                       |
-|                                                 | so the program should scale well on a computer.                                         |
-+-------------------------------------------------+-----------------------------------------------------------------------------------------+
 | Show information about the circuit              | To show where current is diverted inside circuits, over distances, etc.                 |
 | at any point.                                   |                                                                                         |
 |                                                 | This will be achieved by using ammeter/volt meter components that are attached          |
