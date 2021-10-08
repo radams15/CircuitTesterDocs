@@ -1,6 +1,6 @@
 # Success of The Solution
 
-My program is fast to load, as it loaded in under 2 seconds on Windows XP with 128MB of RAM. The program runs without stuttering or lagging on even this old hardware.
+My program is fast to load, as it loaded in under 2 seconds on Windows XP with 128MB of RAM. The program runs without stuttering or lagging on even this old hardware. I would say that this means the program runs very well.
 
 As in the feedback section, the stakeholders rated my solution 7/10 and 8/10 for ease of navigation.
 

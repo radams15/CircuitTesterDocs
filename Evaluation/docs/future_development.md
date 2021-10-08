@@ -2,6 +2,9 @@
 
 In the future I could add many parts to my solution.
 
+## Code improvement
+
+I would like to split my backend into a proper, separate library that can be used by other programs. This would be beneficial as the library can be developed separately and used in multiple programs to port to different devices. As the only dependency of the analysis section is Eigen, which is compiled statically, that section can be compiled for any device that supports the C++14 standard.
 
 ## Voltmeter and Ammeter
 

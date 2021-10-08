@@ -12,7 +12,7 @@ For example the Windows XP build runs on QT 5.6 which has not been supported sin
 
 If there is a breaking change with the QT framework, the program could need to be fixed or even re-written, but since this program even will build with the newest versions of QT 6, it seems unlikely this would need to be done for many years.
 
-The program does not work very well on small screens (\<\10") or touchscreens because of the menubar that is hard to use without a mouse or keyboard.
+The program does not work very well on small screens (\<10") or touchscreens because of the menubar that is hard to use without a mouse or keyboard.
 
 The program does not need to backup or archive any data but the user can, if they want, open the save folder using the "Help->Open Save Folder" button in the menubar, which allows the user to backup or archive the data. In the future I may include a backup feature.
 
@@ -22,4 +22,4 @@ If needed, new features and components could be easily added because of the modu
 
 The UI is completely seperate to the backend analysis section, so the UI can be fairly easily changed without changing any part of the analysis code. This is useful if I were to re-write the UI in a different GUI framework like GTK or wxWidgets.
 
-The code is very well commented, so with enough time others could contribute to the code to improve the program.
+The code is very well commented, so with enough time to understand, others could contribute to the code to improve the program. This could theoretically port my program to new devices.
