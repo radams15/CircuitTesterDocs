@@ -2,6 +2,8 @@
 
 My program is fast to load, as it loaded in under 2 seconds on Windows XP with 128MB of RAM. The program runs without stuttering or lagging on even this old hardware. I would say that this means the program runs very well.
 
+![Low-powered machine](images/working_xp.png)
+
 As in the feedback section, the stakeholders rated my solution 7/10 and 8/10 for ease of navigation.
 
 My solution is truly cross-platform, running on Windows, MacOs and Linux:
@@ -12,6 +14,6 @@ My solution is truly cross-platform, running on Windows, MacOs and Linux:
 
 ![MacOS](images/working_macos.png)
 
-![Linux](images/working_fedora.png)
+![Linux](images/working_ubuntu.png)
 
 Users can save, load, import and export circuits to be stored for revision or emailed to students for learning at home.
