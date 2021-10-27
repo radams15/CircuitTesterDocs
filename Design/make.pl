@@ -32,7 +32,9 @@ my @MD_ORDER = (
 
 my @DIA_ORDER = <diagrams/*.dia>;
 
-my $OUT_FILE = "Design.pdf";
+my $DIR = "Design";
+
+my $OUT_FILE = "$DIR.pdf";
 
 my @EXTS = ("raw_tex", "grid_tables", "fenced_code_blocks", "backtick_code_blocks");
 
@@ -60,13 +62,11 @@ sub main{
 
 	my $exts =  join "", (map { "+$_" } @EXTS);
 
-	my $command = "awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files meta.yaml| perl ../preprop.pl | pandoc -s --quiet -f markdown$exts --highlight-style=$CODE_STYLE -B styling/before.tex -H ../global/header.tex --toc --toc-depth=2 -o '${OUT_FILE}' -t latex";
+	my $command = "echo '\n# $DIR\n' > ../build/$DIR.md && awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files| perl ../preprop.pl | sed 's/^#/##/g' | sed 's/images/$DIR\\/images/g' | cat >> ../build/$DIR.md";
 	
 	print "$command\n";
 
-	`$command`;
-	
-	`mv $OUT_FILE ../build`;
+	print `$command`;
 }
 
 

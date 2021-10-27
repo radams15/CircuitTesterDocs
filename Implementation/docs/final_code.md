@@ -94,6 +94,10 @@
 
 %include_cpp(code/CircuitTester-master/src/main/UI/Components/Switch.cc)
 
+## UI/Components/Ammeter.cc
+
+%include_cpp(code/CircuitTester-master/src/main/UI/Components/Ammeter.cc)
+
 ## UI/Components/Resistor.h
 
 %include_cpp(code/CircuitTester-master/src/main/UI/Components/Resistor.h)
@@ -114,9 +118,17 @@
 
 %include_cpp(code/CircuitTester-master/src/main/UI/Components/Battery.h)
 
+## UI/Components/Ammeter.h
+
+%include_cpp(code/CircuitTester-master/src/main/UI/Components/Ammeter.h)
+
 ## UI/Components/Wire.h
 
 %include_cpp(code/CircuitTester-master/src/main/UI/Components/Wire.h)
+
+## UI/Components/Voltmeter.h
+
+%include_cpp(code/CircuitTester-master/src/main/UI/Components/Voltmeter.h)
 
 ## UI/Components/Switch.h
 
@@ -125,6 +137,10 @@
 ## UI/Components/Resistor.cc
 
 %include_cpp(code/CircuitTester-master/src/main/UI/Components/Resistor.cc)
+
+## UI/Components/Voltmeter.cc
+
+%include_cpp(code/CircuitTester-master/src/main/UI/Components/Voltmeter.cc)
 
 ## Analysis/MNACircuit.cc
 

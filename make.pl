@@ -7,16 +7,33 @@ use Cwd qw(getcwd);
 
 my @FOLDERS = (
 	"Analysis",
-	"Journal",
-	"Targets",
 	"Design",
 	"Implementation",
 	"Evaluation",
 );
 
+my @MD_ORDER = (
+	"global/meta.yaml",
+	
+	"global/pagebreak.tex",
+	"build/Analysis.md",
+	
+	"global/pagebreak.tex",
+	"build/Design.md",
+	
+	"global/pagebreak.tex",
+	"build/Implementation.md",
+	
+	"global/pagebreak.tex",
+	"build/Evaluation.md",
+);
+
+
+my @EXTS = ("raw_tex", "grid_tables", "fenced_code_blocks", "backtick_code_blocks");
+
 my $BUILD_FOLDER = "build";
 
-
+my $CODE_STYLE = "global/tango.theme";
 
 sub file_write{
     my ($name, $data) = @_;
@@ -28,6 +45,7 @@ sub file_write{
     close(FH);
 }
 
+my $OUT_FILE = "";
 
 sub main{	
 	my $before = getcwd;
@@ -44,10 +62,20 @@ sub main{
 
 		chdir $before;
 	}
+	
+	my $exts =  join "", (map { "+$_" } @EXTS);
+	
+	my $md_files = join " ", @MD_ORDER;
+	
+	my $command = "awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files | pandoc -s -f markdown-implicit_figures$exts --highlight-style=$CODE_STYLE -B global/before.tex --listings -H global/header.tex --toc --toc-depth=2 -o '$BUILD_FOLDER/CircuitTester.pdf' -t latex --pdf-engine=xelatex && awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files | pandoc -s -f markdown-implicit_figures$exts --highlight-style=$CODE_STYLE -B global/before.tex --listings -H global/header.tex --toc --toc-depth=2 -o '$BUILD_FOLDER/CircuitTester.docx'";
+
+	print "$command\n";
+	
+	print `$command`;
 
 	print "Word Counts\n";
 	
-	my $wordcount_data = "";
+	my $wordcount_data = "<h1>Word Counts:</h1>\n";
 	foreach my $file (<$BUILD_FOLDER/*.pdf>){		
 		my $command = "pdftotext $file - | wc -w";
 		
@@ -58,6 +86,8 @@ sub main{
 	}
 	
 	file_write("$BUILD_FOLDER/wordcounts.html", $wordcount_data);
+	
+	`rm $BUILD_FOLDER/*.md`;
 }
 
 &main;

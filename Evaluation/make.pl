@@ -28,7 +28,10 @@ my @MD_ORDER = (
 );
 
 
-my $OUT_FILE = "Evaluation.pdf";
+my $DIR = "Evaluation";
+
+my $OUT_FILE = "$DIR.pdf";
+
 
 my @EXTS = ("raw_tex", "grid_tables", "fenced_code_blocks", "backtick_code_blocks");
 
@@ -41,14 +44,11 @@ sub main{
 
 	my $exts =  join "", (map { "+$_" } @EXTS);
 
-	my $command = "awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files meta.yaml| perl ../preprop.pl | pandoc -s --quiet -f markdown-implicit_figures$exts --highlight-style=$CODE_STYLE -B styling/before.tex --listings -H ../global/header.tex --toc --toc-depth=2 -o '${OUT_FILE}' -t latex";
+	my $command = "echo '\n# $DIR\n' > ../build/$DIR.md && awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files| perl ../preprop.pl | sed 's/^#/##/g' | sed 's/images/$DIR\\/images/g' | cat >> ../build/$DIR.md";
 	
 	print "$command\n";
 
-	`$command`;
-	
-	`mv $OUT_FILE ../build`;
-	`rm -rf code`;
+	print `$command`;
 }
 
 &main;

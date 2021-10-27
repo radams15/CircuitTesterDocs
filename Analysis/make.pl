@@ -34,7 +34,9 @@ my @ORDER = (
 	"styling/pagebreak.tex",
 );
 
-my $OUT_FILE = "Analysis.pdf";
+my $DIR = "Analysis";
+
+my $OUT_FILE = "$DIR.pdf";
 
 my @EXTS = ("raw_tex", "grid_tables");
 
@@ -52,13 +54,11 @@ sub main{
 
 	my $exts =  join "", (map { "+$_" } @EXTS);
 
-	my $command = "pandoc $md_files meta.yaml -s --quiet -f markdown$exts --highlight-style=$CODE_STYLE -B before.tex -H ../global/header.tex  --toc --toc-depth=1 -o '${OUT_FILE}' -t latex";
+	my $command = "echo '\n# $DIR\n' > ../build/$DIR.md && awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files| perl ../preprop.pl | sed 's/^#/##/g' | sed 's/images/$DIR\\/images/g' | cat >> ../build/$DIR.md";
 	
 	print "$command\n";
 
 	`$command`;
-	
-	`mv $OUT_FILE ../build`;
 }
 
 

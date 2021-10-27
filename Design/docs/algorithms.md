@@ -81,15 +81,15 @@ This simply follows the following rules:
 
 - Return 2 terms.
 
-- The first is a term of ${{S}\over{R}} V$ where $S$ is the sign, $R$ is the resistance of the resistor, and $V$ is the unknown voltage.
+- The first is a term of ${\frac{S}{R}} V$ where $S$ is the sign, $R$ is the resistance of the resistor, and $V$ is the unknown voltage.
 
-- The second is a term of ${-{{S}\over{R}}} V$ where $S$ is the sign, $R$ is the resistance of the resistor, and $V$ is the unknown voltage.
+- The second is a term of ${-{\frac{S}{R}}} V$ where $S$ is the sign, $R$ is the resistance of the resistor, and $V$ is the unknown voltage.
 
 This results in the following terms:
 
-- Node 1 => $-I_{0\rightarrow1}, -{{V_1}\over{4}}, {{V_2}\over{4}}$
-- Node 2 => ${{V_2}\over{4}}, -{{V_1}\over{4}}, -{{V_3}\over{3}}, {{V_2}\over{3}}, -{{V_3}\over{6}},{{V_2}\over{6}}$
-- Node 3 => ${{V_3}\over{3}}, -{{V_2}\over{3}}, {{V_3}\over{6}}, -{{V_2}\over{6}}, -{{V_0}\over{10}}, {{V_3}\over{10}}$
+- Node 1 => $-I_{0\rightarrow1}, -{\frac{V_1}{4}}, {\frac{V_2}{4}}$
+- Node 2 => ${\frac{V_2}{4}}, -{\frac{V_1}{4}}, -{\frac{V_3}{3}}, {\frac{V_2}{3}}, -{\frac{V_3}{6}},{\frac{V_2}{6}}$
+- Node 3 => ${\frac{V_3}{3}}, -{\frac{V_2}{3}}, {\frac{V_3}{6}}, -{\frac{V_2}{6}}, -{\frac{V_0}{10}}, {\frac{V_3}{10}}$
 
 %include_pc(pseudocode/find_terms.txt)
 
@@ -112,9 +112,9 @@ the node after has a voltage of $+9V$.
 This results in the following equations for our example:
 
 - Node 0 => Reference node - no equations.
-- Node 1 => $-I_{0\rightarrow1} + -{{V_1}\over{4}} + {{V_2}\over{4}} = 0$
-- Node 2 => ${{V_2}\over{4}} + -{{V_1}\over{4}} + -{{V_3}\over{3}} + {{V_2}\over{3}} + -{{V_3}\over{6}} + {{V_2}\over{6}} = 0$
-- Node 3 => ${{V_3}\over{3}} + -{{V_2}\over{3}} + {{V_3}\over{6}} + -{{V_2}\over{6}} + -{{V_0}\over{10}} + {{V_3}\over{10}} 0 0$
+- Node 1 => $-I_{0\rightarrow1} + -{\frac{V_1}{4}} + {\frac{V_2}{4}} = 0$
+- Node 2 => ${\frac{V_2}{4}} + -{\frac{V_1}{4}} + -{\frac{V_3}{3}} + {\frac{V_2}{3}} + -{\frac{V_3}{6}} + {\frac{V_2}{6}} = 0$
+- Node 3 => ${\frac{V_3}{3}} + -{\frac{V_2}{3}} + {\frac{V_3}{6}} + -{\frac{V_2}{6}} + -{\frac{V_0}{10}} + {\frac{V_3}{10}} 0 0$
 - Battery 1 => $-V_0 + V_1 = 6$
 
 %include_pc(pseudocode/make_equations.txt)
@@ -170,7 +170,7 @@ Row 0 has only our reference nodes, with an equation of $V_0 = 0$:
 - $0$ is placed at $z[0, 0]$
 - $1$ is placed at $A[1, 0]$
 - A: $$ \begin{bmatrix}
-0 & \color{red}1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 \\
@@ -184,15 +184,15 @@ Row 0 has only our reference nodes, with an equation of $V_0 = 0$:
 0 
 \end{bmatrix}  $$
 
-Row 1 has the equation ${{V_2}\over{4}} + -{{V_1}\over{4}} + -{{V_3}\over{3}} + {{V_2}\over{3}} + -{{V_3}\over{6}} + {{V_2}\over{6}} = 0$:
+Row 1 has the equation ${\frac{V_2}{4}} + -{\frac{V_1}{4}} + -{\frac{V_3}{3}} + {\frac{V_2}{3}} + -{\frac{V_3}{6}} + {\frac{V_2}{6}} = 0$:
 
 - $0$ is placed at $z[0, 1]$
 - $-1$ is added to $A[0, 1]$
-- ${-{1}\over{4}}$ is added to $A[3, 1]$
-- ${{1}\over{4}}$ is added to $A[2, 1]$
+- ${-\frac{1}{4}}$ is added to $A[3, 1]$
+- ${\frac{1}{4}}$ is added to $A[2, 1]$
 - A: $$ \begin{bmatrix}
 0 & 1 & 0 & 0 & 0 \\
-\color{red}-1 & 0 & \color{red}{{1}\over{4}} & \color{red}{-{{1}\over{4}}} & 0 \\
+-1 & 0 & {\frac{1}{4}} & {-{\frac{1}{4}}} & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 
@@ -205,19 +205,19 @@ Row 1 has the equation ${{V_2}\over{4}} + -{{V_1}\over{4}} + -{{V_3}\over{3}} + 
 0 
 \end{bmatrix}  $$
 
-Row 2 has the equation ${{V_2}\over{4}} + -{{V_1}\over{4}} + -{{V_3}\over{3}} + {{V_2}\over{3}} + -{{V_3}\over{6}} + {{V_2}\over{6}} = 0$:
+Row 2 has the equation ${\frac{V_2}{4}} + -{\frac{V_1}{4}} + -{\frac{V_3}{3}} + {\frac{V_2}{3}} + -{\frac{V_3}{6}} + {\frac{V_2}{6}} = 0$:
 
 - $0$ is placed at $z[0, 2]$
-- ${{1}\over{4}}$ is added to $A[3, 2]$
-- $-{{1}\over{4}}$ is added to $A[2, 2]$
-- $-{{1}\over{3}}$ is added to $A[4, 2]$
-- ${{1}\over{3}}$ is added to $A[3, 2]$
-- $-{{1}\over{6}}$ is added to $A[4, 2]$
-- ${{1}\over{6}}$ is added to $A[3, 2]$
+- ${\frac{1}{4}}$ is added to $A[3, 2]$
+- $-{\frac{1}{4}}$ is added to $A[2, 2]$
+- $-{\frac{1}{3}}$ is added to $A[4, 2]$
+- ${\frac{1}{3}}$ is added to $A[3, 2]$
+- $-{\frac{1}{6}}$ is added to $A[4, 2]$
+- ${\frac{1}{6}}$ is added to $A[3, 2]$
 - A: $$ \begin{bmatrix}
 0 & 1 & 0 & 0 & 0 \\
--1 & 0 & {{1}\over{4}} & -{{1}\over{4}} & 0 \\
-0 & 0 & \color{red}{-{{1}\over{4}}} & \color{red}{{{1}\over{4}} + {{1}\over{3}} + {{1}\over{6}}} & \color{red}{-{{1}\over{3}} -{{1}\over{6}}} \\
+-1 & 0 & {\frac{1}{4}} & -{\frac{1}{4}} & 0 \\
+0 & 0 & {-{\frac{1}{4}}} & {{\frac{1}{4}} + {\frac{1}{3}} + {\frac{1}{6}}} & {-{\frac{1}{3}} -{\frac{1}{6}}} \\
 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 
 \end{bmatrix}  $$
@@ -229,20 +229,20 @@ Row 2 has the equation ${{V_2}\over{4}} + -{{V_1}\over{4}} + -{{V_3}\over{3}} + 
 0 
 \end{bmatrix}  $$
 
-Row 3 has the equation ${{V_3}\over{3}} + -{{V_2}\over{3}} + {{V_3}\over{6}} + -{{V_2}\over{6}} + -{{V_0}\over{10}} + {{V_3}\over{10}} 0 0$:
+Row 3 has the equation ${\frac{V_3}{3}} + -{\frac{V_2}{3}} + {\frac{V_3}{6}} + -{\frac{V_2}{6}} + -{\frac{V_0}{10}} + {\frac{V_3}{10}} 0 0$:
 
 - $0$ is placed at $z[0, 3]$
-- ${{1}\over{3}}$ is added to $A[4, 3]$
-- $-{{1}\over{3}}$ is added to $A[3, 3]$
-- ${{1}\over{6}}$ is added to $A[4, 3]$
-- $-{{1}\over{6}}$ is added to $A[3, 3]$
-- $-{{1}\over{10}}$ is added to $A[1, 3]$
-- ${{1}\over{10}}$ is added to $A[4, 3]$
+- ${\frac{1}{3}}$ is added to $A[4, 3]$
+- $-{\frac{1}{3}}$ is added to $A[3, 3]$
+- ${\frac{1}{6}}$ is added to $A[4, 3]$
+- $-{\frac{1}{6}}$ is added to $A[3, 3]$
+- $-{\frac{1}{10}}$ is added to $A[1, 3]$
+- ${\frac{1}{10}}$ is added to $A[4, 3]$
 - A: $$ \begin{bmatrix}
 0 & 1 & 0 & 0 & 0 \\
--1 & 0 & {{1}\over{4}} & -{{1}\over{4}} & 0 \\
-0 & 0 & -{{1}\over{4}} & {{1}\over{4}} + {{1}\over{3}} + {{1}\over{6}} & -{{1}\over{3}} -{{1}\over{6}} \\
-0 & \color{red}{-{{1}\over{10}}} & 0 & \color{red}{-{{1}\over{3}} -{{1}\over{6}}} & \color{red}{{{1}\over{3}} + {{1}\over{6}} + {{1}\over{10}}} \\
+-1 & 0 & {\frac{1}{4}} & -{\frac{1}{4}} & 0 \\
+0 & 0 & -{\frac{1}{4}} & {\frac{1}{4}} + {\frac{1}{3}} + {\frac{1}{6}} & -{\frac{1}{3}} -{\frac{1}{6}} \\
+0 & {-{\frac{1}{10}}} & 0 & {-{\frac{1}{3}} -{\frac{1}{6}}} & {{\frac{1}{3}} + {\frac{1}{6}} + {\frac{1}{10}}} \\
 0 & 0 & 0 & 0 & 0 
 \end{bmatrix}  $$
 - Z: $$ \begin{bmatrix}
@@ -260,17 +260,17 @@ Row 4 has only the battery equation of $-V_0 + V_1 = 6$:
 - $1$ is added to $A[2, 4]$
 - A: $$ \begin{bmatrix}
 0 & 1 & 0 & 0 & 0 \\
--1 & 0 & {{1}\over{4}} & -{{1}\over{4}} & 0 \\
-0 & 0 & -{{1}\over{4}} & {{1}\over{4}} + {{1}\over{3}} + {{1}\over{6}} & -{{1}\over{3}} -{{1}\over{6}} \\
-0 & -{{1}\over{10}} & 0 & -{{1}\over{3}} -{{1}\over{6}} & {{1}\over{3}} + {{1}\over{6}} + {{1}\over{10}} \\
-0 & \color{red}{-1} & \color{red}{1} & 0 & 0 
+-1 & 0 & {\frac{1}{4}} & -{\frac{1}{4}} & 0 \\
+0 & 0 & -{\frac{1}{4}} & {\frac{1}{4}} + {\frac{1}{3}} + {\frac{1}{6}} & -{\frac{1}{3}} -{\frac{1}{6}} \\
+0 & -{\frac{1}{10}} & 0 & -{\frac{1}{3}} -{\frac{1}{6}} & {\frac{1}{3}} + {\frac{1}{6}} + {\frac{1}{10}} \\
+0 & {-1} & {1} & 0 & 0 
 \end{bmatrix}  $$
 - Z: $$ \begin{bmatrix}
 0 \\
 0 \\
 0 \\
 0 \\
-\color{red}{6} 
+{6} 
 \end{bmatrix}  $$
 
 
