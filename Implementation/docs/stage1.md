@@ -11,8 +11,7 @@ as they all rely on each other and cannot be run without the other sections.
 My goal is to be able to have this section be relatively independent of the main window section, and have neither of them communicate directly, effectively
 making this stage a library.
 
-First, I made a prototype in Python in order to more easily test the algorithms, as starting with C++ would be slower because
-of the lack of functions such as `map` and list comprehensions.
+First, I made a prototype in Python in order to more easily test the algorithms, as starting with C++ would be slower because of the lack of functions such as `map` and list comprehensions. Overall though, C++ will result in a faster program than the equivalent Python because C++ is compiled whereas Python is not.
 
 I subsequently translated these two into equivalent C++ classes:
 
@@ -105,8 +104,7 @@ Eigen::MatrixXd x = A.fullPivLu().solve(z);
 Whilst this is technically correct, it is not helpful for students when it comes to learning, so I needed
 to remove the negative if the value was less than 1.
 
-I fixed this by simply using std::abs on the getVoltage function, but this then broke the getCurrent function, as
-Previously I was doing -getVoltage to remove the negative number.
+I fixed this by simply using std::abs on the getVoltage function, but this then broke the getCurrent function, as previously I was doing -getVoltage to remove the negative number.
 
 Before:
 
@@ -148,13 +146,11 @@ double MNASolution::getVoltage(MNAComponent element) {
 
 ## Validation
 
-There is little validation that needs to be done in this stage as any data that will be fed into it will be validated already
-by the GUI, but this section will happily throw exceptions that can be caught by the main program to react to errors.
+There is little validation that needs to be done in this stage as any data that will be fed into it will be validated already by the GUI, but this section will happily throw exceptions that can be caught by the main program to react to errors.
 
 ### MNAComponent
 
-No component can have a zero value as this breaks the analysis. The program therefore must do a
-range check when an MNAComponent is created to make sure that the value is not 0.
+No component can have a zero value as this breaks the analysis. The program therefore must do a range check when an MNAComponent is created to make sure that the value is not 0.
 
 This is solved in the initialiser function:
 
@@ -178,8 +174,7 @@ MNAComponent::MNAComponent(int n0, int n1, ElementType type, double value, doubl
 
 ## Review
 
-Overall, this stage fits in well with my ideas for the backend, as it provides fairly easy access for the program to call the
-circuit solver, and receive the solutions back out.
+Overall, this stage fits in well with my ideas for the backend, as it provides fairly easy access for the program to call the circuit solver, and receive the solutions back out.
 
 Obviously, the hardest part of this was comprehending how the mathematical algorithms worked and how to extract the desired
 information from them afterwards. The actual programming related sections such as class, enum and data structure designs were a lot

@@ -122,7 +122,7 @@ I then loaded the file:
 
 ![Changed test file](images/wb9b.png)
 
-This resulted in the \[-1, -1\] coordinates changing into \[0, 0\], and the material changing from "gdgssjdgsnjgsd" to Carbon. This causes the program to load the wire to the top left of the screen as this is where the origin of the canvas is.
+This resulted in the \[-1, -1\] coordinates changing into \[0, 0\], and the material changing from "gdgssjdgsnjgsd" to Carbon. This causes the program to load the wire to the top left of the screen as this is where the start of the canvas is.
 
 
 The corrupted values were reset to their default values by the program because the validation section in the UIComponent classes worked as expected.

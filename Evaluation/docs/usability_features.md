@@ -26,7 +26,7 @@ The program can save and load circuits. This could be simpler or more clear, but
 
 ### Importing and Exporting Circuits
 
-The program can also import and export circuits to any folder on the computer using my .cir file format. The .cir extension is automatically added if the user does not specify it.
+The program can also import and export circuits to any folder on the computer using my .cir file format - which utilises JSON. The .cir extension is automatically added if the user does not specify it.
 
 ![Import and Export Circuits](images/export.png)
 
@@ -38,4 +38,4 @@ And here the circuit is saved in the folder, showing the export functionality.
 
 The program is accessible, as the underlying QT framework is compatable with general OS narration and magnifier programs, meaning that the OS handles text-to-speech functionality for any visually-impaired users.
 
-There is however no way for these users to be able to see what component is what without being able to see the image, which may limit the usage of the program for these users.
+There is however no way for these users to be able to see what component is what without being able to see the image, which may limit the usage of the program for these users. There are ways to interface with the text-to-speech engines but this would take a long time and would cause very little benefit so I will not do this.
