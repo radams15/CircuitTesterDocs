@@ -1,5 +1,9 @@
 # Stage 7 - Final Merge (Merge 5&6)
 
+This was where the save/load system was merged into the simulation GUI code.
+
+I simply needed to add save/load menu actions, create the save directory at the start of the program, and add the files to the main project. This was fairly simple and took only a short time.
+
 ## Bugs
 
 ### Save/load crash on empty/invalid file name
@@ -66,3 +70,9 @@ void MainWindow::openScene() {
     CircuitSaver::loadCircuit(name, scene);
 }
 ```
+
+## Review
+
+This was one of the simplest and shortest parts of the program, as it was a simple merge of existing stages.
+
+

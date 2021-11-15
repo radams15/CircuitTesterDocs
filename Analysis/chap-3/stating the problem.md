@@ -61,7 +61,7 @@ to perform. Components will be able to all be stored in lists of components,
 but when individually used they will be instances of individual components with
 the same public methods.
 
-### Decomposition
+### Decomposition / Divide and Conquer
 
 I will decompose the project into much smaller sections, making them easier
 to program individually. I will write several small programs to solve the
