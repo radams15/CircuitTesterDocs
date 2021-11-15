@@ -82,7 +82,7 @@ This resulted in the following:
 
 In this section there is nothing to validate as there is almost no user input, with the only
 thing a user doing is dragging a mouse or pressing the delete key, neither of which
-can have any erroneous or invalid data.
+can have any erroneous or invalid data, except pressing the delete key when no item is selected. This simply returns null when querying the Scene for selected items, so is ignored.
 
 ## Bugs
 

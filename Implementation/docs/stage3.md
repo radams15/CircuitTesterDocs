@@ -180,9 +180,9 @@ void SettingsMenu::setInteriorLayout(QLayout* layout) {
 ### Hiding Old Menus
 
 With the above bug, after fixing, the old menus still showed, but did not work in any way, being the "ghost" of the widget.
-This is because removing the item did not refresh the widget, so the widget was never hidden after deletion.
+This is because removing the item did not redraw the widget, so the widget was never hidden after deletion.
 
-I fixed this by setting the widget to hidden before removing it, which solved the issue.
+I fixed this by setting the widget to hidden before removing it, which corrected the issue.
 
 New:
 
@@ -197,11 +197,9 @@ void SettingsMenu::clear() {
 
 ## Validation
 
-Effectively, since the settings window has only one public method with any parameters, setInteriorLayout, there was
-very little Validation to do.
+Effectively, since the settings window has only one public method with any parameters, setInteriorLayout, there was very little Validation to do.
 
-The only validation needed was to ensure that the pointer passed in was not a null pointer, as the static code analysis of
-the IDE would make sure that everything else was valid.
+The only validation needed was to ensure that the pointer passed in was not a null pointer, as the static code analysis of the IDE and compiler warnings would make sure that everything else was valid.
 
 ```cpp
 void SettingsMenu::setInteriorLayout(QLayout* layout) {

@@ -10,6 +10,10 @@ Throughout the explanation this circuit will be used as an example.
 
 ![Example Circuit](images/demonstration_circuit.png)
 
+UML diagrams will have the name, then a section for variables, then a section for methods.
+
+A "-" before the name means private, a "+" before the name means public.
+
 
 ## Convert circuits into matrices
 

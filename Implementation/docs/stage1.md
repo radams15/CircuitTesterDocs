@@ -53,7 +53,7 @@ The bugs below were all located by unit tests failing.
 
 Eigen matrix A in the MNACircuit::solve method normally created
 a matrix of zeroes, but when doing a test, the values of the solve function
-were completely wrong, often returning just zeroes.
+were completely wrong, often returning garbage data, but only during tests. When running normally the data was completely fine. This led me to believe that the test suite was corrupting memory for my program.
 
 I managed to find out that the following code was initialising the matrices
 with random data:
@@ -63,7 +63,7 @@ auto A = Eigen::MatrixXd(equations->size(), getNumVars());
 auto z = Eigen::MatrixXd(equations->size(), 1);
 ```
 
-I found a way to zero the matrix - the MatrixXd::setZero function - and the problem was solved.
+I found a way to zero the matrix - the MatrixXd::setZero function - and the problem was corrected - albeit not solved properly.
 The fixed code is shown here:
 
 ``` cpp
@@ -73,17 +73,16 @@ auto z = Eigen::MatrixXd(equations->size(), 1).setZero();
 
 ### Matrix solution completely wrong
 
-One major problem I encountered was that the matrix seemed to be geenrated correctly according to the examples from the QUCS page,but when the matrix
+One major problem I encountered was that the matrix seemed to be generated correctly according to the examples from the QUCS page,but when the matrix
 was solved, the output was completely wrong.
 
-After running the debugger through the solution I found that the Eigen library has many methods to solve matrices, and the one I had selected
-was not good solving matrices with many decimal places.
+After running the debugger through the solution I found that the Eigen library has many methods to solve matrices, and the one I had selected was not good solving matrices with many decimal places.
 
-This was the table of options:
+This was the table of options I could had chosen:
 
 ![Eigen Decomposition Algorithms](images/eigen_decomps.png)
 
-Previously I had selected LDLT because of the speed, but this was returning low accuracy numbers as indicated above.
+Previously I had selected LDLT because of the high speed score, but this was returning low accuracy numbers as indicated above.
 
 The solution was to switch to a more accurate method on the table.
 
@@ -125,7 +124,26 @@ double MNASolution::getVoltage(MNAComponent element) {
 }
 ```
 
-After:
+After 1:
+
+```cpp
+double MNASolution::getCurrent(MNAComponent resistor) {
+    // Returns the current by doing V=IR, which is equal to I=V/R.
+    double v = -getVoltage(resistor);
+    double r = resistor.value;
+    double i = v / r;
+
+    return  i;
+}
+
+double MNASolution::getVoltage(MNAComponent element) {
+    // Gets the difference between the voltages the start and end nodes
+    // as voltage is the potential difference between two components.
+    return std::abs(voltageMap.at(element.n1) - voltageMap.at(element.n0));
+}
+```
+
+After 2:
 
 ```cpp
 double MNASolution::getCurrent(MNAComponent resistor) {

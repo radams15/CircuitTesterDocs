@@ -20,11 +20,10 @@ The program would show current split, resistance
 over distance, voltages, etc, as this is not possible inside school with
 their present equipment.
 
-The program is perfect for this problem as it is:
+The program is perfect for this problem as:
 
- - Cheaper to make than to purchase new circuit equipment
- - There are no user limits, so can be freely distributed to as many students as
-	possible (even on devices at home), 
+ - It is cheaper to make than to purchase new circuit equipment
+ - There are no user limits, so can be freely distributed to as many students as possible (even on devices at home), 
  - It is difficult to break as bugs can be easily fixed if identified.
 
 This program would allow students to experiment with circuits at home as well,
@@ -64,7 +63,7 @@ the same public methods.
 ### Decomposition / Divide and Conquer
 
 I will decompose the project into much smaller sections, making them easier
-to program individually. I will write several small programs to solve the
+to manage and program individually. I will write several small programs to solve the
 decomposed sub-programs, and then will be able to use this existing code in
 my main project.
 

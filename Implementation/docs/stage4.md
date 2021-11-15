@@ -47,7 +47,7 @@ void Line::update(){
 }
 ```
 
-The last part was simply drawing the line, which I overrided QGraphicsLineItem's paint method:
+The last part was simply drawing the line, where I overrode QGraphicsLineItem's paint method:
 
 ```cpp
 void Line::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget){
