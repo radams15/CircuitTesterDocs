@@ -28,10 +28,10 @@ SceneItem::SceneItem(std::string resourcePath, QGraphicsItem* parent) : QGraphic
 ```
 
 
-Then I made the program automatically add a SceneItem of a battery to the Scene.
+Then I made the program automatically add a SceneItem of a battery to the Scene, just for testing movement and clicking.
 
 
-My MainWindow was simply:
+My simple MainWindow was a small amount of code:
 
 ```cpp
 MainWindow::MainWindow() {
@@ -86,8 +86,7 @@ can have any erroneous or invalid data, except pressing the delete key when no i
 
 ## Bugs
 
-As this section was fairly small, I did not encounter any interesting or difficult to solve problems, with my only real problem
-being that I needed to specifically allow SceneItems to be able to move and be selected with the following code:
+As this section was fairly small, I did not encounter any interesting or difficult to solve problems, with my only real problem being that I needed to specifically allow SceneItems to be able to move and be selected with the following code:
 
 ```cpp
 setFlag(QGraphicsItem::ItemIsMovable, true);
@@ -99,5 +98,4 @@ setFlag(QGraphicsItem::ItemIsSelectable, true);
 
 Compared to my plan, this achieves the small amount of goals I set myself, as I can drag around and delete components.
 
-This was fairly simple to program, as the documentation and examples of QT are excellent. The hardest part was probably
-the QActions for the delete function that needed to first be defined, then added to the toolbar to work.
+This was fairly simple to program, as the documentation and examples of QT are excellent for learning. The hardest part was probably the QActions for the delete function that needed to first be defined, then added to the toolbar to work.

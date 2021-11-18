@@ -36,8 +36,7 @@ I subsequently translated these two into equivalent C++ classes:
 
 First, I created targeted white-box tests to test each individual class.
 
-Next, I created a test file to test the functions ofthe stage as a whole, called Test_MNA which had tests for each of the
-white-box tests on the design document.
+Next, I created a test file to test the functions of the stage as a whole, called Test_MNA which had tests for each of the white-box tests on the design document.
 
 The Test_MNACircuit contains the tests for each of the tests in the black-box section of the design document.
 
@@ -103,7 +102,7 @@ Eigen::MatrixXd x = A.fullPivLu().solve(z);
 Whilst this is technically correct, it is not helpful for students when it comes to learning, so I needed
 to remove the negative if the value was less than 1.
 
-I fixed this by simply using std::abs on the getVoltage function, but this then broke the getCurrent function, as previously I was doing -getVoltage to remove the negative number.
+I fixed this by simply using `std::abs`, the absolute function on the getVoltage function, to remove any negatives and not affect any positives. This though broke the getCurrent function, as previously I was doing -getVoltage to remove the negative number.
 
 Before:
 
@@ -124,7 +123,7 @@ double MNASolution::getVoltage(MNAComponent element) {
 }
 ```
 
-After 1:
+After `std::abs`:
 
 ```cpp
 double MNASolution::getCurrent(MNAComponent resistor) {
@@ -143,7 +142,7 @@ double MNASolution::getVoltage(MNAComponent element) {
 }
 ```
 
-After 2:
+After fixing getCurrent:
 
 ```cpp
 double MNASolution::getCurrent(MNAComponent resistor) {
@@ -194,9 +193,6 @@ MNAComponent::MNAComponent(int n0, int n1, ElementType type, double value, doubl
 
 Overall, this stage fits in well with my ideas for the backend, as it provides fairly easy access for the program to call the circuit solver, and receive the solutions back out.
 
-Obviously, the hardest part of this was comprehending how the mathematical algorithms worked and how to extract the desired
-information from them afterwards. The actual programming related sections such as class, enum and data structure designs were a lot
-easier to plan and write.
+Obviously, the hardest part of this was comprehending how the mathematical algorithms worked and how to extract the desired information from them afterwards. The actual programming related sections such as class, enum and data structure designs were a lot easier to plan and write as they involved just language knowledge.
 
-It is difficult to ask the stakeholder input on this as it is purely a library implementation rather than a program that
-can be tested and run, but since the tests were successful, I would say that this was a success.
+It is difficult to ask the stakeholder input on this as it is purely a library implementation rather than a program that can be tested and run, but since the tests were successful and the program appears to work correctly, I would say that this iteration was successful.

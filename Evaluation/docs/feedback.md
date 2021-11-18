@@ -8,7 +8,7 @@ I decided to ask my physics teacher a questionairre about the program.
 
 - **On a scale of 1-10 (with 10 being fastest), how fast would you say the program feels?**
 
-10
+10, I did not notice any slow-downs at all.
 
 - **How easy/hard would you say that the program is to understand and use?**
 
@@ -34,7 +34,7 @@ I decided to ask my peers a questionairre about the program.
 
 - **How easy/hard would you say that the program is to understand and use?**
 
-The program was slightly hard to understand, but after reading the tutorial it was easy.
+The program was a bit hard to understand, but after reading the tutorial it was easy.
 
 - **On a scale of 1-10 (with 10 being the easiest), how easy is the program to navigate and find required functions?**
 
@@ -42,10 +42,10 @@ The program was slightly hard to understand, but after reading the tutorial it w
 
 - **Do you see yourself using this program to learn about circuits for school**
 
-Maybe, although it is very simplistic for what I need
+Maybe, although it is very simplistic for what I would want for my studies.
 
 ## Reflection on the feedback
 
 Overall, both the teacher and the student found my program was sufficiently fast for their use, although both concluded that the program is a little difficult to understand without any instruction. They did decide that the tutorial really helped them to figure out how the program worked.
 
-The student wanted more components in the simulator, whereas the teacher was fairly happy with the selection of components.
+The student wanted more components in the simulator, whereas the teacher was fairly happy with the selection of components. This is probably since the teacher wanted to teach a younger audience (GCSE) than the student (A-Level).

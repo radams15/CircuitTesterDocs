@@ -25,7 +25,48 @@ converting distance to nodes.
 
 I used a findShortestPath method for this, which I adapted from the Python examples at [https://pythoninwonderland.wordpress.com/2017/03/18/how-to-implement-breadth-first-search-in-python/](https://pythoninwonderland.wordpress.com/2017/03/18/how-to-implement-breadth-first-search-in-python/).
 
-The original worked perfectly for my needs, but I changed it to fit my needs in my test programs:
+The original worked perfectly for my needs, but I changed it to fit my needs in my test programs by returning values instead of printing a string:
+
+Original:
+
+```python
+def bfs_shortest_path(graph, start, goal):
+    # keep track of explored nodes
+    explored = []
+    # keep track of all the paths to be checked
+    queue = [[start]]
+ 
+    # return path if start is goal
+    if start == goal:
+        return "That was easy! Start = goal"
+ 
+    # keeps looping until all possible paths have been checked
+    while queue:
+        # pop the first path from the queue
+        path = queue.pop(0)
+        # get the last node from the path
+        node = path[-1]
+        if node not in explored:
+            neighbours = graph[node]
+            # go through all neighbour nodes, construct a new path and
+            # push it into the queue
+            for neighbour in neighbours:
+                new_path = list(path)
+                new_path.append(neighbour)
+                queue.append(new_path)
+                # return path if neighbour is goal
+                if neighbour == goal:
+                    return new_path
+ 
+            # mark node as explored
+            explored.append(node)
+ 
+    # in case there's no path between the 2 nodes
+    return "So sorry, but a connecting path doesn't exist :("
+```
+
+
+Adapted:
 
 ```python
 def find_shortest_path(graph, start, goal):
@@ -39,7 +80,7 @@ def find_shortest_path(graph, start, goal):
     # reached
     if start == goal:
         print("Same Node")
-        return []
+        return [end]
 
     # Loop to traverse the graph
     # with the help of the queue
@@ -120,6 +161,21 @@ Path* AnalysisMapper::findShortestPath(Graph *graph, UIComponent *start, UICompo
     return new Path;
 }
 
+```
+
+## Validation
+
+There was a little validation that needed to take place, especially in the search algorithm.
+
+Here I needed to check that the start node was not equal to the end node to save time iterating when there
+is only one possible path.
+
+```
+if(start == end){
+    auto out = new Path;
+    out->push_back(end);
+    return out;
+}
 ```
 
 ## Bugs
