@@ -6,7 +6,7 @@ To do this I deciced to create a class that joins the two sections together call
 This class took in the UI components that had been created, turned them into MNA components, then returned a map of the
 UI component to a struct of voltage and current of the component.
 
-AnalysisMapper means that the UI never directly communicates to the MNA section, and uses only AnalysisMapper which communicates to both sides.
+The AnalysisMapper class means that the UI never directly communicates to the MNA section, and uses only AnalysisMapper which communicates to both sides.
 
 AnalysisMapper has only 3 public methods: the initialiser, makeGraph which returns an adjacency list of the circuit, and getSolution, which returns
 a map of UIComponent:Resistance/Current for the components.
@@ -20,10 +20,19 @@ The general solution is first to convert each UIComponent into an MNAComponent t
 converting to a battery (Battery) or a resistor (Resistor, Wire, Switch).
 
 Next, my program assigns nodes to each component by selecting a start component and running
-through each other on the circuit, finding the shortest path from the start to it, basically
-converting distance to nodes.
+through each other on the circuit. I found this a challenge and I struggled with it.
 
-I used a findShortestPath method for this, which I adapted from the Python examples at [https://pythoninwonderland.wordpress.com/2017/03/18/how-to-implement-breadth-first-search-in-python/](https://pythoninwonderland.wordpress.com/2017/03/18/how-to-implement-breadth-first-search-in-python/).
+Eventually I solved the problem by turning the circuit into a graph and then using a breadth first search, with the difference from the start component node converted into the node number.
+
+E.g. this:
+
+![Original Circuit](image/demonstration_circuit.png)
+
+Becomes this:
+
+![Circuit Graph](images/circuit_graph.png)
+
+I used a findShortestPath method, which I adapted from the Python examples at [https://pythoninwonderland.wordpress.com/2017/03/18/how-to-implement-breadth-first-search-in-python/](https://pythoninwonderland.wordpress.com/2017/03/18/how-to-implement-breadth-first-search-in-python/).
 
 The original worked perfectly for my needs, but I changed it to fit my needs in my test programs by returning values instead of printing a string:
 
@@ -165,12 +174,12 @@ Path* AnalysisMapper::findShortestPath(Graph *graph, UIComponent *start, UICompo
 
 ## Validation
 
-There was a little validation that needed to take place, especially in the search algorithm.
+There was a little validation that needed to take place, especially in the main breadth-first search algorithm.
 
 Here I needed to check that the start node was not equal to the end node to save time iterating when there
 is only one possible path.
 
-```
+```cpp
 if(start == end){
     auto out = new Path;
     out->push_back(end);
