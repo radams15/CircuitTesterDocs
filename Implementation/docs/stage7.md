@@ -73,6 +73,6 @@ void MainWindow::openScene() {
 
 ## Review
 
-This was one of the simplest and shortest parts of the program, as it was a simple merge of existing stages.
+This was one of the simplest and shortest parts of the program, as it was a simple merge of existing stages, with the hardest part being the GUI load/save boxes that required a small amount of research but were overall quite simple compared to other parts of the code.
 
 

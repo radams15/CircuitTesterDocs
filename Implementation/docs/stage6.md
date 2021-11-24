@@ -234,3 +234,10 @@ After:
 comp = new Wire(part["component"]["length"].get<double>(), part["component"]["area"].get<double>(), part["component"]["material"].get<std::string>());
 ```
 
+## Review
+
+Overall this stage was the most interesting as it included needing to learn how to do things in many environments, and made me appreciate programming without standards.
+
+This took a relatively short amount of time, and therefore there were fewer bugs than in other areas.
+
+If I were to repeat this I would choose YAML over JSON as that is easier to manually correct in corrupt saves. I would also possibly choose to limit myself to the C++17 standard which includes a filesystems API, but would exclude Windows 7, MacOs 10.13 and Ubuntu 18.04 and below, which could limit adoption of the software.

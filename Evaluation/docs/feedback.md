@@ -20,7 +20,7 @@ I found the program fairly easy to use after reading the tutorial, without the t
 
 - **Do you see yourself using this program to teach students the fundamentals of circuits as a replacement to physical circuits?**
 
-Possibly, since it is free to use and has less parts than the alternatives. I only miss the ammeter and voltmeter components, as these would have been integral to the program.
+Possibly, since it is free to use and has less parts than the alternatives. I only miss the ammeter and voltmeter components, as these are integral to the program's functionality.
 
 
 ## Physics Student
@@ -48,4 +48,4 @@ Maybe, although it is very simplistic for what I would want for my studies.
 
 Overall, both the teacher and the student found my program was sufficiently fast for their use, although both concluded that the program is a little difficult to understand without any instruction. They did decide that the tutorial really helped them to figure out how the program worked.
 
-The student wanted more components in the simulator, whereas the teacher was fairly happy with the selection of components. This is probably since the teacher wanted to teach a younger audience (GCSE) than the student (A-Level).
+The student wanted more components in the simulator, whereas the teacher was fairly happy with the selection of components. This is probably since the teacher wanted to teach a younger audience (GCSE) than the student (A-Level), which caused differences in opinions.

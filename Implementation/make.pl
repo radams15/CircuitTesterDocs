@@ -2,9 +2,6 @@
 use strict;
 use warnings;
 
-use File::Find;
-
-
 my @MD_ORDER = (
 	"styling/style.md",
 
@@ -31,9 +28,6 @@ my @MD_ORDER = (
 	
 	"styling/pagebreak.tex",
 	"docs/stage7.md",
-
-	"styling/pagebreak.tex",
-	"docs/final_code.md",
 );
 
 
@@ -64,34 +58,8 @@ sub get_spice3{
 	close(FH);
 }
 
-sub get_code{
-	`rm -rf code`;
-	`wget 'https://github.com/radams15/CircuitTester/archive/refs/heads/master.zip'`;
-	`unzip master.zip */src/* -d code`;
-	`rm -rf master.zip`;
-
-	open(FH, ">", "docs/final_code.md");
-
-	print FH "# Full Source Code\n\n\n";
-	
-	find( { wanted => sub {
-		my $f = $_;
-		if($f =~ /.*\.(cc|h)/g){
-			my $title = $f;
-			$title =~ s/code\/CircuitTester-master\/src\/(test|main)\///g;
-
-			my $inc = "\n## $title\n\n\%include_cpp($f)";
-			print FH "$inc\n";
-		}
-	}, no_chdir => 1 }, "code/" );
-
-	close(FH);
-}
-
 
 sub main{
-	get_code();
-
 	@MD_ORDER = map { "'$_'" } @MD_ORDER;
 
 	my $md_files = join " 'styling/border.md' ", @MD_ORDER;

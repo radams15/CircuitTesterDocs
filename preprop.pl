@@ -15,7 +15,7 @@ sub read_file{
         $content = <$fh>;
         close $fh;
     } else {
-        print STDERR "failed to include file $1\n";
+        return "failed to include file $1\n";
     }
     
     $content =~ s/(\@brief)|(\@)|(\Ω)|(\x221E)//g;

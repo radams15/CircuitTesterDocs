@@ -1,6 +1,6 @@
 # Success of The Solution
 
-My program is fast to load, as it loaded in under 2 seconds on Windows XP with 128MB of RAM. The program runs without stuttering or lagging on even this old hardware. I would say that this means the program runs very well.
+My program is fast to load, as it loaded in just under 2 seconds on Windows XP with 128**MB** of RAM. The program runs without stuttering or lagging on even very old hardware, so I would say that this means the program runs very well and meets the success critera.
 
 ![Low-powered machine](images/working_xp.png)
 
@@ -16,4 +16,4 @@ My solution is truly cross-platform, running on Windows, MacOs and Linux:
 
 ![Linux](images/working_ubuntu.png)
 
-Users can save, load, import and export circuits to be stored for revision or emailed to students for learning at home.
+Users can save, load, import and export circuits to be stored for revision purposes or to be emailed to students for learning at home.

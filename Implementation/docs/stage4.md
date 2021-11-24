@@ -299,7 +299,7 @@ double Wire::getResistance() {
 }
 ```
 
-## Bugs
+## Bugs / Validation Steps
 
 ### Expandable settings menu double-click issue
 

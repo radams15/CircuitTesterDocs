@@ -4,6 +4,7 @@ use strict;
 use warnings;
 
 use Cwd qw(getcwd);
+use File::Find;
 
 my @FOLDERS = (
 	"Analysis",
@@ -26,6 +27,9 @@ my @MD_ORDER = (
 	
 	"global/pagebreak.tex",
 	"build/Evaluation.md",
+
+	"global/pagebreak.tex",
+	"build/final_code.md",
 );
 
 
@@ -34,6 +38,49 @@ my @EXTS = ("raw_tex", "grid_tables", "fenced_code_blocks", "backtick_code_block
 my $BUILD_FOLDER = "build";
 
 my $CODE_STYLE = "global/tango.theme";
+
+sub get_code{
+	`rm -rf $BUILD_FOLDER/code`;
+	`wget 'https://github.com/radams15/CircuitTester/archive/refs/heads/master.zip'`;
+	`unzip master.zip */src/* -d $BUILD_FOLDER/code`;
+	`rm -rf master.zip`;
+
+	open(FH, ">", "build/final_code.md");
+
+	print FH "# Appendix I: Full Source Code\n\n\n";
+	
+	find( { wanted => sub {
+		my $f = $_;
+		if($f =~ /.*\.h/g){
+			my $title = $f;
+			$title =~ s/$BUILD_FOLDER\/code\/CircuitTester-master\/src\/(test|main)\///g;
+			my $f1 = $f;
+			$f1 =~ s/build\///g;
+
+			my $data = `cat $f | perl preprop.pl`;
+
+			my $inc = "\n## $title\n\n```cpp\n\n$data\n\n```";
+			print FH "$inc\n";
+		}
+	}, no_chdir => 1 }, "build/code/" );
+
+	find( { wanted => sub {
+		my $f = $_;
+		if($f =~ /.*\.cc/g){
+			my $title = $f;
+			$title =~ s/$BUILD_FOLDER\/code\/CircuitTester-master\/src\/(test|main)\///g;
+			my $f1 = $f;
+			$f1 =~ s/build\///g;
+
+			my $data = `cat $f | perl preprop.pl`;
+
+			my $inc = "\n## $title\n\n```cpp\n\n$data\n\n```";
+			print FH "$inc\n";
+		}
+	}, no_chdir => 1 }, "build/code/" );
+
+	close(FH);
+}
 
 sub file_write{
     my ($name, $data) = @_;
@@ -47,10 +94,12 @@ sub file_write{
 
 my $OUT_FILE = "";
 
-sub main{	
+sub main{
 	my $before = getcwd;
 
 	mkdir $BUILD_FOLDER;
+
+	get_code();
 
 	foreach my $folder (@FOLDERS){
 		chdir $folder;
@@ -66,8 +115,10 @@ sub main{
 	my $exts =  join "", (map { "+$_" } @EXTS);
 	
 	my $md_files = join " ", @MD_ORDER;
+
+# 
 	
-	my $command = "awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files | pandoc -s -f markdown-implicit_figures$exts --highlight-style=$CODE_STYLE -B global/before.tex --listings -H global/header.tex --toc --toc-depth=2 -o '$BUILD_FOLDER/CircuitTester.pdf' -t latex --pdf-engine=xelatex && awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files | pandoc -s -f markdown-implicit_figures$exts --highlight-style=$CODE_STYLE -B global/before.tex --listings -H global/header.tex --toc --toc-depth=2 -o '$BUILD_FOLDER/CircuitTester.docx'";
+	my $command = "awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files | pandoc -s -f markdown-implicit_figures$exts --highlight-style=$CODE_STYLE -B global/before.tex --listings -H global/header.tex --toc --toc-depth=3 -o '$BUILD_FOLDER/CircuitTester.pdf' -t latex --pdf-engine=xelatex && awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files | pandoc -s -f markdown-implicit_figures$exts --highlight-style=$CODE_STYLE -B global/before.tex --listings -H global/header.tex --toc --toc-depth=2 -o '$BUILD_FOLDER/CircuitTester.docx'";
 
 	print "$command\n";
 	
