@@ -115,8 +115,6 @@ sub main{
 	my $exts =  join "", (map { "+$_" } @EXTS);
 	
 	my $md_files = join " ", @MD_ORDER;
-
-# 
 	
 	my $command = "awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files | pandoc -s -f markdown-implicit_figures$exts --highlight-style=$CODE_STYLE -B global/before.tex --listings -H global/header.tex --toc --toc-depth=3 -o '$BUILD_FOLDER/CircuitTester.pdf' -t latex --pdf-engine=xelatex && awk 'FNR==1 && NR!=1 {print \"\\n\"}{print}' $md_files | pandoc -s -f markdown-implicit_figures$exts --highlight-style=$CODE_STYLE -B global/before.tex --listings -H global/header.tex --toc --toc-depth=2 -o '$BUILD_FOLDER/CircuitTester.docx'";
 

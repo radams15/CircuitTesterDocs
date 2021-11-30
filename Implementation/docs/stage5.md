@@ -40,37 +40,26 @@ Original:
 
 ```python
 def bfs_shortest_path(graph, start, goal):
-    # keep track of explored nodes
     explored = []
-    # keep track of all the paths to be checked
     queue = [[start]]
  
-    # return path if start is goal
     if start == goal:
         return "That was easy! Start = goal"
  
-    # keeps looping until all possible paths have been checked
     while queue:
-        # pop the first path from the queue
         path = queue.pop(0)
-        # get the last node from the path
         node = path[-1]
         if node not in explored:
             neighbours = graph[node]
-            # go through all neighbour nodes, construct a new path and
-            # push it into the queue
             for neighbour in neighbours:
                 new_path = list(path)
                 new_path.append(neighbour)
                 queue.append(new_path)
-                # return path if neighbour is goal
                 if neighbour == goal:
                     return new_path
  
-            # mark node as explored
             explored.append(node)
  
-    # in case there's no path between the 2 nodes
     return "So sorry, but a connecting path doesn't exist :("
 ```
 
@@ -211,9 +200,22 @@ After:
 ![Fixed Decimals](images/decimals_after.png)
 
 ```cpp
+std::string dtos(double in){
+	/* Alloc 10 bytes: will take up 4 bytes for the max integer part (1000 max), 2 for the 2dp, 
+	1 for the point char, and the null byte.*/
+	auto outa = (char*) calloc(8, sizeof(char));
+
+	sprintf(outa, "%.2f", in);
+
+	auto outs = std::string(outa);
+
+	free((void*) outa);
+
+	return outs;
+}
+
 for(auto it : sol){
         std::stringstream ss;
-        ss << std::setprecision(2);
 
         ss << "Voltage: ";
         ss << it.second.voltage;
@@ -222,7 +224,7 @@ for(auto it : sol){
         if (std::to_string(it.second.current) != "nan"){
             ss << "\nCurrent: ";
             if(it.second.current < 1000){
-                ss << it.second.current;
+                ss << dtos(it.second.current);
             }else{
                 ss << "∞";
             }

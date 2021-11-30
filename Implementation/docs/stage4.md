@@ -274,7 +274,7 @@ void MainWindow::itemDoubleClicked(UIComponent* item) {
 
 Each component has a different set of methods to get the properties back out, e.g. the Wire, Resistor and Switch
 are all children of the ResistiveElement class which has a method `double getResistance()`, which returns the
-resistance of the component, and the Battery has a `double getVoltage()` method which returns the voltage.
+resistance of the component. The Battery has a `double getVoltage()` method which returns the voltage of the battery.
 
 Both methods use the child class to extract data from the settings menus, possibly run calculations, then return the result.
 
@@ -340,8 +340,7 @@ void MainWindow::itemRightClicked(UIComponent* item) {
 
 When drawing a line at mouseReleaseEvent, the program would crash every time.
 
-I realised this is because the items() function returns items at the point of the line start, but this includes the line, so I needed
-to remove the line from the list of start items that were at the position.
+I realised this is because the items() function returns items at the point of the line start, but this includes the line, so I needed to remove the line from the list of start items that were at the position.
 
 Before:
 

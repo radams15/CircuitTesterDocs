@@ -137,12 +137,9 @@ SettingsMenu();
 
 ### Changing Menu Contents
 
-My settings window needed to be able to dynamically change content for each component, so I used a method to swap the contents of
-a QVBoxLayout with many different other QVBoxLayouts. This did not work, as this resulted in a bug where the code could not delete existing menus
-and eventually filled up with menus.
+My settings window needed to be able to dynamically change content for each component, so I used a method to swap the contents of a QVBoxLayout with many different other QVBoxLayouts. This did not work, as this resulted in a bug where the code could not delete existing menus and eventually filled up with menus.
 
-The problem was that the QVBoxLayout::children() function did not return layouts, only widgets, so my solution was to instead place
-widgets in the QVBoxLayout. This worked well except for the below bug.
+The problem was that the QVBoxLayout::children() function did not return layouts, only widgets, so my solution was to instead place widgets in the QVBoxLayout.
 
 Old:
 
@@ -176,6 +173,8 @@ void SettingsMenu::setInteriorLayout(QLayout* layout) {
     innerLayout->addWidget(newWidget);
 }
 ```
+
+This worked well except for the next bug.
 
 ### Hiding Old Menus
 
