@@ -3,21 +3,19 @@
 With stages 1 and 4 complete, I needed to merge them together to form a working simulation.
 
 To do this I deciced to create a class that joins the two sections together called AnalysisMapper.
-This class took in the UI components that had been created, turned them into MNA components, then returned a map of the
-UI component to a struct of voltage and current of the component.
+This class took in the UI components that had been created, turned them into MNA components, then returned a map of the UI component to a struct of voltage and current of the component.
 
 The AnalysisMapper class means that the UI never directly communicates to the MNA section, and uses only AnalysisMapper which communicates to both sides.
 
-AnalysisMapper has only 3 public methods: the initialiser, makeGraph which returns an adjacency list of the circuit, and getSolution, which returns
-a map of UIComponent:Resistance/Current for the components.
+AnalysisMapper has only 3 public methods: the initialiser, makeGraph which returns an adjacency list of the circuit, and getSolution, which returns a map of UIComponent:Resistance/Current for the components.
 
 This section required me to create a bridge between the UI and the MNA code, I called this AnalysisMapper.
 
-This class wouldm be able to convert the UIComponents into UIComponents, run the calculations, and then return
+This class would be able to convert the UIComponents into MNAComponents, run the calculations, and then return
 the outputs of the calculations to the UI without showing any MNA code to the UI or any UI code to the MNA.
 
 The general solution is first to convert each UIComponent into an MNAComponent through a switch either
-converting to a battery (Battery) or a resistor (Resistor, Wire, Switch).
+converting to a battery (Battery) or a resistor (Fixed Resistor/Wire/Switch/Ammeter/Voltmeter).
 
 Next, my program assigns nodes to each component by selecting a start component and running
 through each other on the circuit. I found this a challenge and I struggled with it.
@@ -26,7 +24,7 @@ Eventually I solved the problem by turning the circuit into a graph and then usi
 
 E.g. this:
 
-![Original Circuit](image/demonstration_circuit.png)
+![Original Circuit](images/demonstration_circuit.png)
 
 Becomes this:
 
@@ -201,17 +199,20 @@ After:
 
 ```cpp
 std::string dtos(double in){
-	/* Alloc 10 bytes: will take up 4 bytes for the max integer part (1000 max), 2 for the 2dp, 
-	1 for the point char, and the null byte.*/
-	auto outa = (char*) calloc(8, sizeof(char));
+        /* Alloc 10 bytes: will take up 4 bytes for the max integer part (1000 >
+        1 for the point char, and the null byte.*/
+        auto outa = (char*) calloc(8, sizeof(char));
 
-	sprintf(outa, "%.2f", in);
+        // Write the double to 2 decimal places to the outa char array.
+        sprintf(outa, "%.2f", in);
 
-	auto outs = std::string(outa);
+        // Turn the char array to a std::string.
+        auto outs = std::string(outa);
 
-	free((void*) outa);
+        // Free the memory as we copied it to an std::string and no longer need>
+        free((void*) outa);
 
-	return outs;
+        return outs;
 }
 
 for(auto it : sol){
@@ -258,7 +259,7 @@ void MainWindow::runSimulation() {
 
 ## Review
 
-The program is starting to work very well, and this simple stage helped to make the program work almost completely.
+The program is starting to work very well, and this simple stage helped to make the program work almost completely. The only thing to complete after this is the saving and loading 
 
 The hardest part of this was figuring out how to convert the canvas into node numbers, as I created a number of failed
 python prototypes that never worked properly.
@@ -267,4 +268,4 @@ Finally I had the idea to use the shortest path algorithm to do this, and that w
 needs.
 
 The easiest part was probably the idea for the AnalysisMapper as this was perfect for seperating my different
-stages from each other with one interface class.
+stages from each other with one interface class, and fairly simple to implement.

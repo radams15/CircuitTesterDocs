@@ -72,8 +72,21 @@ auto z = Eigen::MatrixXd(equations->size(), 1).setZero();
 
 ### Matrix solution completely wrong
 
-One major problem I encountered was that the matrix seemed to be generated correctly according to the examples from the QUCS page,but when the matrix
-was solved, the output was completely wrong.
+One major problem I encountered was that the matrix seemed to be generated correctly according to the examples from the QUCS page,but when the matrix was solved, the output was completely wrong.
+
+I had no idea what to do in regards to the decomposition method, as in my Python tests I has simply used Numpy's `matrix.solve()`, whereas Eigen required a method to allow the matrix to be decomposed before solving.
+
+In python:
+
+```python
+x = A.solve()
+```
+
+In C++:
+
+```cpp
+Eigen::MatrixXd x = A.ldlt().solve(z);
+```
 
 After running the debugger through the solution I found that the Eigen library has many methods to solve matrices, and the one I had selected was not good solving matrices with many decimal places.
 
@@ -83,7 +96,7 @@ This was the table of options I could had chosen:
 
 Previously I had selected LDLT because of the high speed score, but this was returning low accuracy numbers as indicated above.
 
-The solution was to switch to a more accurate method on the table.
+The solution was to switch to a more accurate method (fullPivLu) on the table, as in my tests this worked correctly.
 
 Before:
 
@@ -91,7 +104,7 @@ Before:
 Eigen::MatrixXd x = A.ldlt().solve(z);
 ```
 
-After
+After:
 
 ```cpp
 Eigen::MatrixXd x = A.fullPivLu().solve(z);
@@ -123,7 +136,7 @@ double MNASolution::getVoltage(MNAComponent element) {
 }
 ```
 
-After `std::abs`:
+After, using `std::abs`:
 
 ```cpp
 double MNASolution::getCurrent(MNAComponent resistor) {
@@ -142,7 +155,7 @@ double MNASolution::getVoltage(MNAComponent element) {
 }
 ```
 
-After fixing getCurrent:
+After fixing `getCurrent`:
 
 ```cpp
 double MNASolution::getCurrent(MNAComponent resistor) {
@@ -191,7 +204,7 @@ MNAComponent::MNAComponent(int n0, int n1, ElementType type, double value, doubl
 
 ## Review
 
-Overall, this stage fits in well with my ideas for the backend, as it provides fairly easy access for the program to call the circuit solver, and receive the solutions back out.
+Overall, this stage fits in well with my ideas for the backend, as it will provide fairly easy access for the main program to call the circuit solver, and receive the solutions back out.
 
 Obviously, the hardest part of this was comprehending how the mathematical algorithms worked and how to extract the desired information from them afterwards. The actual programming related sections such as class, enum and data structure designs were a lot easier to plan and write as they involved just language knowledge.
 

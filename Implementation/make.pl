@@ -39,27 +39,21 @@ my @EXTS = ("raw_tex", "grid_tables", "fenced_code_blocks", "backtick_code_block
 
 my $CODE_STYLE = "tango.theme";
 
-sub get_spice3{
-	open(FH, ">", "docs/spice3.md");
+my @DIA_ORDER = <diagrams/*.dia>;
 
-	print FH "## Code\n\n\n";
-	
-	find( { wanted => sub {
-		my $f = $_;
-		if($f =~ /.*\.(py)/g){
-			my $title = $f;
-			#$title =~ s/code\/CircuitTester-master\/src\/(test|main)\///g;
-
-			my $inc = "\n### $title\n\n\%include_cpp($f)";
-			print FH "$inc\n";
-		}
-	}, no_chdir => 1 }, "spice3/" );
-
-	close(FH);
+sub make_diagrams{
+	foreach my $file (@DIA_ORDER){
+		my $basename = $file;
+		$basename =~ s{^.*/|\.[^.]+$}{}g;
+		my $command = "dia '$file' -e 'images/$basename.png' -n";
+		print "$command\n";
+		`$command`;
+	}
 }
 
-
 sub main{
+	&make_diagrams;
+	
 	@MD_ORDER = map { "'$_'" } @MD_ORDER;
 
 	my $md_files = join " 'styling/border.md' ", @MD_ORDER;
