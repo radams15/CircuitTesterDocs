@@ -98,4 +98,4 @@ setFlag(QGraphicsItem::ItemIsSelectable, true);
 
 Compared to my plan, this achieves the small amount of goals I set myself, as I can drag around and delete components.
 
-This was fairly simple to program, as the documentation and examples of QT are excellent for learning. The hardest part was probably the QActions for the delete function that needed to first be defined, then added to the toolbar to work.
+This was fairly simple to program, as the documentation and examples of QT are excellent for learning. The hardest part was probably creating the QActions for the delete function that needed to first be defined, which was then added to the toolbar to be called when the menu item was selected.

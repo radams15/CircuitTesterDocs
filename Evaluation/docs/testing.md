@@ -77,7 +77,7 @@ This resulted in the following save file content:
 }
 ```
 
-I edited the file to the following content:
+I manually edited the file to the following content:
 
 ```javascript
 {
@@ -122,9 +122,50 @@ I then loaded the file:
 
 ![Changed test file](images/wb9b.png)
 
+The changed data is as follows:
+
+```javascript
+{
+    "name": "test9",
+    "parts": [
+        {
+            "component": {
+                "pos": [
+                    320.0,
+                    240.0
+                ],
+                "state": true,
+                "type": 2,
+                "voltage": 3.0
+            },
+            "connections": [
+                5
+            ],
+            "id": 4
+        },
+        {
+            "component": {
+                "area": 0.5,
+                "length": 2.0,
+                "material": "Carbon",
+                "pos": [
+                    0.0,
+                    0.0
+                ],
+                "type": 3
+            },
+            "connections": [
+                4
+            ],
+            "id": 5
+        }
+    ]
+}
+```
+
 This resulted in the \[-1, -1\] coordinates changing into \[0, 0\], and the material changing from "gdgssjdgsnjgsd" to Carbon. This causes the program to load the wire to the top left of the screen as this is where the start of the canvas is.
 
 
 The corrupted values were reset to their default values by the program because the validation section in the UIComponent classes worked as expected.
 
-This means the test has passed as there were no crashes, only a silent correction of the corrupted data.
+This means the test has passed as there were no crashes, only a silent correction of the corrupted data. This is not ideal for users as they will wonder why their circuit has changed. When the alternative is a crash however, this is an acceptable solution. This will also only occur in rare circumstances, so is not a major issue.

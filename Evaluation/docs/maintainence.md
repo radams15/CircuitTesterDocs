@@ -6,7 +6,7 @@ My program is very portable, being able to run on the following systems:
 - Linux (>= Ubuntu 14.04)
 - Windows (>= XP)
 
-When there is a new QT release the programs could be updated, although this is not required, only advised.
+When there is a new QT release the programs could be updated, although this is not required, only advised. Since my program does not access the internet, the vulnerabilities in the framework will not be exploited unless there is already malicious software on the host.
 
 For example the Windows XP build runs on QT 5.6 which has not been supported since March 2019, but the builds for Windows 8.1+, MacOS 10.12+ and Ubuntu 16.04+ are still supported as the operating systems themselves are still supported by their creators.
 
@@ -22,4 +22,4 @@ If needed, new features and components could be easily added because of the modu
 
 The UI is completely seperate to the backend analysis section, so the UI can be fairly easily changed without changing any part of the analysis code. This is useful if I were to re-write the UI in a different GUI framework like GTK or wxWidgets.
 
-The code is very well commented, so with enough time to understand, others could contribute to the code to improve the program. This could theoretically port my program to new devices.
+The code is very well commented, so with enough time to understand, others could contribute to the code to improve the program. This could theoretically port my program to new devices to assist others in learning.

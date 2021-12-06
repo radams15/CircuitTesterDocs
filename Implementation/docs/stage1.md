@@ -11,7 +11,7 @@ as they all rely on each other and cannot be run without the other sections.
 My goal is to be able to have this section be relatively independent of the main window section, and have neither of them communicate directly, effectively
 making this stage a library.
 
-First, I made a prototype in Python in order to more easily test the algorithms, as starting with C++ would be slower because of the lack of functions such as `map` and list comprehensions. Overall though, C++ will result in a faster program than the equivalent Python because C++ is compiled whereas Python is not.
+First, I made a prototype in Python in order to more easily test the algorithms, as starting with C++ would be slower because of the lack of functions such as `map` and list comprehensions, as well as Numpy which was a great tool for my prototyping. Overall though, C++ will result in a faster program than the equivalent Python because C++ is compiled into machine code, whereas Python is not.
 
 I subsequently translated these two into equivalent C++ classes:
 
@@ -62,8 +62,7 @@ auto A = Eigen::MatrixXd(equations->size(), getNumVars());
 auto z = Eigen::MatrixXd(equations->size(), 1);
 ```
 
-I found a way to zero the matrix - the MatrixXd::setZero function - and the problem was corrected - albeit not solved properly.
-The fixed code is shown here:
+I found a way to zero the matrix - the MatrixXd::setZero function - and the problem was corrected - albeit not solved properly. The fixed code is shown here:
 
 ``` cpp
 auto A = Eigen::MatrixXd(equations->size(), getNumVars()).setZero();
@@ -96,7 +95,7 @@ This was the table of options I could had chosen:
 
 Previously I had selected LDLT because of the high speed score, but this was returning low accuracy numbers as indicated above.
 
-The solution was to switch to a more accurate method (fullPivLu) on the table, as in my tests this worked correctly.
+The solution was to switch to a more accurate method (fullPivLu) on the table, as in my tests this worked correctly, and did not seem slower, even on my relatively old computer, which was a good thing for my program's overall usability.
 
 Before:
 
@@ -115,7 +114,9 @@ Eigen::MatrixXd x = A.fullPivLu().solve(z);
 Whilst this is technically correct, it is not helpful for students when it comes to learning, so I needed
 to remove the negative if the value was less than 1.
 
-I fixed this by simply using `std::abs`, the absolute function on the getVoltage function, to remove any negatives and not affect any positives. This though broke the getCurrent function, as previously I was doing -getVoltage to remove the negative number.
+Whilst this could be fixed by checking if the output voltage was negative, and then multiplying by -1, I fixed this by simply using the `std::abs` method, the mathematical absolute function, on the getVoltage function to remove any negatives and not affect any positives. 
+
+This, however, broke the getCurrent function, as previously I was doing -getVoltage to remove the negative number. This therefore completely inverted my current value as I was now dividing a negative value rather than a positive.
 
 Before:
 

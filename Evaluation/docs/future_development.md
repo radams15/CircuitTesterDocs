@@ -4,7 +4,7 @@ In the future I could add many parts to my solution, and improve slightly on the
 
 ## Code improvement
 
-I would like to split my backend into a proper, separate library that can be used by other programs. This would be beneficial as the library can be developed separately and used in multiple programs to port to different devices. As the only dependency of the analysis section is Eigen, which is compiled statically, that section can be compiled for any device that supports the C++14 standard.
+I would like to split my backend into a proper, separate library that can be used by other programs. This would be beneficial as the library can be developed separately and used in multiple programs to port to different devices. As the only dependency of the analysis section is Eigen, which is compiled into the project statically, the library could be compiled for any device that supports the C++14 standard. This would help to create a mobile client, as there are C++ compilers available to create Android and IOS apps utilising C++ code.
 
 ## Program Improvements:
 
@@ -32,9 +32,9 @@ This could be fixed by drawing lines between the two closest parts of the two co
 
 ## Rotation of Components
 
-I would also like to be able to rotate components, allowing the circuits to look more realistic, and making it look less confusing to users.
+I would also like to be able to rotate components, allowing the circuits to look more realistic, and making it look less confusing to users. It would also help with line drawing.
 
-This would involve graphical updates, as well as an update to the save/load system to be able to store component orientation.
+This would involve graphical updates, as well as an update to the save/load system to be able to store component orientation. Whilst this is possible, it would take up too much time to complete now.
 
 ## Save Screen
 

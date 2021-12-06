@@ -22,11 +22,17 @@ This does not use an ammeter or a voltmeter as the analysis stated, but this wor
 
 The program can save and load circuits. This could be simpler or more clear, but this would be a future development and would take too long to complete.
 
+Save:
+
 ![Save and Load Circuits](images/save.png)
+
+Load:
+
+![Save and Load Circuits](images/open.png)
 
 ### Importing and Exporting Circuits
 
-The program can also import and export circuits to any folder on the computer using my .cir file format - which utilises JSON. The .cir extension is automatically added if the user does not specify it.
+The program can also import and export circuits to any folder on the computer using my .cir file - which is JSON. The .cir extension is automatically added if the user does not specify it.
 
 ![Import and Export Circuits](images/export.png)
 
