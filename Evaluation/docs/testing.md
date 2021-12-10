@@ -163,9 +163,9 @@ The changed data is as follows:
 }
 ```
 
-This resulted in the \[-1, -1\] coordinates changing into \[0, 0\], and the material changing from "gdgssjdgsnjgsd" to Carbon. This causes the program to load the wire to the top left of the screen as this is where the start of the canvas is.
+This resulted in the \[-1, -1\] coordinates changing into \[0, 0\], and the material changing from "gdgssjdgsnjgsd" to carbon. This causes the program to load the wire to the top left of the screen as this is where the start of the canvas is.
 
 
 The corrupted values were reset to their default values by the program because the validation section in the UIComponent classes worked as expected.
 
-This means the test has passed as there were no crashes, only a silent correction of the corrupted data. This is not ideal for users as they will wonder why their circuit has changed. When the alternative is a crash however, this is an acceptable solution. This will also only occur in rare circumstances, so is not a major issue.
+This means the test has passed as there were no crashes, only a silent correction of the corrupted data. This is not ideal for users as they will wonder why their circuit has changed. When the alternative is a crash however, this is an acceptable solution. This will also only occur in rare circumstances, so is not a major issue for users, and will result only in slight confusion.

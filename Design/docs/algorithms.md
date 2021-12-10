@@ -393,14 +393,28 @@ Circuits will be saved to the standard data directories for different OS':
 The username will be determined differently depending on the platform:
 
 - Windows uses `GetUserName` from `Windows.h`.
-- MacOS/Linux use `getuid` and `getpwuid` from `unistd.h`.
+- MacOS/Linux (being UNIX based) use `getuid` and `getpwuid` from `unistd.h`.
 
-Save files will have the following contents (JSON format):
+Save files will have the following contents, e.g. with a 9V battery which is switched on (JSON format):
 ``` json
 {
 	"name": "Example Simulation 1",
 	"parts": [
-		
+		{
+		    "component": {
+		        "pos": [
+		            10.0,
+		            50.0
+		        ],
+		        "state": true,
+		        "type": 2,
+		        "voltage": 9.0
+		    },
+		    "connections": [
+
+		    ],
+		    "id": 4
+		}
 	]
 }
 ```

@@ -12,7 +12,7 @@ I would like to split my backend into a proper, separate library that can be use
 
 The voltmeter and ammeter should be added to the program as specified in the analysis.
 
-They would simply derive from the Resistive Component, and simply just display either the voltage or the current at that point, rather than relying on just the displayed numbers over the whole circuit.
+They would simply derive from ResistiveComponent, and simply just display either the voltage or the current at that point, rather than relying on just the displayed numbers over the whole circuit.
 
 Other components that could be added are buzzers and bulbs, but bulbs would be more difficult as they are non-ohmic components so would need to take temperature into account.
 
@@ -22,13 +22,15 @@ The load box could be vastly improved, turning it from a confusing drop-down lis
 
 ![The Powder Toy - Load Box](images/tpt_save.png)
 
+As previously stated in the design, I would like to save the image in the save file as a base64 encoded JPEG which can be generated from painting the canvas to a buffer then converting that to a QImage.
+
 ## Line Drawing
 
-The algorithm that draws lines between components could be vasly improved, as currently the algorithm crosses lines and looks confusing.
+The algorithm that draws lines between components could be vasly improved, as currently the algorithm crosses lines and looks confusing, even though algorithmically the lines are drawn correctly.
 
-This is because the algorithm now is drawing from the end of the first component to the start of the second component. 
+This is because the algorithm now is drawing from the end of the first component to the start of the second component, which is correct but confusing, as this is how it works in real life but without differently coloured wires this is confusing.
 
-This could be fixed by drawing lines between the two closest parts of the two components.
+This could be fixed by drawing lines between the two closest parts of the two components, which would result in a much nicer layout.
 
 ## Rotation of Components
 
@@ -36,6 +38,10 @@ I would also like to be able to rotate components, allowing the circuits to look
 
 This would involve graphical updates, as well as an update to the save/load system to be able to store component orientation. Whilst this is possible, it would take up too much time to complete now.
 
+There would also need to be rotation actions, keybinds and buttons.
+
 ## Save Screen
 
-This would be a simple addition that checks if the file name already exists, asking the user whether or not they want to override the file with a new save.
+This would be a simple addition that checks if the file name already exists, asking the user whether or not they want to override the file with a new save. This should be simple to implement and would improve the user experience.
+
+The only problem I can see is that each save this would re-prompt the user to override which could be alarming to some, but this could be made so that if the save name is already known, the prompt would not be shown.
