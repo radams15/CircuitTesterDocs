@@ -32,17 +32,13 @@ I subsequently translated these two into equivalent C++ classes:
 %include_cpp(spice2/MNASolution.cc)
 
 
-## Testing
+## Testing I
 
 First, I created targeted white-box tests to test each individual class.
 
 Next, I created a test file to test the functions of the stage as a whole, called Test_MNA which had tests for each of the white-box tests on the design document.
 
 The Test_MNACircuit contains the tests for each of the tests in the black-box section of the design document.
-
-Eventually I succeeded in passing all the tests:
-
-![Tests Passing](images/mna_test_success.png)
 
 The bugs below were all located by unit tests failing.
  
@@ -111,8 +107,7 @@ Eigen::MatrixXd x = A.fullPivLu().solve(z);
 
 ### Returning negative voltages.
 
-Whilst this is technically correct, it is not helpful for students when it comes to learning, so I needed
-to remove the negative if the value was less than 1.
+Whilst this is technically correct, it is not helpful for students when it comes to learning, so I needed to remove the negative if the value was less than 1.
 
 Whilst this could be fixed by checking if the output voltage was negative, and then multiplying by -1, I fixed this by simply using the `std::abs` method, the mathematical absolute function, on the getVoltage function to remove any negatives and not affect any positives. 
 
@@ -201,6 +196,12 @@ MNAComponent::MNAComponent(int n0, int n1, ElementType type, double value, doubl
     this->currentSolution = currentSolution;
 }
 ```
+
+## Testing II
+
+Eventually I succeeded in passing all the tests:
+
+![Tests Passing](images/mna_test_success.png)
 
 
 ## Review

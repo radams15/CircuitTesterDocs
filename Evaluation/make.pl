@@ -25,6 +25,9 @@ my @MD_ORDER = (
 	
 	"styling/pagebreak.tex",
 	"docs/future_development.md",
+
+	"styling/pagebreak.tex",
+	"docs/conclusion.md",
 );
 
 
