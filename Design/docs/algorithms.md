@@ -22,7 +22,7 @@ A "-" before the name means private, a "+" before the name means public.
 
 \newpage
 
-## Main_Window
+## Main Window
 
 
 ![Main Window Class](images/Class_MainWindow.png)
@@ -426,5 +426,7 @@ If possible, I would also like to place an image of the circuit in the save file
 - Shrinking and compressing the image to save space.
 - Encoding the image to base64.
 - Adding to an "image" key in the json file.
+
+Although this will be slow to save and load, as well as increasing the size of the save files considerably from around 1KiB to nearer 1MiB
 
 \newpage

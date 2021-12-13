@@ -17,7 +17,7 @@ imports in one class only.
 ### User interface
 
 This will be purely for logic related to the GUI. This will be the only area where I
-will be importing the QT libraries, as again I wish to keep libraries separate.
+will be importing the QT libraries, as again I wish to keep libraries and code sections separate, connected by pure C++ code written by myself.
 
 
 ### Menubar
@@ -34,7 +34,7 @@ help menus with a general menu for the application, as seen below:
 
 ![Linux Menubar](images/titlebar_lin.png)
 
-<br><br>
+
 
 ### Drag and drop canvas
 

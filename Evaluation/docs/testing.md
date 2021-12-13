@@ -1,5 +1,11 @@
 # Post-Developmental Testing
 
+## Whitebox tests
+
+All my tests passed:
+
+![Resistors in parallel](images/test_pass.png)
+
 ## Test 1 - Resistors in parallel
 
 ![Resistors in parallel](images/wb1.png)
