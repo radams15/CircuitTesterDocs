@@ -1,11 +1,11 @@
-FUNCTION init(circuit_elements)
-	FOR e IN circuit_elements DO -- splits the elements array
-		IF e IS Battery THEN
-			batteries.append(e)
-		ELSEIF e IS Resistor THEN
-			resistors.append(e)
-		ELSEIF e IS CurrentSource THEN
-			current_sources.append(e)
+FUNCTION init(circuit_components)
+	FOR c IN circuit_components DO -- splits the components array
+		IF c IS Battery THEN
+			batteries.append(c)
+		ELSEIF c IS Resistor THEN
+			resistors.append(c)
+		ELSEIF c IS CurrentSource THEN
+			current_sources.append(c)
 		END IF
 		
 	END
@@ -13,14 +13,14 @@ FUNCTION init(circuit_elements)
 	-- Adds together all 3 arrays. Not using the function parameter
 	-- as this could contain values that are not batteries,
 	-- resistors or current sources
-	elements = batteries + resistors + current_sources.
+	components = batteries + resistors + current_sources.
 	
 	nodes = []
 	
 	-- Populate the nodes list.
-	FOR e IN elements DO
-		nodes.append(e.n0)
-		nodes.append(e.n1)
+	FOR c IN components DO
+		nodes.append(c.n0)
+		nodes.append(c.n1)
 	END
 	
 	-- Count the number of nodes

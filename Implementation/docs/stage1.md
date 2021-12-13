@@ -5,7 +5,7 @@ I will build up my program in many separate prototype projects, the first is my 
 The justification for this prototype is that this is the core of my project, without this my project is just a drag-and-drop
 circuit designer.
 
-This section encompasses the Circuit, Element, Equation, Solution and Term elements of my algorithm design, and they have been grouped this way
+This section encompasses the Circuit, Component, Equation, Solution and Term elements of my algorithm design, and they have been grouped this way
 as they all rely on each other and cannot be run without the other sections.
 
 My goal is to be able to have this section be relatively independent of the main window section, and have neither of them communicate directly, effectively
@@ -125,10 +125,10 @@ double MNASolution::getCurrent(MNAComponent resistor) {
     return  i;
 }
 
-double MNASolution::getVoltage(MNAComponent element) {
+double MNASolution::getVoltage(MNAComponent component) {
     // Gets the difference between the voltages the start and end nodes
     // as voltage is the potential difference between two components.
-    return voltageMap.at(element.n1) - voltageMap.at(element.n0);
+    return voltageMap.at(component.n1) - voltageMap.at(component.n0);
 }
 ```
 
@@ -144,10 +144,10 @@ double MNASolution::getCurrent(MNAComponent resistor) {
     return  i;
 }
 
-double MNASolution::getVoltage(MNAComponent element) {
+double MNASolution::getVoltage(MNAComponent component) {
     // Gets the difference between the voltages the start and end nodes
     // as voltage is the potential difference between two components.
-    return std::abs(voltageMap.at(element.n1) - voltageMap.at(element.n0));
+    return std::abs(voltageMap.at(component.n1) - voltageMap.at(component.n0));
 }
 ```
 
@@ -163,10 +163,10 @@ double MNASolution::getCurrent(MNAComponent resistor) {
     return  i;
 }
 
-double MNASolution::getVoltage(MNAComponent element) {
+double MNASolution::getVoltage(MNAComponent component) {
     // Gets the difference between the voltages the start and end nodes
     // as voltage is the potential difference between two components.
-    return std::abs(voltageMap.at(element.n1) - voltageMap.at(element.n0));
+    return std::abs(voltageMap.at(component.n1) - voltageMap.at(component.n0));
 }
 ```
 
@@ -181,7 +181,7 @@ No component can have a zero value as this breaks the analysis. The program ther
 This is solved in the initialiser function:
 
 ```cpp
-MNAComponent::MNAComponent(int n0, int n1, ElementType type, double value, double currentSolution) {
+MNAComponent::MNAComponent(int n0, int n1, ComponentType type, double value, double currentSolution) {
     // Sets the class attributes from the passed initialiser values.
     this->n0 = n0;
     this->n1 = n1;

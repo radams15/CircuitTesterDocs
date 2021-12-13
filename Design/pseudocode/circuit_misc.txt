@@ -59,7 +59,7 @@ FUNCTION get_ref_nodes()
 	ref_nodes = []
 	
 	WHILE NOT to_visit.empty()
-		-- Get the first element in the nodes to be visited.
+		-- Get the first component in the nodes to be visited.
 		ref_node = to_visit[0]
 		
 		ref_nodes.append(ref_node)
@@ -92,10 +92,10 @@ FUNCTION get_connected_nodes(node)
 		
 		visited.append(node_to_visit)
 		
-		FOR e IN elements DO
-			IF e.contains(node_to_visit) THEN
+		FOR c IN components  DO
+			IF c.contains(node_to_visit) THEN
 				-- Get the opposite node, check that too
-				opposite = e.opposite(node_to_visit)
+				opposite = c.opposite(node_to_visit)
 				
 				-- Don't check if has already been checked
 				IF NOT visited.contains(opposite) THEN
@@ -135,16 +135,16 @@ END
 
 
 {-
-Returns the index of the element in the array,
+Returns the index of the component in the array,
 if it does not exist, return -1.
 -}
-FUNCTION get_element_index(array, element)
+FUNCTION get_component_index(array, component)
 
 	-- Iterate over every index in the array
 	FOR i IN 0..array.length() DO
-		-- If the array element equals the passed element,
+		-- If the array component equals the passed component,
 		-- return the index.
-		IF array[i].equals(element) THEN
+		IF array[i].equals(component) THEN
 			RETURN i
 		END
 	END

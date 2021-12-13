@@ -1,5 +1,5 @@
 {-
-Returns whether this element is connected
+Returns whether this component is connected
 to the passed node.
 -}
 FUNCTION contains(node)

@@ -2,7 +2,7 @@
 // Created by rhys on 18/04/2021.
 //
 
-#include "MNACircuit.h"
+#include "Circuit.h"
 
 #include <Eigen/Dense>
 #include <iostream>
@@ -11,29 +11,29 @@
 #define CUR_OUT 0
 
 template<typename T>
-T MNACircuit::vecPopFront(std::vector<T>& vec){
+T Circuit::vecPopFront(std::vector<T>& vec){
     std::reverse(vec.begin(),vec.end()); // first becomes last, reverses the vector
-    T out = vec.back(); // get last element
-    vec.pop_back(); // pop last element off the vector
-    std::reverse(vec.begin(),vec.end()); // reverses it again, so the elements are in the same order as before
+    T out = vec.back(); // get last component
+    vec.pop_back(); // pop last component off the vector
+    std::reverse(vec.begin(),vec.end()); // reverses it again, so the components are in the same order as before
 
     return out;
 }
 
-MNACircuit::MNACircuit(std::vector<MNAComponent *> elements) {
+Circuit::Circuit(std::vector<Component *> components) {
     // Clear the batteries, resistors and currentSources lists just in case they
-    // contain some elements for any reason.
+    // contain some components for any reason.
     batteries.clear();
     resistors.clear();
 
     // Instead of adding the 3 lists, just copy the passed list into the
     // class attribute.
-    this->elements = elements;
+    this->components = components;
 
-    // Split the elements into the 3 types: battery, resistor and current source.
-    for(auto e : elements){
-        // Each Element object is checked for its type attribute to sort it.
-        // This element was set by the Resistor, Battery, CurrentSource or derivative classes.
+    // Split the components into the 3 types: battery, resistor and current source.
+    for(auto e : components){
+        // Each component object is checked for its type attribute to sort it.
+        // This component was set by the Resistor, Battery, CurrentSource or derivative classes.
         switch(e->type){
             case MNA_BATTERY:
                 batteries.push_back(e);
@@ -45,7 +45,7 @@ MNACircuit::MNACircuit(std::vector<MNAComponent *> elements) {
     }
 
     // Populates the node list.
-    for(auto e : elements){
+    for(auto e : components){
         nodes.push_back(e->n0);
         nodes.push_back(e->n1);
     }
@@ -58,18 +58,18 @@ MNACircuit::MNACircuit(std::vector<MNAComponent *> elements) {
     nodeCount = nodes.size();
 }
 
-int MNACircuit::getNumUnknownCurrents() {
-    // Batteries arehe only component with an unknown resistance.
+int Circuit::getNumUnknownCurrents() {
+    // Batteries are the only component with an unknown resistance and therefore an unknown current.
     return batteries.size();
 }
 
-int MNACircuit::getNumVars() {
+int Circuit::getNumVars() {
     // The node count is the number of voltage nodes, and each node
     // has an unknown voltage.
     return nodeCount + getNumUnknownCurrents();
 }
 
-std::vector<Term *>* MNACircuit::getCurrents(int node, int side) {
+std::vector<Term *>* Circuit::getCurrents(int node, int side) {
     /*Convert the side to the current direction - if side is 0, current direction
      * is 1, otherwise the current direction is -1*/
     int currentDirection = side == 0 ? 1 : -1;
@@ -106,15 +106,13 @@ std::vector<Term *>* MNACircuit::getCurrents(int node, int side) {
     return out;
 }
 
-std::vector<int>* MNACircuit::getRefNodes() {
+std::vector<int>* Circuit::getRefNodes() {
     auto* out = new std::vector<int>;
-
-    // For every component,
 
     std::vector<int> toVisit = nodes;
 
     while(! toVisit.empty()){
-        // Get the element to visit next from toVisit.
+        // Get the component to visit next from toVisit.
         int refNodeId = toVisit.at(0);
 
         // Add the reference node to the output list
@@ -129,30 +127,30 @@ std::vector<int>* MNACircuit::getRefNodes() {
             // the matching one.
             toVisit.erase(std::remove_if(toVisit.begin(), toVisit.end(), [c](int i){
                 return i == c;
-            }));
+            }), toVisit.end());
         }
     }
 
     return out;
 }
 
-std::vector<int>* MNACircuit::getConnectedNodes(int node) {
+std::vector<int>* Circuit::getConnectedNodes(int node) {
     // A queue of visited nodes from this node.
     auto* visited = new std::vector<int>;
 
     // A list of nodes that we want to visit in the future.
     std::vector<int> toVisit = {node};
 
-    // This is basically a breadth first iteration of every element connected to this node.
+    // This is basically a breadth first iteration of every component connected to this node.
     while(not toVisit.empty()){
         // Get the top vector item.
         int nodeToVisit = vecPopFront<int>(toVisit);
 
         visited->push_back(nodeToVisit);
 
-        for(auto e : elements){
+        for(auto e : components){
             if(e->contains(nodeToVisit)){
-                // Get the node leaving the element.
+                // Get the node leaving the component.
                 int oppositeNode = e->opposite(nodeToVisit);
 
                 // Visit the opposite node in the future if we have not already visited it.
@@ -168,7 +166,7 @@ std::vector<int>* MNACircuit::getConnectedNodes(int node) {
     return visited;
 }
 
-std::vector<Equation *>* MNACircuit::getEquations() {
+std::vector<Equation *>* Circuit::getEquations() {
     auto* equations = new std::vector<Equation *>;
 
     std::vector<int>* refNodeIds = getRefNodes();
@@ -218,7 +216,7 @@ std::vector<Equation *>* MNACircuit::getEquations() {
     return equations;
 }
 
-std::vector<UnknownCurrent *> *MNACircuit::getUnknownCurrents() {
+std::vector<UnknownCurrent *> *Circuit::getUnknownCurrents() {
     auto* out = new std::vector<UnknownCurrent*>;
 
     for(auto b : batteries){
@@ -229,7 +227,7 @@ std::vector<UnknownCurrent *> *MNACircuit::getUnknownCurrents() {
     return out;
 }
 
-MNASolution *MNACircuit::solve() {
+Solution *Circuit::solve() {
     std::vector<Equation *>* equations = getEquations();
     std::vector<UnknownCurrent*>* unknownCurrents = getUnknownCurrents();
     auto* unknownVoltages = new std::vector<UnknownVoltage*>;
@@ -249,11 +247,11 @@ MNASolution *MNACircuit::solve() {
     auto z = Eigen::MatrixXd(equations->size(), 1).setZero();
 
     for(int i=0 ; i<equations->size() ; i++){
-        //Apply the correct numbers of every equation onto the matrices,
+        // Apply the correct numbers of every equation onto the matrices,
         //  passing in a lambda to find the index of each
         //  term of the equation in class attribute unknowns.
         equations->at(i)->apply(i, &A, &z, [this, unknowns](Unknown *u) {
-            return getElementIndex<Unknown>(unknowns, u);
+            return getComponentIndex<Unknown>(unknowns, u);
         });
     }
 
@@ -264,33 +262,33 @@ MNASolution *MNACircuit::solve() {
     auto* voltageMap = new std::map<int, double>;
 
     for(auto v : *unknownVoltages){
-        // Get the voltage out from the solved matrix at the index of the element
-        // in the vector of unknowns. As the solved matrix stores
-        auto voltage = x(getElementIndex<Unknown>(unknowns, v));
+        // Get the voltage out from the solved matrix at the index of the component
+        // in the vector of unknowns. As the index is the node, and the node has the voltage.
+        auto voltage = x(getComponentIndex<Unknown>(unknowns, v));
 
         // Add to the voltage map
         voltageMap->insert(std::pair<int, double>(v->node, voltage));
     }
 
     //
-    std::vector<MNAComponent*> elems;
+    std::vector<Component*> elems;
 
     for(auto c : *unknownCurrents){
-        // Set the new current for each element, as the matrix column 0 has the solved currents.
-        c->element->currentSolution = x(getElementIndex<Unknown>(unknowns, c), 0);
-        elems.push_back(c->element);
+        // Set the new current for each component, as the matrix column 0 has the solved currents.
+        c->component->currentSolution = x(getComponentIndex<Unknown>(unknowns, c), 0);
+        elems.push_back(c->component);
 
     }
 
-    return new MNASolution(*voltageMap, elems);
+    return new Solution(*voltageMap, elems);
 }
 
 template <typename T>
-int MNACircuit::getElementIndex(std::vector<T*>* array, T* element) {
+int Circuit::getComponentIndex(std::vector<T*>* array, T* component) {
     // Iterate over every index in the array.
     for(int i=0 ; i<array->size() ; i++){
-        if(array->at(i)->equals(element)){
-            //If the array element equals the passed element, return the index.
+        if(array->at(i)->equals(component)){
+            //If the array component equals the passed component, return the index.
             return i;
         }
     }
@@ -298,3 +296,4 @@ int MNACircuit::getElementIndex(std::vector<T*>* array, T* element) {
     // Not found, return -1.
     return -1;
 }
+

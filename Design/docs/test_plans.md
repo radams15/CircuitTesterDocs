@@ -23,12 +23,12 @@
 |                     |              |           | (if less than 100 components) |                                               |
 +---------------------+--------------+-----------+-------------------------------+-----------------------------------------------+
 
-## [Element](#element)
+## [Component](#component)
 
 +----------+-------------------+----------+----------------------------------------+--------------------------+
 | Method   | Name              | Type     | Data                                   | Expected                 |
 +----------+-------------------+----------+----------------------------------------+--------------------------+
-| contains | normal            | expected | Element(Resistor, 2, 3, 5).contains(2) | returns `true`.          |
+| contains | normal            | expected | Component(Resistor, 2, 3, 5).contains(2) | returns `true`.          |
 +----------+-------------------+----------+----------------------------------------+--------------------------+
 | contains | non-existent node | normal   | 100 (when no node 100)                 | returns `false`.         |
 +----------+-------------------+----------+----------------------------------------+--------------------------+
@@ -59,7 +59,7 @@
 +-------------+--------------------+---------+-----------------------------------+--------------------------+
 | equals      | equal solution     | valid   | different pointer to same object. | returns `true`.          |
 +-------------+--------------------+---------+-----------------------------------+--------------------------+
-| get_voltage | unknown variable   | invalid | new element not in solution list. | controlled error thrown. |
+| get_voltage | unknown variable   | invalid | new component not in solution list. | controlled error thrown. |
 +-------------+--------------------+---------+-----------------------------------+--------------------------+
 
 ## [Unknown](#unknown)

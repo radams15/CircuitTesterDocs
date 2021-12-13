@@ -59,7 +59,7 @@ then work out the voltages and currents at each point of the circuit.
 ![Circuit Class](images/Class_Circuit.png)
 
 This class is used to hold a circuit as an object. It is designed
-so that it takes in a list of [Element](#element) classes, and splits
+so that it takes in a list of [Component](#component) classes, and splits
 them up into the class attributes batteries, resistors and current_sources, which
 are then used throughout the program.
 
@@ -302,11 +302,11 @@ a current of $0.375A$.
 \newpage
 
 
-## Element
+## Component
 
 ![Element Class](images/Class_Element.png)
 
-This is the parent class for all elements.
+This is the parent class for all components.
 
 This has values for the nodes, the value (which is a resistance, a current,
 a voltage, etc depending on the child class), and a type which is set
@@ -321,7 +321,7 @@ almost zero.
 
 ### Pseudocode for class
 
-%include_pc(pseudocode/element.txt)
+%include_pc(pseudocode/component.txt)
 
 \newpage
 
@@ -365,9 +365,9 @@ Otherwise it is a `class` with no methods.
 
 ## Unknown
 
-![Element Class](images/Class_Unknown.png)
+![Unknown Class](images/Class_Unknown.png)
 
-These are simply elements for which the voltage or current has not yet been calculated.
+These are simply components for which the voltage or current has not yet been calculated.
 
 Both UnknownVoltage and UnknownCurrent are under the Unknown class, so that they can both be
 stored in the same arrays as pointers.

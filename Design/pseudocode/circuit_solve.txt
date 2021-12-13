@@ -20,7 +20,7 @@ FUNCTION solve()
 		-- Apply the correct numbers of every equation onto the matrices,
 		-- passing in a lambda to find the index of each
 		-- term of the equation in class attribute unknowns.
-		equations[i].apply(i, a, z, {x => get_element_index(unknowns, x})
+		equations[i].apply(i, a, z, {x => get_component_index(unknowns, x})
 	END
 	
 	-- Solve the matrix equation a = z
@@ -32,16 +32,16 @@ FUNCTION solve()
 	FOR v IN unknown_voltages DO
 		-- Get the right side of the equation for the voltage at
 		-- point voltage node.
-		equation_right = x[get_element_index(unknowns, v), 0]
+		equation_right = x[get_component_index(unknowns, v), 0]
 		voltage_map[v.node] = equation_right
 	END
 	
 	FOR c IN unknown_currents DO
-		-- Set the new current for each element.
-		c.element.current_solution = x[get_element_index(unknowns, c), 0]
+		-- Set the new current for each component.
+		c.component.current_solution = x[get_component_index(unknowns, c), 0]
 	END
 	
-	-- Return a new solution class, also removing the UnknownCurrent wrapper of each element
-	-- by just using the UnknownCurrent.element value.
-	RETURN NEW Solution(voltage_map, map({x => x.element}, unknown_currents}))
+	-- Return a new solution class, also removing the UnknownCurrent wrapper of each component
+	-- by just using the UnknownCurrent.component value.
+	RETURN NEW Solution(voltage_map, map({x => x.component}, unknown_currents}))
 END

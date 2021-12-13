@@ -26,10 +26,10 @@ FUNCTION find_shortest_path(graph, start, end)
 
     -- Repeat until the queue has no more entries.
     WHILE queue IS NOT empty
-        -- Get the first element from the queue.
+        -- Get the first component from the queue.
         path = queue.pop_front()
 
-        -- Get the last element from path.
+        -- Get the last component from path.
         node = path[path.size()-1]
 
         -- If we have not already explored this node.

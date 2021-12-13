@@ -10,5 +10,5 @@ FUNCTION equals(other)
 		RETURN FALSE
 	END
 	
-	RETURN element == other.element
+	RETURN component == other.component
 END
