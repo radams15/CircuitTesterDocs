@@ -3,119 +3,74 @@
 
 ## [Circuit](#circuit)
 
-- `init` empty list:
-	- Type: boundary
-	- Data: [ ]
-	- Expected: no error, as this is just no circuit
-
-- `init` null:
-	- Type: erroneous
-	- Data: `NULL`
-	- Expected: should return the function before any actual
-		data is used
-
-
-
-- `get_current_total` negative:
-	- Type: invalid
-	- Data: -1
-	- Expected: returns a total of 0 as the node does not exist
-
-- `get_current_total` large number:
-	- Type: invalid
-	- Data: 100 (if there are less than 100 componenets)
-	- Expected: returns a total of 0 as node does not exist
-
-
-
-- `get_currents` invalid sign:
-	- Type: invalid
-	- Data: sign = -2
-	- Expected: controlled error thrown
-
-- `get_currents` invalid sign:
-	- Type: invalid
-	- Data: sign = `NULL`
-	- Expected: controlled error thrown
-
-
-
-- `get_connected_nodes` invalid node:
-	- Type: invalid
-	- Data: 100 (if there are less than 100 componenets)
-	- Expected: returns empty list
++---------------------+--------------+-----------+-------------------------------+-----------------------------------------------+
+| Method              | Name         | Type      | Data                          | Expected                                      |
++---------------------+--------------+-----------+-------------------------------+-----------------------------------------------+
+| init                | empty list   | boundary  | [ ]                           | no error, just no circuit.                    |
++---------------------+--------------+-----------+-------------------------------+-----------------------------------------------+
+| init                | null         | erroneous | NULL                          | should return before any actual data is used. |
++---------------------+--------------+-----------+-------------------------------+-----------------------------------------------+
+| get_current_total   | negative     | invalid   | -1                            | returns a total of 0 as node does not exist.  |
++---------------------+--------------+-----------+-------------------------------+-----------------------------------------------+
+| get_current_total   | large number | invalid   | 100                           | returns total of 0 as node does not exist.    |
+|                     |              |           | (if less than 100 components) |                                               |
++---------------------+--------------+-----------+-------------------------------+-----------------------------------------------+
+| get_currents        | invalid sign | invalid   | sign = -2                     | controlled error thrown.                      |
++---------------------+--------------+-----------+-------------------------------+-----------------------------------------------+
+| get_currents        | invalid sign | invalid   | sign = NULL                   | controlled error thrown.                      |
++---------------------+--------------+-----------+-------------------------------+-----------------------------------------------+
+| get_connected_nodes | invalid node | invalid   | 100                           | returns empty list.                           |
+|                     |              |           | (if less than 100 components) |                                               |
++---------------------+--------------+-----------+-------------------------------+-----------------------------------------------+
 
 ## [Element](#element)
 
-- `contains`:
-	- Type: normal
-	- Data: Element(Resistor, 2, 3, 5).contains(2)
-	- Expected: returns `True`
-
-- `contains` non-existant node:
-	- Type: normal
-	- Data: 100 (where there is no node 100)
-	- Expected: returns `False`
-
-- `opposite` non-existant node:
-	- Type: invalid
-	- Data: 100 (if there are less than 100 nodes
-		attached to this node - which is unlikely)
-	- Expected: controlled error thrown
++----------+-------------------+----------+----------------------------------------+--------------------------+
+| Method   | Name              | Type     | Data                                   | Expected                 |
++----------+-------------------+----------+----------------------------------------+--------------------------+
+| contains | normal            | expected | Element(Resistor, 2, 3, 5).contains(2) | returns `true`.          |
++----------+-------------------+----------+----------------------------------------+--------------------------+
+| contains | non-existent node | normal   | 100 (when no node 100)                 | returns `false`.         |
++----------+-------------------+----------+----------------------------------------+--------------------------+
+| opposite | non-existent node | invalid  | 100 (when less than 100 nodes)         | controlled error thrown. |
++----------+-------------------+----------+----------------------------------------+--------------------------+
 
 ## [Equation](#equation)
 
-- `apply` a or z are null:
-	- Type: erroneous
-	- Data: a = `NULL` or z = `NULL`
-	- Expected: error thrown
-
-- `apply` get_index function is null:
-	- Type: erroneous
-	- Data: a = `NULL` or z = `NULL`
-	- Expected: controlled error thrown
-
-- `apply` row non-existant node:
-	- Type: invalid
-	- Data: row = 100 (if there are less than 100 nodes
-		attached to this node - which is unlikely)
-	- Expected: controlled error thrown
++--------+-----------------------+-----------+----------------------------+--------------------------+
+| Method | Name                  | Type      | Data                       | Expected                 |
++--------+-----------------------+-----------+----------------------------+--------------------------+
+| apply  | a or z are NULL       | erroneous | a = NULL or z = NULL       | controlled error thrown. |
++--------+-----------------------+-----------+----------------------------+--------------------------+
+| apply  | get_index method NULL | erroneous | get_index = NULL           | controlled error thrown. |
++--------+-----------------------+-----------+----------------------------+--------------------------+
+| apply  | non-existent node     | invalid   | row = 100                  | controlled error thrown. |
+|        |                       |           | (when less than 100 nodes) |                          |
++--------+-----------------------+-----------+----------------------------+--------------------------+
 
 ## [Solution](#solution)
 
-- `equals` null solution:
-	- Type: invalid
-	- Data: `NULL`
-	- Expected: returns `False`
-
-- `equals` non-equal solution:
-	- Type: valid
-	- Data: `NULL`
-	- Expected: returns `False`
-
-- `equals` equal solution:
-	- Type: valid
-	- Data: `NULL`
-	- Expected: returns `True`
-
-
-- `get_voltage` unknown variable:
-	- Type: invalid
-	- Data: New element that is not in any solution list
-	- Expected: controlled error thrown
-
++-------------+--------------------+---------+-----------------------------------+--------------------------+
+| Method      | Name               | Type    | Data                              | Expected                 |
++-------------+--------------------+---------+-----------------------------------+--------------------------+
+| equals      | null solution      | invalid | NULL                              | returns `false`.         |
++-------------+--------------------+---------+-----------------------------------+--------------------------+
+| equals      | non-equal solution | valid   | NULL                              | returns `false`.         |
++-------------+--------------------+---------+-----------------------------------+--------------------------+
+| equals      | equal solution     | valid   | different pointer to same object. | returns `true`.          |
++-------------+--------------------+---------+-----------------------------------+--------------------------+
+| get_voltage | unknown variable   | invalid | new element not in solution list. | controlled error thrown. |
++-------------+--------------------+---------+-----------------------------------+--------------------------+
 
 ## [Unknown](#unknown)
 
-- `equals` other is null:
-	- Type: erroneous
-	- Data: other = `NULL`
-	- Expected: return `false`
-
-- `equals` other is of other type:
-	- Type: boundary
-	- Data: this = `UnknownCurrent` other = `UnknownVoltage`
-	- Expected: returns `False`
++--------+------------------------+-----------+------------------------------------------------------+------------------+
+| Method | Name                   | Type      | Data                                                 | Expected         |
++--------+------------------------+-----------+------------------------------------------------------+------------------+
+| equals | other is null          | erroneous | NULL                                                 | returns `false`. |
++--------+------------------------+-----------+------------------------------------------------------+------------------+
+| equals | other is of other type | boundary  | this = `UnknownCurrent` and other = `UnknownVoltage` | returns `false`. |
++--------+------------------------+-----------+------------------------------------------------------+------------------+
 
 
 \newpage
