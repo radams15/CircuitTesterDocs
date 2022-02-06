@@ -11,6 +11,7 @@ my @FOLDERS = (
 	"Design",
 	"Implementation",
 	"Evaluation",
+	"Bibliography",
 );
 
 my @MD_ORDER = (
@@ -27,6 +28,9 @@ my @MD_ORDER = (
 	
 	"global/pagebreak.tex",
 	"build/Evaluation.md",
+	
+	"global/pagebreak.tex",
+	"build/Bibliography.md",
 
 	"global/pagebreak.tex",
 	"build/final_code.md",
