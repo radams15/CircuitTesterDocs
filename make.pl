@@ -61,6 +61,10 @@ sub get_code{
 			my $f1 = $f;
 			$f1 =~ s/build\///g;
 
+			if($f1 eq "Saves/json.h"){
+				next;
+			}
+
 			my $data = `cat $f | perl preprop.pl`;
 
 			my $inc = "\n## $title\n\n```cpp\n\n$data\n\n```";
