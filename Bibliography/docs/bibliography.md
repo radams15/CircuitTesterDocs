@@ -30,8 +30,6 @@ Stack Overflow. (n.d.). linux - How to list files in a directory in a C program?
 
 Stack Overflow. (n.d.). Listing directory contents using C and Windows. \[online\] Available at: https://stackoverflow.com/questions/2314542/listing-directory-contents-using-c-and-windows \[Accessed 7 Feb. 2020\].
 
-
-
 Drifter1 (2019a). Electronic Circuit Simulation - Static Analysis Implementation (part 1). \[online\] Steemit. Available at: https://steemit.com/utopian-io/@drifter1/electronic-circuit-simulation-static-analysis-implementation-part-1-python \[Accessed 6 Feb. 2020\].
 
 Drifter1 (2019b). Electronic Circuit Simulation - Static Analysis Implementation (part 2). \[online\] Steemit. Available at: https://steemit.com/utopian-io/@drifter1/electronic-circuit-simulation-static-analysis-implementation-part-2-python \[Accessed 6 Feb. 2020\].
